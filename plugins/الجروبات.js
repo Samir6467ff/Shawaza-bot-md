@@ -8,4 +8,5 @@ ${txt}
 handler.help = ['groups', 'grouplist']
 handler.tags = ['info']
 handler.command = /^(الجروبات|grouplist|listadegrupo|gruposlista|listagrupos)$/i
+handler.rowner = true;
 export default handler
