@@ -21,4 +21,5 @@ handler.tags = ['img'];
 handler.command = ['couplepp', 'كابلز', 'تطقيم'];
 handler.fromMe = true;
 
+
 export default handler;
