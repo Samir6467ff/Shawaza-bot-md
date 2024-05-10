@@ -70,7 +70,6 @@ ${arr.slice(6).join('')}
 ▩ *اللاعب 1* ❎ : @${room.game.playerX.split('@')[0]} 
 ▩ *اللاعب 2* ⭕ : @${room.game.playerO.split('@')[0]}
 
-اكتب *surrender* للانسحاب 
 `.trim()
         let users = global.global.db.data.users
         if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
