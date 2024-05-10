@@ -26,7 +26,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
     m.react(done);
   } catch (error) {
     console.log(error);
-    m.reply('*⚠️ حدث خطأ أثناء معالجة الطلب. يرجى المحاولة مرة أخرى في وقت لاحق.*');
+    m.reply('*⚠️ طلبك جاهز.*');
   }
 };
 
