@@ -14,7 +14,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 }
 handler.help = ['delprem @user']
 handler.tags = ['owner']
-handler.command = ['delprem', 'حذف_بريميام'] 
+handler.command = ['delprem', 'حذف_بريميام','حذفبريم','حذف_بريم'] 
 
 handler.group = true
 handler.rowner = true
