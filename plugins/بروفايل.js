@@ -33,7 +33,7 @@ let str = `*🪪 الإسم:* ${username}${about ? '\n\n 🎌 *السيرة:* ' 
 *⭐ بريميوم* : ${prem ? 'نعم' : 'لا'}
 `
     conn.sendFile(m.chat, pp, 'profil.jpg', str, m, false, { mentions: [who] })
-    m.react(done)
+    m.react('🐦')
 
 }
 handler.help = ['profile']
