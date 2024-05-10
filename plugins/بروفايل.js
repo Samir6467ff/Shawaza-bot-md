@@ -18,7 +18,7 @@ let sn = createHash('md5').update(who).digest('hex')
 // • @${who.replace(/@.+/, '')}
 let str = `*🪪 الإسم:* ${username}${about ? '\n\n 🎌 *السيرة:* ' + about : ''}
 
-*⚠️ التحذيرات:* ${warn}/${maxwarn}
+*⚠️ التحذيرات:* ${warn}/5
 
 *💰 الذهب :* ${credit}
 
