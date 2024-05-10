@@ -32,8 +32,10 @@ let str = `*🪪 الإسم:* ${username}${about ? '\n\n 🎌 *السيرة:* ' 
 
 *⭐ بريميوم* : ${prem ? 'نعم' : 'لا'}
 `
+    await conn.sendMessage(m.chat, { react: { text: '🌚', key: m.key } })
+
     conn.sendFile(m.chat, pp, 'profil.jpg', str, m, false, { mentions: [who] })
-    m.react('🐦')
+    m.reply('🐦')
 
 }
 handler.help = ['profile']
