@@ -8,7 +8,7 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
   if (!args[0]) throw `*[❗معلومه❗] حط رابط الفيديو مثال: ${usedPrefix + command}* https://fb.watch/fOTpgn6UFQ/`;
   if (!args[0].match(/www.facebook.com|fb.watch/g)) throw `*[❗𝐈𝐍𝐅𝐎❗] حط رابط الفيديو مثال: ${usedPrefix + command}* https://fb.watch/fOTpgn6UFQ/`;
   try {
-    await m.reply(`*انتظر جاري التحميل تابع صاحب البوت\n\nhttps://www.atom.bio/mego51_51*`);
+    await m.reply(`*انتظر جاري التحميل تابع صاحب البوت*\n\n*https://www.atom.bio/zyad_yasser/#*`);
     const d2ata = await facebook.v1(args[0]);
     let r2es = '';
     if (d2ata.urls && d2ata.urls.length > 0) {
