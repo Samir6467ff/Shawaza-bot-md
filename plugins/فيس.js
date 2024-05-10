@@ -10,7 +10,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
     throw '*⚠️ يرجى إدخال رابط صحيح.*';
   }
 
-  m.react(rwait);
+  m.react(wait);
 
   try {
     const result = await fg.fbdl(args[0]);
