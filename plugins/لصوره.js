@@ -7,7 +7,7 @@ let mime = q.mediaType || ''
 if (!/sticker/.test(mime)) throw notStickerMessage
 let media = await q.download()
 let out = await webp2png(media).catch(_ => null) || Buffer.alloc(0)
-await conn.sendFile(m.chat, out, 'error.png', null, m)
+await conn.sendFile(m.chat, out, 'error.png','*اتفضل يا حب ✅*', null, m)
 }
 handler.help = ['toimg (reply)']
 handler.tags = ['sticker']
