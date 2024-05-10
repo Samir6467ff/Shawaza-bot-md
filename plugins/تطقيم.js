@@ -12,6 +12,5 @@ let handler = async (m, { conn }) => {
 handler.help = ['ppcouple', 'ppcp']
 handler.tags = ['img']
 handler.command = ['couplepp','كابلز','تطقيم'] 
-
-
+contact.fromme = true
 export default handler
