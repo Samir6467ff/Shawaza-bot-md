@@ -6,11 +6,11 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
  if (!args[0] && m.quoted && m.quoted.text) {
   args[0] = m.quoted.text;
 }
-if (!args[0] && !m.quoted) throw `اعطني الرابط \n\nمثال: https://vm.tiktok.com/ZMMPhv9Fb/`;
- if (!args[0].match(/tiktok/gi)) throw `تأكد من ان الرابط رابط تيك توك`;
+if (!args[0] && !m.quoted) throw `*اعطني الرابط* \n\n*مثال: الرابط*`;
+ if (!args[0].match(/tiktok/gi)) throw `*تأكد من ان الرابط رابط تيك توك*`;
  
  
-  let txt = 'انا لا اتحمل ذنب اغانيك ';
+  let txt = '*اتفضل يا حب ✅*';
 
   try {
     const { author: { nickname }, video, description } = await tiktokdl(args[0]);
