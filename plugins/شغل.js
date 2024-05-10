@@ -18,17 +18,17 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
   let wm = 'Downloading audio please wait';
 
   let captvid = `*❖───┊ ♪ يــوتـــيــوب ♪ ┊───❖*
-  *➽  الـعـنوان:* ${title}
+  *↜❍   الـعـنوان:* ${title}
 
-  *➽  الـمده:* ${timestamp}
+  *↜❍  الـمده:* ${timestamp}
 
-  *➽  الــمـشهـدات:* ${views}
+  *↜❍  الــمـشهـدات:* ${views}
 
-  *➽  مـنذ:* ${ago}
+  *↜❍  مـنذ:* ${ago}
 
-  *➽  الـرابــط:* ${url}
+  *↜❍  الـرابــط:* ${url}
   
-  *ـــــــــــــــــــــــ☾ 𝑧ₑ𝑧ₒ_𝑏ₒ𝑡 ☽ـــــــــــــــــــــ*`;
+  *ـــــــــــــــــــــــ☽ 𝑧ₑ𝑧ₒ_𝑏ₒ𝑡 ☾ـــــــــــــــــــــ*`;
 
   conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid, footer: author }, { quoted: m });
 
