@@ -6,7 +6,9 @@
 
 const handler = async (m) => {
   global.db.data.chats[m.chat].isBanned = false;
-  m.reply(tradutor.texto1);
+  m.reply('*تم رفع الحظر عن هذه الدردشه*');
+  await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
+
 };
 handler.help = ['unbanchat'];
 handler.tags = ['owner'];
