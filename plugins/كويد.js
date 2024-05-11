@@ -101,7 +101,7 @@ let handler = async (m, { conn, text }) => {
   
   } catch (e) {
     console.error(e)
-    m.react('😭')
+    m.reply('😭')
   }
 }
 
