@@ -97,6 +97,8 @@ let handler = async (m, { conn, text }) => {
     }
 
     fs.unlinkSync(tempImagePath)
+
+    m.react('🤡')
   } catch (e) {
     console.error(e)
   }
@@ -104,6 +106,6 @@ let handler = async (m, { conn, text }) => {
 
 handler.help = ['quote']
 handler.tags = ['fun']
-handler.command = ['quote','كويد']
+handler.command = ['quote']
 
 export default handler
