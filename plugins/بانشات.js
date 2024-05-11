@@ -6,7 +6,7 @@
 
 const handler = async (m) => {
   global.db.data.chats[m.chat].isBanned = true;
-  m.reply('*تم حظر هذه الدردشه*);
+  m.reply('*تم حظر هذه الدردشه*');
 };
 handler.help = ['banchat'];
 handler.tags = ['owner'];
