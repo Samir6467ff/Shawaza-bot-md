@@ -1,7 +1,7 @@
 import fetch from "node-fetch"
 let handler = async (m, { conn }) => {
 
-  let data = await (await fetch('https://raw.githubusercontent.com/KazukoGans/database/main/anime/ppcouple.json')).json()
+  let data = await (await fetch('./game/ppcouple.json')).json()
   let cita = data[Math.floor(Math.random() * data.length)]
   
   let cowo = await(await fetch(cita.male)).buffer()
