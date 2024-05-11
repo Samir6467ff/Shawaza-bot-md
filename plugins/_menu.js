@@ -243,7 +243,8 @@ global.fcontact = { key: { fromMe: false, participant: `0@s.whatsapp.net`, remot
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
     const { result, key, timeout } = await conn.sendMessage(m.chat,{ caption: str.trim(),  gifPlayback: true,
   gifAttribution: 0}, { quoted: fcontact })
-    m.react(done)
+    await conn.sendMessage(m.chat, { react: { text: '🧾', key: m.key } })
+
 
 }
 handler.help = ['main']
