@@ -10,9 +10,8 @@ let handler = async (m, { conn, text }) => {
       username: conn.getName(m.sender),
     }),
     'error.png',
-    '*شكرا لتعليقك*,
-    await conn.sendMessage(m.chat, { react: { text: '📍', key: m.key } })
-m
+    '*شكرا لتعليقك*',
+    m
   )
 }
 handler.help = ['ytcomment <comment>']
