@@ -1,7 +1,7 @@
 let { downloadContentFromMessage } = await import('@whiskeysockets/baileys')
 
 var handler = async (m, { conn }) => {
-  if (!/viewOnce/.test(m.quoted?.mtype)) throw '✳️❇️ Its Not a ViewOnce Message'
+  if (!/viewOnce/.test(m.quoted?.mtype)) throw '*✳️❇️ اعمل ريبلاي علي رساله للعرض مره واحده*'
   let mtype = Object.keys(m.quoted.message)[0]
   let buffer = await m.quoted.download()
   let caption = m.quoted.message[mtype].caption || ''
@@ -10,6 +10,6 @@ var handler = async (m, { conn }) => {
 
 handler.help = ['readvo']
 handler.tags = ['tools']
-handler.command = ['readviewonce', 'read', 'ver', 'readvo','مره_واحده']
+handler.command = ['readviewonce', 'read', 'ver', 'readvo','فضح']
 
 export default handler
