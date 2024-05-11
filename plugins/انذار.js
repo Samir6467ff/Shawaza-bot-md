@@ -32,7 +32,7 @@ const handler = async (m, {conn, text, command, usedPrefix}) => {
   );
   if (user.warn >= 3) {
   
-    }
+    
     user.warn = 0;
     await m.reply(
         `حذرتك عدده مرات!!\n*@${
