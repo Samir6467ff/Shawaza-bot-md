@@ -4,7 +4,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         message: {
           interactiveMessage: {
             header: {
-              title: '*بوت زيزو معك لحياه افضل*\n*منور* ${taguser} '
+              title: '*بوت زيزو معك لحياه افضل*\n*منور* @user'
             },
             body: {
               text: '> استمتع بالبوت'
