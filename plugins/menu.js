@@ -2,7 +2,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, isP
 const caption =`
 『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』
 *· · • • • • ✦ • • • • · ·*
-*⌬ ❛╏ اهلا,* ⁩
+*⌬ ❛╏ اهلا ⁩
 *⌬ ❛╏ الوقت:
 *⌬ ❛╏ التاريخ:
 *⌬ ❛╏ المستخدمين:
@@ -11,9 +11,9 @@ const caption =`
 `
 
 await conn.sendMessage( m.chat, {
-        video: {
-          url: 'https://telegra.ph/file/a2a1de6434ce22177b26b.mp4'
-        },
+      //  video: {
+        //  url: 'https://telegra.ph/file/a2a1de6434ce22177b26b.mp4'
+    //    },
         caption: caption,
         gifPlayback: true,
         gifAttribution: Math.floor( Math.random( ) * 2 ) + 1
