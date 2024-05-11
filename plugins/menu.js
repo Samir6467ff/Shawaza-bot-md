@@ -11,9 +11,9 @@ const caption =`
 `
 
 await conn.sendMessage( m.chat, {
-      //  video: {
-        //  url: 'https://telegra.ph/file/a2a1de6434ce22177b26b.mp4'
-    //    },
+        video: {
+          url: ''
+       },
         caption: caption,
         gifPlayback: true,
         gifAttribution: Math.floor( Math.random( ) * 2 ) + 1
