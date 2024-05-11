@@ -14,7 +14,8 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
 
   conn.sendMessage(m.chat, { text: message, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
 
-  m.react('✅')
+  await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
+
 }
 
 handler.help = ['wa']
