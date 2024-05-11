@@ -1,28 +1,24 @@
-import {GoogleGenerativeAI} from '@google/generative-ai'
-import displayLoadingScreen from '../lib/loading.js'
-const genAI = new GoogleGenerativeAI('AIzaSyDJC5a882ruaC4XL6ejY1yhgRkN-JNQKg8');
-
-
-let handler = async (m, { conn, text, args, usedPrefix, command }) => {
-  try {
-    if (!text) throw `هممم.. ماذا تريد أن تقول؟`
-    m.react('🤖')
-    await displayLoadingScreen(conn, m.chat)
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-    const prompt = text
-
-    const result = await model.generateContent(prompt);
-    const response = result.response;
-    const textt = response.text();
-    m.reply(textt)
-  } catch (error) {
-    console.error(error);
-    m.reply('عذرًا! حدث خطأ ما. نحن نبذل قصارى جهدنا لإصلاحه في أقرب وقت ممكن.');
-  }
-}
-handler.help = ['gemini <text>']
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    let regex = /x/g
+    if (!text) throw 'قدّم رقمًا للبحث'
+    if (!text.match(regex)) throw `*مثال: ${usedPrefix + command} 91760590201x*`
+    let random = text.match(regex).length, total = Math.pow(10, random), array = []
+    for (let i = 0; i < total; i++) {
+    let list = [...i.toString().padStart(random, '0')]
+    let result = text.replace(regex, () => list.shift()) + '@s.whatsapp.net'
+    if (await conn.onWhatsApp(result).then(v => (v[0] || {}).exists)) {
+    let info = await conn.fetchStatus(result).catch(_ => {})
+    array.push({ exists: true, jid: result, ...info })
+    } else {
+    array.push({ exists: false, jid: result })
+    }}
+    let txt = 'تم التسجيل\n\n' + array.filter(v => v.exists).map(v => `• رابط: wa.me/${v.jid.split('@')[0]}\n*• الحالة:* ${v.status || 'الوصف'}\n*• تاريخ التعيين:* ${formatDate(v.setAt)}`).join('\n\n') + '\n\n*لم يتم التسجيل*\n\n' + array.filter(v => !v.exists).map(v => v.jid.split('@')[0]).join('\n')
+    m.reply(txt)
+    }
+    handler.help = ['nowa']
 handler.tags = ['tools']
-handler.command = /^(gemini|جميني|بوت)$/i
-
-export default handler
+    handler.command = /^nowa$/i
+    export default handler
+    function formatDate(n, locale = 'in') {
+    let d = new Date(n)
+    return d.toLocaleDateString(locale, { timeZone: 'Africa/Cairo' })}
