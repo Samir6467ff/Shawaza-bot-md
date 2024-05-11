@@ -1,7 +1,7 @@
 import fetch from "node-fetch"
 let handler = async (m, { conn }) => {
 
-  let data = await (await fetch('https://gist.githubusercontent.com/YosefZoro1/401e391da204c750b1790e9f8a0d0d68/raw/8409beec1919004fad4cb73da4703cb6614a5257/copulss.json')).json()
+  let data = await (await fetch('https://raw.githubusercontent.com/KazukoGans/database/main/anime/ppcouple.json')).json()
   let cita = data[Math.floor(Math.random() * data.length)]
   
   let man = await(await fetch(cita.male)).buffer()
