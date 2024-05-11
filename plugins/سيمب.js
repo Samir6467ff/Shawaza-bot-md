@@ -14,7 +14,7 @@ let handler = async (m, { conn }) => {
         .catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png'),
     }),
     'error.png',
-    '*your religion is simping*',
+    '*يا سيمب يا بتاع البنات*',
     m
   )
 }
