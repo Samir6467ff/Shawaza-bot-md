@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw `*ضع اسم بعد الامر \n ${usedPrefix + command} Naruto*`
+  if (!text) throw `*ضع اسم الخلفيه التي تريدها بعد الامر يفضل ان يكون باللغه الانجليزيه* \n*مثال:*\n *${usedPrefix + command} Naruto*`
 
   const apiUrl = `https://weeb-api.vercel.app/wallpaper?query=${encodeURIComponent(text)}`
 
