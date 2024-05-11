@@ -1,3 +1,4 @@
+let taguser =  global.db.data.users[who]
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     conn.relayMessage(m.chat, {
       viewOnceMessage: {
