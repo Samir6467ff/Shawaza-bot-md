@@ -7,7 +7,8 @@ import translate from '@vitalets/google-translate-api';
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
   try {
     if (!text) throw `امم.. ماذا تريد أن تقول؟`
-    m.react('🤖')
+    await conn.sendMessage(m.chat, { react: { text: '🤖', key: m.key } })
+
     //await displayLoadingScreen(conn, m.chat)
 
 
