@@ -241,10 +241,7 @@ global.fcontact = { key: { fromMe: false, participant: `0@s.whatsapp.net`, remot
 │✮ ⃟🍁❯ .الدعم
 │✮ ⃟🚀❯ .بنج
 │✮ ⃟👾❯ .بوت
-⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
-    const { result, key, timeout } = await conn.sendMessage(m.chat, { video: { url: menuvid }, caption: str.trim(),  gifPlayback: true,
-  gifAttribution: 0}, { quoted: fcontact })
-    m.react(done)
+⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`trim() 
 
 }
 handler.help = ['main']
