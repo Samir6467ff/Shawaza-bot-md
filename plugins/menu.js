@@ -10,8 +10,7 @@ const caption =`
 *· · • • • • ✦ • • • • · ·*
 `
 
-
-//await conn.sendMessage( m.chat, {
+await conn.sendMessage( m.chat, {
         video: {
           url: 'https://telegra.ph/file/a2a1de6434ce22177b26b.mp4'
         },
