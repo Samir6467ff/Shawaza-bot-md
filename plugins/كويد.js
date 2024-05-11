@@ -98,9 +98,10 @@ let handler = async (m, { conn, text }) => {
 
     fs.unlinkSync(tempImagePath)
 
-    m.react('🤡')
+  
   } catch (e) {
     console.error(e)
+    m.react('😭')
   }
 }
 
