@@ -1,4 +1,4 @@
-let taguser =  global.db.data.users[who]
+let taguser = `@${m.sender.split("@")[0]}`
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     conn.relayMessage(m.chat, {
       viewOnceMessage: {
