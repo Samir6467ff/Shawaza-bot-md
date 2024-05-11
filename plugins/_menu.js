@@ -36,8 +36,7 @@ let more = String.fromCharCode(8206)
 let readMore = more.repeat(850) 
 let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 global.fcontact = { key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
-    await conn.sendMessage(m.chat, { react: { text: '🧾', key: m.key } })
-
+    m.react('📃')
     const str = `
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊${name}⌉*
@@ -66,7 +65,7 @@ global.fcontact = { key: { fromMe: false, participant: `0@s.whatsapp.net`, remot
 ┗━━━━━━━━━━━━━┛
 
 ┏━━🤖 _مـعلـومـات البـوت:_🤖━━┓
-┃ ✨  *اسـم البـوت:* 𝑧ₑ𝑧ₒ_𝑏ₒ𝑡
+┃ ✨  *اسـم البـوت:* 𝑧ₑ𝑧ₒ_𝑏ₒ𝑡 
 ┃ 💻  *المـنصـة:* 𝑯𝑬𝑹𝑶𝑲𝑼💀 
 ┃ 🕓  *وقـت الـتـشغيـل:* ${uptime}
 ┃ 📚  *إجـمالـي المـستخـدميـن:* ${rtotal} 
@@ -241,7 +240,10 @@ global.fcontact = { key: { fromMe: false, participant: `0@s.whatsapp.net`, remot
 │✮ ⃟🍁❯ .الدعم
 │✮ ⃟🚀❯ .بنج
 │✮ ⃟👾❯ .بوت
-⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`trim() 
+⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
+    const { result, key, timeout } = await conn.sendMessage(m.chat,{ caption: str.trim(),  gifPlayback: true,
+  gifAttribution: 0}, { quoted: fcontact })
+    m.react(done)
 
 }
 handler.help = ['main']
@@ -271,4 +273,4 @@ function clockString(ms) {
         res = "تصبح على خير 🌙"
       }
       return res
-                 }
+                                                                                                                                                                                                                                                                    }
