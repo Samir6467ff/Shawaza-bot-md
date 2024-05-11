@@ -10,9 +10,9 @@ let handler = async (m, { conn, text }) => {
 
   // If no key and text provided, show all styles of a default text
   if (words.length === 0 || !key || !textToStyle) {
-    let defaultText = 'ZORO BOT';
+    let defaultText = '𝑧ₑ𝑧ₒ_𝑏ₒ𝑡';
     let styledTexts = await Promise.all([...Array(34).keys()].map(i => stylizeText(defaultText, i + 1)));
-    conn.reply(m.chat, styledTexts.join`\n\n`, m);
+    conn.reply(m.chat, styledTexts.join`\n📍`, m);
     return;
   }
 
