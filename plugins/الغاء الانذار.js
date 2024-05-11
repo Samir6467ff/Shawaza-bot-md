@@ -10,7 +10,8 @@ const handler = async (m, {conn, text, command, usedPrefix}) => {
   if (m.mentionedJid.includes(conn.user.jid)) return;
   if (user.warn == 0) throw '*[❗] المستخدم عنده 0 تحذير*';
   user.warn -= 1;
-  await m.reply(`${user.warn == 1 ? `*@${who.split`@`[0]}*` : `*♻️ ابسط يا عم سامحناك @${who.split`@`[0]}*`}*\n*اصبح عدد التحذيرات${user.warn}/3*`, null, {mentions: [who]});
+  await m.reply(`${user.warn == 1 ? `*@${who.split`@`[0]}*` : `*♻️ ابسط يا عم سامحناك @${who.split`@`[0]}`}*\n*اصبح عدد التحذيرات${user.warn}/3*`, null, {mentions: [who]});
+  await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
 };
 handler.command = /^(unwarn|delwarn|حذف-التحذير|الغاء-التحذير|delwarning|الغاء_الانذار|الغاءالانذار)$/i;
 handler.group = true;
