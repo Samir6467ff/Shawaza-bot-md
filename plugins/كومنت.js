@@ -12,7 +12,7 @@ let handler = async (m, { conn, text }) => {
     'error.png',
     '*شكرا لتعليقك*,
     await conn.sendMessage(m.chat, { react: { text: '📍', key: m.key } })
-
+m
   )
 }
 handler.help = ['ytcomment <comment>']
