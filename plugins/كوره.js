@@ -7,7 +7,7 @@ let handler = async (m, { conn, command, usedPrefix }) => {
         conn.reply(m.chat, '❐┃لم يتم الاجابة علي السؤال بعد┃❌ ❯', conn.tebakbendera[id][0])
         throw false
     }
-    let src = await (await fetch('https://github.com/zyad5yasser/Bot-MD/blob/master/src/game/%D9%83%D9%88%D8%B1%D9%87.json')).json()
+    let src = path.resolve(__dirname, 'كوره.json').json()
   let json = src[Math.floor(Math.random() * src.length)]
     let caption = `*· • • ━━ ⌝🐉⌞ ━━ • • ·*
 *${command.toUpperCase()}*
