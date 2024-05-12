@@ -9,7 +9,8 @@ const handler = async (m, {conn, isOwner}) => {
 ║
 ║ 1.- ${isOwner ? '@' + jid.split`@`[0] : jid} *(${user.warn}/3)*\n║\n║ - - - - - - - - -`.trim()).join('\n') : ''}
 *╚══════════════════·•*`;
-  await m.react('🚨') 
+  await conn.sendMessage(m.chat, { react: { text: '🚨', key: m.key } })
+
   await conn.sendMessage(m.chat, {text: caption}, {quoted: m}, {mentions: await conn.parseMention(caption)});
 };
 handler.command = /^(listwarn|الانذارات|التحذيرات)$/i;
