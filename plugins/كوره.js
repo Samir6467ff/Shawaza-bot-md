@@ -1,4 +1,3 @@
-export default handler 
 let timeout = 60000
 let poin = 500
 let handler = async (m, { conn, command, usedPrefix }) => {
