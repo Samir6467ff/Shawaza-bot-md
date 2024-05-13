@@ -4,7 +4,8 @@ let handler = async (m, { conn, text, args, isPrems, isOwner, usedPrefix, comman
   if (!args || !args[0]) throw `✳️ المثال :\n${usedPrefix + command} https://youtu.be/YzkTFFwxtXI`;
   if (!args[0].match(/youtu/gi)) throw `❎ تحقق من أنه رابط يوتيوب.`;
 
-  m.react(rwait); 
+  await conn.sendMessage(m.chat, { react: { text:'🎶', key: m.key } })
+
 
   try {
     let q = '128kbps'; 
