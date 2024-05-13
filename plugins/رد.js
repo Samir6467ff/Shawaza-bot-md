@@ -15,7 +15,7 @@ handler.all = async function (m) {
     }
 
     if (/^احبك$/i.test(m.text) ) {
-       let av = imagen4
+       let av ='https://file.io/QsYuW2zhHETY'
        this.sendFile(m.chat, av, '*لا*', null, m, true, { type: 'audioMessage', ptt: true })
        return true; // Return true to indicate message is handled
     }
