@@ -24,7 +24,6 @@ let handler = async (m, { conn, text, args, isPrems, isOwner, usedPrefix, comman
       { mimetype: 'audio/mpeg' }
     );
 
-    m.react(xmoji); 
   } catch {
     await m.reply(`❎ خطأ: لا يمكن تحميل الصوت.`)
   }
