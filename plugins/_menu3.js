@@ -55,7 +55,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     conn.reply(m.chat, '*🐦*', m);
   }
 };
-handler.command = /^(5)$/i;
+handler.command = /^(6)$/i;
 handler.exp = 50;
 handler.fail = null;
 export default handler;
