@@ -20,7 +20,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     who = m.chat;
   }
 
-  if (!who) throw `*✳️ اعمل منشن علي شخص*\n\n*📌 مثال :* ${usedPrefix + command} @tag`;
+  if (!who) throw `✳️ Tag or mention someone\n\n📌 Example : ${usedPrefix + command} @tag`;
 
   let name = conn.getName(who);
   let name2 = conn.getName(m.sender);
@@ -40,7 +40,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     { quoted: m }
   );
 
-  m.react('☺️'); 
+  await conn.sendMessage(m.chat, { react: { text: '☺️', key: m.key } })
+; 
 }
 
 handler.tags = ['reaction'];
@@ -73,7 +74,7 @@ handler.help = [
   'cringe @tag'
 ];
 
-handler.command = /^(bully|cuddle|بكاء|hug|awoo|قبله|lick|pat|smug|bonk|yeet|blush|ابتسامه|wave|highfive|handhold|nom|bite|glomp|صفعه|قتل|سعاده|wink|poke|رقص|كرنج)$/i;
+handler.command = /^(bully|cuddle|cry|hug|awoo|kiss|lick|pat|smug|bonk|yeet|blush|smile|wave|highfive|handhold|nom|bite|glomp|slap|kill|happy|wink|poke|dance|cringe)$/i;
 handler.group = true;
 
 export default handler;
