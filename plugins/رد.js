@@ -16,13 +16,13 @@ handler.all = async function (m) {
 
     if (/^احبك$/i.test(m.text) ) {
        let av = 'https://i.imgur.com/1bQSrvh.jpeg'
-       this.sendFile(m.chat, av, null, m, true, { type: 'audioMessage', ptt: true })
+       this.sendFile(m.chat, av, 'media.علاوي.mp3', null, m, true, { type: 'audioMessage', ptt: true })
        return true; // Return true to indicate message is handled
     }
 
     if (/^اسطوري$/i.test(m.text) ) {
         let av = 'https://i.imgur.com/1bQSrvh.jpeg'
-        this.sendFile(m.chat, av, null, m, true, { type: 'audioMessage', ptt: true })
+        this.sendFile(m.chat, av, 'media.علاوي.mp3', null, m, true, { type: 'audioMessage', ptt: true })
         return true; // Return true to indicate message is handled
     }
   
