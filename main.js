@@ -397,8 +397,8 @@ global.reloadHandler = async function(restatConn) {
 
                          ╰╮𝑧ₑ𝑧ₒ_𝑏ₒ𝑡╭╯`; 
   conn.bye = '*⦓          ⦓🏁⦔          ⦔*\n*🔄ꪶ→ @user*\n*ꪶ→ غادر المجموعه 💯*\n*⦓          ⦓🏁⦔          ⦔**';
-  conn.spromote = '*[ 📌 ] @user تمت ترقيته إلى المسؤول.*\n*قام بتنفيذ الامر: @usuario*';
-  conn.sdemote = '*[ 📌 ] @user تم تخفيض رتبته من المسؤول.*\n*اللي شالك: @usuario*';
+  conn.spromote = '*[ 📌 ] @user تمت ترقيته إلى المسؤول.*';
+  conn.sdemote = '*[ 📌 ] @user تم تخفيض رتبته من المسؤول.*';
   conn.sDesc = '*[ 📌 ] تم تعديل وصف المجموعه.*';
   conn.sSubject = '*[ 📌 ] تم تغيير اسم المجموعة.*';
   conn.sIcon = '*[ 📌 ] تم تغيير صورة الملف الشخصي للمجموعة.*';
