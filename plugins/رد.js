@@ -9,19 +9,19 @@ handler.all = async function (m) {
     }
 
     if (/^بيض$/i.test(m.text) ) {
-      let av = 'https://i.imgur.com/JCsyegC.jpg'
+      let av = imagen4
       this.sendFile(m.chat, av, 'لا', null, m, true, { type: 'audioMessage', ptt: true })
       return true; // Return true to indicate message is handled
     }
 
     if (/^احبك$/i.test(m.text) ) {
-       let av = 'https://i.imgur.com/JCsyegC.jpg'
+       let av = imagen4
        this.sendFile(m.chat, av, '*لا*', null, m, true, { type: 'audioMessage', ptt: true })
        return true; // Return true to indicate message is handled
     }
 
     if (/^اسطوري$/i.test(m.text) ) {
-        let av = 'https://i.imgur.com/1bQSrvh.jpeg'
+        let av = imagen4
         this.sendFile(m.chat, av, 'لا', null, m, true, { type: 'audioMessage', ptt: true })
         return true; // Return true to indicate message is handled
     }
