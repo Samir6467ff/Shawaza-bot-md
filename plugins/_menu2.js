@@ -53,9 +53,9 @@ if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `*[❗] Los comandos +1
       await conn.sendMessage(m.chat, {image: pp, caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
       await conn.sendFile(m.chat, vn, 'La biblia.mp3', null, m, true, {type: 'audioMessage', ptt: true});
     }
-  }//catch {
-    //conn.reply(m.chat, '**', m);
-//  }
+  } catch {
+    conn.reply(m.chat, '*🐦*', m);
+  }
 };
 handler.command = /^(menulabiblia|labiblia|Labiblia|5)$/i;
 handler.exp = 50;
