@@ -35,24 +35,30 @@ if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `*[❗] Los comandos +1
 │✮ ⃟🗑️❯ .حذف
 │✮ ⃟🤿❯ .واتس
 │✮ ⃟🪀❯ .لينك
+│✮ ⃟📰❯ .جروبي
+│✮ ⃟📇❯ .فحص
 │✮ ⃟📢❯ .تغيرالترحيب 
 │✮ ⃟☠️❯ .تغيرالوداع
 │✮ ⃟↗️❯ .رفع 
 │✮ ⃟↘️❯ .خفض
+│✮ ⃟📝❯ .تغير-الاسم 
+│✮ ⃟🗒️❯ .تغيرالوصف 
+│✮ ⃟📸❯ .تغيرالصوره
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`.trim();
     if (m.isGroup) {
-      await conn.sendMessage(m.chat, {image:  caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: m});
+      await conn.sendMessage(m.chat, {image: pp, caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: m});
       await conn.sendFile(m.chat, vn, 'La biblia.mp3', null, m, true, {type: 'audioMessage', ptt: true});
     } else {
       const fkontak2 = {'key': {'participants': '0@s.whatsapp.net', 'remoteJid': 'status@broadcast', 'fromMe': false, 'id': 'Halo'}, 'message': {'contactMessage': {'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}, 'participant': '0@s.whatsapp.net'};
-      await conn.sendMessage(m.chat, {image:  caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
+      await conn.sendMessage(m.chat, {image: pp, caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
       await conn.sendFile(m.chat, vn, 'La biblia.mp3', null, m, true, {type: 'audioMessage', ptt: true});
     }
   } catch {
-    conn.reply(m.chat, '*[❗معلومات❗] خطأ ف القائمه*', m);
+    conn.reply(m.chat, '*[❗𝐈𝐍𝐅𝐎❗] خطأ*', m);
   }
 };
-handler.command = /^(5)$/i;
+handler.command = /^(menulabiblia|labiblia|Labiblia|5)$/i;
+handler.exp = 50;
 handler.fail = null;
 export default handler;
 
@@ -61,4 +67,4 @@ function clockString(ms) {
   const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
   const s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60;
   return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(':');
-        }
+                                                                                                                                                                                                                                                                      }
