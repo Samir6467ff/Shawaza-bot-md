@@ -35,7 +35,6 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
     }
   }
   const { key } = await m.reply(`*_⏳جاري معالجة الفيديو...⏳_*\n\n*◉ إذا لم يتم إرسال الفيديو، جرب أحد الأوامر التالية: #فيديو، #فيديو2، #فيديو3 ◉*`);
-  m.react(wait)
   await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } }); 
 
   try {
