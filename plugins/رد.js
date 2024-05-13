@@ -9,7 +9,7 @@ handler.all = async function (m) {
     }
 
     if (/^بيض$/i.test(m.text) ) {
-      let av = imagen4
+      let av ='https://telegra.ph/file/76ed55228cd0c70426236.jpg'
       this.sendFile(m.chat, av, 'لا', null, m, true, { type: 'audioMessage', ptt: true })
       return true; // Return true to indicate message is handled
     }
