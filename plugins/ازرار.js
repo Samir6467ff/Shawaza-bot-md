@@ -119,7 +119,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       }
     },{})
 
-}, 
+}
                 nativeFlowMessage: {
               buttons: [
                 {
