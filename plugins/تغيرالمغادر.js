@@ -11,5 +11,6 @@ handler.tags = ['group']
 handler.command = ['المغادره','تغيرالوداع'] 
 handler.admin = true
 handler.owner = false
+handler.group = true
 
 export default handler
