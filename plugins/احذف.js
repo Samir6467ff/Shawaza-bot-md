@@ -11,7 +11,7 @@ return conn.sendMessage(m.chat, { delete: m.quoted.vM.key })
 }}
 handler.help = ['del', 'delete']
 handler.tags = ['group']
-handler.command = /^حذف|احذف(ete)?$/i
+handler.command = /^(حذف)$/i
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
