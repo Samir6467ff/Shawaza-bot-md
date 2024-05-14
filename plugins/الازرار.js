@@ -27,20 +27,32 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                     title: 'اضغط',
                     sections: [
                       {
-                        title: 'القائمة',
+                        title: 'قوائم',
                         highlight_label: 'new',
                         rows: [
                           {
-                            header: 'المطور',
-                            title: 'تشغيل كود (#المطور) ',
+                            header: 'info',
+                            title: '⌬ ❛╏المطور',
                             description: '',
                             id: '.المطور'
                           }, 
                           {
-                                header: 'القايمه', 
-                                title: 'تشغيل (#قايمة_الاوامر) ', 
+                                header: 'قوائم', 
+                                title:'⌬ ❛╏التنزيلات', 
                                 description: '', 
-                                id: '.اوامر', 
+                                id: '.4', 
+                         } 
+                            {
+                                header: 'قوائم', 
+                                title: '⌬ ❛╏قائمه الجروب', 
+                                description: '', 
+                                id: '.5', 
+                         } 
+                            {
+                                header: 'قوائم', 
+                                title: '⌬ ❛╏الالعاب', 
+                                description: '', 
+                                id: '.6', 
                          } 
                         ]
                       }
