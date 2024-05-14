@@ -10,9 +10,10 @@ let handler = async (m, { conn, command, usedPrefix }) => {
     }
     let src = await (await fetch('https://gist.githubusercontent.com/Kyutaka101/799d5646ceed992bf862026847473852/raw/dcbecff259b1d94615d7c48079ed1396ed42ef67/gistfile1.txt')).json()
   let json = src[Math.floor(Math.random() * src.length)]
-    let caption = `*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
-    *⌬ ❛╏ ${command.toUpperCase()}*
-    *⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
+    let caption = `
+*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
+*⌬ ❛╏ ${command.toUpperCase()}*
+*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
 *الوقت* *${(timeout / 1000).toFixed(2)} ثانيه*
 *استخدم انسحب للانسحاب*
 *الجائزه: ${poin} XP*
