@@ -119,10 +119,17 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       }
     }, {})
 
-}
+}, 
+nativeFlowMessage: {
+              buttons: [
+                {
+                  name: 'single_select',
+                  buttonParamsJson: JSON.stringify({
+                    title: 'دوس',
+                    sections: ['المطور'] 
 
 handler.help = ['info']
 handler.tags = ['main']
-handler.command = ['تست']
+handler.command = ['7']
 
 export default handler
