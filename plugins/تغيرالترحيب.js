@@ -11,5 +11,5 @@ handler.tags = ['group']
 handler.command = ['الترحيب'] 
 handler.admin = true
 handler.owner = false
-
+handler.group = true
 export default handler
