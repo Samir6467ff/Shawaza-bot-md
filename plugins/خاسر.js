@@ -5,7 +5,8 @@ let handler = async (m, { conn }) => {
   conn.sendFile(m.chat, global.API('https://some-random-api.com', '/canvas/overlay/wasted', {
     avatar: pp, 
   }), 'waste.png', `*اوه! شيت :* ${name}\n\nخاسر`, m)
-  m.react('♨');
+  await conn.sendMessage(m.chat, { react: { text: '🤧', key: m.key } })
+;
 }
 
 handler.help = ['waste @user']
