@@ -54,11 +54,18 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                 description: '', 
                                 id: '.6', 
                          }, 
+                            
+                            {
+                                header: 'الترفيه', 
+                                title: '⌬ ❛╏الترفيه', 
+                                description: '', 
+                                id: '.1', 
+                         }, 
                         ]
                       }
                     ]
                   }),
-                  messageParamsJson:'اهلا'
+                  messageParamsJson:'ZEZO bot'
                 }
               ]
             }
