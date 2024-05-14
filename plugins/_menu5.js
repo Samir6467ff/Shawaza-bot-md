@@ -1,4 +1,4 @@
-let taguser = m.sender.replace(`+`)
+let taguser = m.sender
 let handler = async (m, { command, text }) => m.reply(`
 *⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
 *⩥🎙️│${taguser}│📽️⩤* *مرحبا*
