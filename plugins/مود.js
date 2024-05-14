@@ -2,7 +2,7 @@ import { download } from 'aptoide-scraper';
 
 let handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
   try {
-    if (command === 'modapk') {
+    if (command === 'مود') {
       if (!text) throw `*[❗] الرجاء تقديم اسم تطبيق APK الذي تريد تنزيله.*`;
 
       await conn.reply(m.chat, global.wait, m);
