@@ -75,7 +75,7 @@ thumbnail: await (await fetch(vid.thumbnail)).buffer()}}}, { quoted: m })
        let { title, dl_url, size } = yt
        let limit = 100
        
-if (size.split('MB')[0] >= limit) return conn.reply(m.chat,`*الملف اكبر من ${limit} MB, اسف لا استطيع تنزيله*`, m).then(_ => m.react('✖️'))
+if (size.split('MB')[0] >= limit) return conn.reply(m.chat,`El archivo pesa mas de ${limit} MB, se canceló la Descarga.`, m).then(_ => m.react('✖️'))
        
        await conn.sendMessage(m.chat, { audio: { url: dl_url }, mimetype: "audio/mp4", fileName: vid.title + '.mp3', quoted: m, contextInfo: {
 'forwardingScore': 200,
@@ -89,7 +89,7 @@ sourceUrl: `${vid.url}`,
 thumbnail: await (await fetch(vid.thumbnail)).buffer()}}}, { quoted: m })
        await m.react('✅')
        } catch (error) {
-        await conn.reply(m.chat,`*⌬ ❛╏حدث خطأ غير متوقع*`, m).then(_ => m.react('✖️'))
+        await conn.reply(m.chat,`*☓ Ocurrió un error inesperado*`, m).then(_ => m.react('✖️'))
         console.error(error)
     }}}
         
@@ -136,7 +136,7 @@ conn.sendMessage(m.chat, buttonMessage, { quoted: m })
        let { title, dl_url, size } = yt
        let limit = 100
        
-if (size.split('MB')[0] >= limit) return conn.reply(m.chat,`*الملف اكبر من ${limit} MB, لا استطيع تنزيله*`, m).then(_ => m.react('✖️'))
+if (size.split('MB')[0] >= limit) return conn.reply(m.chat,`El archivo pesa mas de ${limit} MB, se canceló la Descarga.`, m).then(_ => m.react('✖️'))
        
        await conn.sendFile(m.chat, dl_url, 'yt.jpg', `${vid.title}\n⇆ㅤㅤ◁ㅤㅤ❚❚ㅤㅤ▷ㅤㅤ↻\n00:15 ━━━━●────── ${vid.timestamp}`, m)
        await m.react('✅')
@@ -146,7 +146,7 @@ if (size.split('MB')[0] >= limit) return conn.reply(m.chat,`*الملف اكبر
        let { title, dl_url, size } = yt
        let limit = 100
        
-if (size.split('MB')[0] >= limit) return conn.reply(m.chat,`*⌬ ❛╏الملف اكبر من ${limit} MB, اسف لا استطيع تنزيله*`, m, adReply).then(_ => m.react('✖️'))
+if (size.split('MB')[0] >= limit) return conn.reply(m.chat,`El archivo pesa mas de ${limit} MB, se canceló la Descarga.`, m, adReply).then(_ => m.react('✖️'))
        
        await conn.sendFile(m.chat, dl_url, 'yt.jpg', `${vid.title}\n⇆ㅤㅤ◁ㅤㅤ❚❚ㅤㅤ▷ㅤㅤ↻\n00:15 ━━━━●────── ${vid.timestamp}`, m)
        await m.react('✅')
@@ -278,7 +278,7 @@ conn.sendMessage(m.chat, buttonMessage, { quoted: m })
        let { title, dl_url, size } = yt
        let limit = 300
        
-if (size.split('MB')[0] >= limit) return conn.reply(m.chat,`*الملف اكبر من ${limit} MB, تم الغاء التنزيل*`, m).then(_ => m.react('✖️'))
+if (size.split('MB')[0] >= limit) return conn.reply(m.chat,`El archivo pesa mas de ${limit} MB, se canceló la Descarga.`, m).then(_ => m.react('✖️'))
        
        await conn.sendMessage(m.chat, { document: { url: dl_url }, caption: `${vid.title}\n⇆ㅤㅤ◁ㅤㅤ❚❚ㅤㅤ▷ㅤㅤ↻\n00:15 ━━●────── ${vid.timestamp}`, mimetype: 'video/mp4', fileName: `${vid.title}` + `.mp4`, quoted: m, contextInfo: {
 'forwardingScore': 200,
@@ -311,11 +311,12 @@ sourceUrl: `${vid.url}`,
 thumbnail: await (await fetch(vid.thumbnail)).buffer()}}}, { quoted: m })
        await m.react('✅')
        } catch (error) {
-        await conn.reply(m.chat,`*حدث خطأ غير متوقع*`, m).then(_ => m.react('✖️'))
+        await conn.reply(m.chat,`*☓ Ocurrió un error inesperado*`, m).then(_ => m.react('✖️'))
         console.error(error)
 }}}}}
 handler.help = ["شغل"].map(v => v + " <formato> <búsqueda>")
 handler.tags = ["downloader"]
-handler.command = ['تشغل']
+handler.command = ['تشغيل']
+handler.register = true 
 handler.star = 2
 export default handler
