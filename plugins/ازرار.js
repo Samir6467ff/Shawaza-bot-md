@@ -120,16 +120,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }, {})
 
 }, 
-nativeFlowMessage: {
-              buttons: [
-                {
-                  name: 'single_select',
-                  buttonParamsJson: JSON.stringify({
-                    title: 'دوس',
-                    sections: [
-                        
-                    ] 
-
 handler.help = ['info']
 handler.tags = ['main']
 handler.command = ['1']
