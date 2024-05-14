@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-let timeout = 120
+let timeout = 60000
 let poin = 4999
 let handler = async (m, { conn, command, usedPrefix }) => {
     conn.tebakbendera = conn.tebakbendera ? conn.tebakbendera : {}
@@ -8,12 +8,17 @@ let handler = async (m, { conn, command, usedPrefix }) => {
         conn.reply(m.chat, '*جاوب علي السؤال السابق اولا*', conn.tebakbendera[id][0])
         throw false
     }
-    let src = await (await fetch('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakbendera2.json')).json()
+    let src = await (await fetch('https://gist.githubusercontent.com/Kyutaka101/799d5646ceed992bf862026847473852/raw/dcbecff259b1d94615d7c48079ed1396ed42ef67/gistfile1.txt')).json()
   let json = src[Math.floor(Math.random() * src.length)]
-    let caption = `*${command.toUpperCase()}*
-*الوقت* *${(timeout / 2).toFixed(2)} ثانيه*
+    let caption = `*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
+    *⌬ ❛╏ ${command.toUpperCase()}*
+    *⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
+*الوقت* *${(timeout / 1000).toFixed(2)} ثانيه*
 *استخدم انسحب للانسحاب*
 *الجائزه: ${poin} XP*
+*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
+   *⌬ ❛╏ by: 𝑧ₑ𝑧ₒ_𝑏ₒ𝑡*
+*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
     `.trim()
     conn.tebakbendera[id] = [
         await conn.sendFile(m.chat, json.img, '', caption, m),
