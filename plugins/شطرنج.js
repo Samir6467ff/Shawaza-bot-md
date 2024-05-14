@@ -14,29 +14,29 @@ const handler = async (m, { conn, args }) => {
   const { gameData, fen, currentTurn, players, hasJoined } = chessData;
   const feature = args[0]?.toLowerCase();
 
-  if (feature === 'حذف') {
+  if (feature === 'delete') {
     delete conn.chess[key];
-    return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *تم حذف اللعبه*', m);
+    return conn.reply(m.chat, '🏳️ *Chess game stopped.*', m);
   }
 
-  if (feature === 'صمم') {
+  if (feature === 'create') {
     if (gameData) {
-      return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *اللعبه قائمه بالفعل*', m);
+      return conn.reply(m.chat, '⚠️ *Game already in progress.*', m);
     }
     chessData.gameData = { status: 'waiting', black: null, white: null };
-    return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *تم تصميم الغرقه*\nفي انتظار اللاعبين للانضمام.', m);
+    return conn.reply(m.chat, '🎮 *Chess game started.*\nWaiting for other players to join.', m);
   }
 
-  if (feature === 'ادخل') {
+  if (feature === 'join') {
     const senderId = m.sender;
     if (players.includes(senderId)) {
-      return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *انت لقد قمت بالانضمام بالفعل*', m);
+      return conn.reply(m.chat, '🙅‍♂️ *You have already joined this game.*', m);
     }
     if (!gameData || gameData.status !== 'waiting') {
-      return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *لا يوجد لعبه شطرنج في انتظار اللاعبين حاليا*', m);
+      return conn.reply(m.chat, '⚠️ *No chess game is currently waiting for players.*', m);
     }
     if (players.length >= 2) {
-      return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *اكتمل عدد اللاعبين بالفعل.*\nاللعبه هتبدا لوحدها', m);
+      return conn.reply(m.chat, '👥 *Players are already enough.*\nThe game will start automatically.', m);
     }
     players.push(senderId);
     hasJoined.push(senderId);
@@ -46,15 +46,15 @@ const handler = async (m, { conn, args }) => {
       gameData.black = black;
       gameData.white = white;
       chessData.currentTurn = white;
-      return conn.reply(m.chat, `『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *اللاعبين الي اضمو:*\n${hasJoined.map(playerId => `- @${playerId.split('@')[0]}`).join('\n')}\n\n*الاسود:* @${black.split('@')[0]}\n*الابيض:* @${white.split('@')[0]}\n\nمن فضل استخدم *'شطرنج ابدا'* لبدا اللعبه.`, m, { mentions: hasJoined });
+      return conn.reply(m.chat, `🙌 *Players who have joined:*\n${hasJoined.map(playerId => `- @${playerId.split('@')[0]}`).join('\n')}\n\n*Black:* @${black.split('@')[0]}\n*White:* @${white.split('@')[0]}\n\nPlease use *'chess start'* to begin the game.`, m, { mentions: hasJoined });
     } else {
-      return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』*انت لقد انضممت للعبه الشطرنج.*\nفي انتظار اللاعب الاخر', m);
+      return conn.reply(m.chat, '🙋‍♂️ *You have joined the chess game.*\nWaiting for other players to join.', m);
     }
   }
 
-  if (feature === 'ابدا') {
+  if (feature === 'start') {
     if (gameData.status !== 'ready') {
-      return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *مش عارف ابدا اللعبه. لازم يخش لاعبين الثنين للعب*', m);
+      return conn.reply(m.chat, '⚠️ *Cannot start the game. Wait for two players to join.*', m);
     }
     gameData.status = 'playing';
     const senderId = m.sender;
@@ -62,7 +62,7 @@ const handler = async (m, { conn, args }) => {
       const fen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
       chessData.fen = fen;
       const encodedFen = encodeURIComponent(fen);
-      const turn = `『𝙕𝙊𝙍𝙊-𝘽𝙊𝙏』دور: *الابيض* @${gameData.white.split('@')[0]}`;
+      const turn = `🎲 *Turn:* White @${gameData.white.split('@')[0]}`;
       const flipParam = senderId === gameData.black ? '' : '&flip=true';
       const flipParam2 = senderId === gameData.black ? '' : '-flip';
       const boardUrl = `https://www.chess.com/dynboard?fen=${encodedFen}&board=graffiti&piece=graffiti&size=3&coordinates=inside${flipParam}`;
@@ -74,17 +74,17 @@ const handler = async (m, { conn, args }) => {
       }
       return;
     } else {
-      return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *انت لقد انضممت الي اللعبه*\nفي انتظار اللاعب الثاني لدخول اللعبه', m);
+      return conn.reply(m.chat, '🙋‍♂️ *You have joined the chess game.*\nWaiting for other players to join.', m);
     }
   }
 
   if (args[0] && args[1]) {
     const senderId = m.sender;
     if (!gameData || gameData.status !== 'playing') {
-      return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *اللعبه لسه مبدأتش*', m);
+      return conn.reply(m.chat, '⚠️ *The game has not started yet.*', m);
     }
     if (currentTurn !== senderId) {
-      return conn.reply(m.chat, `『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *المفروض* ${chessData.currentTurn === gameData.white ? 'الابيض' : 'الاسود'}'هو الي يتحرك*`, m, {
+      return conn.reply(m.chat, `⏳ *It's currently ${chessData.currentTurn === gameData.white ? 'White' : 'Black'}'s turn to move.*`, m, {
         contextInfo: {
           mentionedJid: [currentTurn]
         }
@@ -93,7 +93,7 @@ const handler = async (m, { conn, args }) => {
     const chess = new Chess(fen);
     if (chess.isCheckmate()) {
       delete conn.chess[key];
-      return conn.reply(m.chat, `『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *كش مات☠️*\n*اللعبه خلصت.*\n*الكسبان 🎉:* @${m.sender.split('@')[0]}`, m, {
+      return conn.reply(m.chat, `⚠️ *Game Checkmate.*\n🏳️ *Chess game stopped.*\n*Winner:* @${m.sender.split('@')[0]}`, m, {
         contextInfo: {
           mentionedJid: [m.sender]
         }
@@ -101,7 +101,7 @@ const handler = async (m, { conn, args }) => {
     }
     if (chess.isDraw()) {
       delete conn.chess[key];
-      return conn.reply(m.chat, `『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *تعادل 😑*\n*اللعبه خلصت*\n*الاعبين:* ${hasJoined.map(playerId => `- @${playerId.split('@')[0]}`).join('\n')}`, m, {
+      return conn.reply(m.chat, `⚠️ *Game Draw.*\n🏳️ *Chess game stopped.*\n*Players:* ${hasJoined.map(playerId => `- @${playerId.split('@')[0]}`).join('\n')}`, m, {
         contextInfo: {
           mentionedJid: hasJoined
         }
@@ -111,15 +111,15 @@ const handler = async (m, { conn, args }) => {
     try {
       chess.move({ from, to, promotion: 'q' });
     } catch (e) {
-      return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』 *الحركه غير صالحه*', m);
+      return conn.reply(m.chat, '❌ *Invalid move.*', m);
     }
     chessData.fen = chess.fen();
     const currentTurnIndex = players.indexOf(currentTurn);
     const nextTurnIndex = (currentTurnIndex + 1) % 2;
     chessData.currentTurn = players[nextTurnIndex];
     const encodedFen = encodeURIComponent(chess.fen());
-    const currentColor = chessData.currentTurn === gameData.white ? 'الابيض' : 'الاسود';
-    const turn = `『𝙕𝙊𝙍𝙊-𝘽𝙊𝙏』 *دور:* ${currentColor} @${chessData.currentTurn.split('@')[0]}\n\n${chess.getComment() || ''}`;
+    const currentColor = chessData.currentTurn === gameData.white ? 'White' : 'Black';
+    const turn = `🎲 *Turn:* ${currentColor} @${chessData.currentTurn.split('@')[0]}\n\n${chess.getComment() || ''}`;
     const flipParam = senderId === gameData.black ? '' : '&flip=true';
     const flipParam2 = senderId === gameData.black ? '' : '-flip';
     const boardUrl = `https://www.chess.com/dynboard?fen=${encodedFen}&board=graffiti&piece=graffiti&size=3&coordinates=inside${flipParam}`;
@@ -133,26 +133,26 @@ const handler = async (m, { conn, args }) => {
     return;
   }
 
-  if (feature === 'مساعده') {
+  if (feature === 'help') {
     return conn.reply(m.chat, `
-      الشرح *مساعده اوامر لعبه الشطرنج:*
+      🌟 *Chess Game Commands:*
 
-*شطرنج صمم* - عشان تعمل غرفه 
-*شطرنج ادخل* - عشان تنضم للغرفه الي صممتها انت و صحبك
-*شطرنج ابدا* - عشان تبدا الجيم الي انت وصحب عملتوه بعد ما دخلتو
-*شطرنج حذف* - عشان تطلع من اللعبه
-*شطرنج [من مكان القطعه الاولي] [الي المكان الي انت عايز تحط القطعه الثانيه]* - عشان تحرك القطع
+*chess create* - Start a chess game
+*chess join* - Join a waiting chess game
+*chess start* - Start the chess game if two players have joined
+*chess delete* - Stop the chess game
+*chess [from] [to]* - Make a move in the chess game
 
-*مثال:*
-اكتب *شطرنج صمم* عشان تعمل اللعبه.
-بعدها اكتب *شطرنج ادخل* عشان تخش انت وصاحبك اللعبه.
+*Example:*
+Type *chess create* to start a chess game.
+Type *chess join* to join a waiting chess game.
     `, m);
   }
-  return conn.reply(m.chat, '『𝑧ₑ𝑧ₒ_𝑏ₒ𝑡』“ امر خاطئ. استعمل*"شطرنج مساعده"* عشان تشوف الاوامر شغاله ازاي.', m);
+  return conn.reply(m.chat, '❓ Invalid command. Use *"chess help"* to see the available commands.', m);
 };
 
 handler.help = ['chess [from to]', 'chess delete', 'chess join', 'chess start'];
 handler.tags = ['game'];
-handler.command = /^شطرنج|شت$/i
+handler.command = /^(chess|chatur)$/i;
 
-export default handler
+export default handler;
