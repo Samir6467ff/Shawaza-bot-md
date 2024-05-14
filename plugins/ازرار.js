@@ -126,10 +126,12 @@ nativeFlowMessage: {
                   name: 'single_select',
                   buttonParamsJson: JSON.stringify({
                     title: 'دوس',
-                    sections: ['المطور'] 
+                    sections: [
+                        
+                    ] 
 
 handler.help = ['info']
 handler.tags = ['main']
-handler.command = ['7']
+handler.command = ['1']
 
 export default handler
