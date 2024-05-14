@@ -41,19 +41,19 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                 title:'⌬ ❛╏التنزيلات', 
                                 description: '', 
                                 id: '.4', 
-                         } 
+                         }, 
                             {
                                 header: 'قوائم', 
                                 title: '⌬ ❛╏قائمه الجروب', 
                                 description: '', 
                                 id: '.5', 
-                         } 
+                         }, 
                             {
                                 header: 'قوائم', 
                                 title: '⌬ ❛╏الالعاب', 
                                 description: '', 
                                 id: '.6', 
-                         } 
+                         }, 
                         ]
                       }
                     ]
