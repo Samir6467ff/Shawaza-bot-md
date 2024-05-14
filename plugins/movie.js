@@ -44,7 +44,7 @@ let imdbHandler = async (m, { conn, text }) => {
      *Ratings:*\n${ratings}`;
 
     // send the movie poster along with the movie information as caption
-    await conn.sendFile(m.chat, json.poster, 'poster.jpg', movieInfo, m);
+    await conn.sendFile(m.chat, json.poster, imagen4, movieInfo, m);
   } catch (error) {
     console.error(error);
     // Handle the error appropriately
