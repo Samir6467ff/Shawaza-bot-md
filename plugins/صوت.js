@@ -15,7 +15,7 @@ throw false
 }
 
 try {    
-if (command == 'cancion' || command == 'صوت') {
+if (command == 'صوت' || command == 'صوت') {
 conn.tebaklagu = conn.tebaklagu ? conn.tebaklagu : {};
 const id = m.chat;
 if (id in conn.tebaklagu) {
