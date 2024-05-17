@@ -1,16 +1,15 @@
 //import db from '../lib/database.js'
 
 let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner }) => {
-	
-
-  let isEnable = /true|تشغيل|(turn)?تشغيل|1/i.test(command)
+  let isEnable = /true|enable|(turn)?on|1/i.test(command)
   let chat = global.db.data.chats[m.chat]
   let user = global.db.data.users[m.sender]
   let bot = global.db.data.settings[conn.user.jid] || {}
   let type = (args[0] || '').toLowerCase()
-  let isAll = false, isUser = false
+  let isAll = false,
+    isUser = false
   switch (type) {
-    case 'الترحيب':
+    case 'welcome':
       if (!m.isGroup) {
         if (!isOwner) {
           global.dfail('group', m, conn)
@@ -22,45 +21,46 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       chat.welcome = isEnable
       break
-     case 'تحدث':
-     case 'autotalk':
+    case 'jarvis':
+    case 'autotalk':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
           global.dfail('admin', m, conn)
-           throw false
-          }}
-      chat.jarvis = isEnable
-     break
-	case 'pmblocker':
-isAll = true
-if (!isROwner) {
-global.dfail('rowner', m, conn)
-throw false
-}
-bot.pmblocker = isEnable
-break	  
-case 'البايو':
-  isAll = true
-  if (!isROwner) {
-  global.dfail('rowner', m, conn)
-  throw false
-  }
-  bot.autoBio = isEnable
-  break	 
-      case 'الاشعارات':
-      case 'detector':
-        if (!m.isGroup) {
-         if (!isOwner) {
-           global.dfail('group', m, conn)
           throw false
         }
-       } else if (!isAdmin) {
-         global.dfail('admin', m, conn)
-         throw false
-       }
-       chat.detect = isEnable
-     break
-      case 'اوتواستيكر':
+      }
+      chat.jarvis = isEnable
+      break
+    case 'pmblocker':
+      isAll = true
+      if (!isROwner) {
+        global.dfail('rowner', m, conn)
+        throw false
+      }
+      bot.pmblocker = isEnable
+      break
+    case 'autobio':
+      isAll = true
+      if (!isROwner) {
+        global.dfail('rowner', m, conn)
+        throw false
+      }
+      bot.autoBio = isEnable
+      break
+    case 'detect':
+    case 'detector':
+      if (!m.isGroup) {
+        if (!isOwner) {
+          global.dfail('group', m, conn)
+          throw false
+        }
+      } else if (!isAdmin) {
+        global.dfail('admin', m, conn)
+        throw false
+      }
+      chat.detect = isEnable
+      break
+    case 'autosticker':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
           global.dfail('admin', m, conn)
@@ -69,7 +69,7 @@ case 'البايو':
       }
       chat.autosticker = isEnable
       break
-      case 'مضاد-سبام':
+    case 'antispam':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
           global.dfail('admin', m, conn)
@@ -78,7 +78,7 @@ case 'البايو':
       }
       chat.antiSpam = isEnable
       break
-    case 'مضاد-الحذف':
+    case 'antidelete':
     case 'delete':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
@@ -88,7 +88,7 @@ case 'البايو':
       }
       chat.delete = !isEnable
       break
-      case 'مضاد-العلوق':
+    case 'antitoxic':
     case 'antibadword':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
@@ -101,12 +101,12 @@ case 'البايو':
 
     case 'document':
     case 'documento':
-    if (m.isGroup) {
+      if (m.isGroup) {
         if (!(isAdmin || isOwner)) return dfail('admin', m, conn)
       }
-    chat.useDocument = isEnable
-    break
-    case 'اوتوستيت':
+      chat.useDocument = isEnable
+      break
+    case 'autostatus':
       isAll = true
       if (!isROwner) {
         global.dfail('rowner', m, conn)
@@ -115,7 +115,7 @@ case 'البايو':
       chat.viewStory = isEnable
       break
 
-    case 'مضاد-لينكات':
+    case 'antilink':
     case 'antilinkwa':
     case 'antilinkwha':
       if (m.isGroup) {
@@ -126,24 +126,24 @@ case 'البايو':
       }
       chat.antiLink = isEnable
       break
-      
-      
-      case 'nsfw':
-      case '+18':
-       if (m.isGroup) {
-         if (!(isAdmin || isOwner)) {
-           global.dfail('admin', m, conn)
-            throw false
-           }}
-    chat.nsfw = isEnable          
-    break
 
-    case 'اوتولفل':
-    isUser = true
-     user.autolevelup = isEnable
-     break
-     
-     case 'شات':
+    case 'nsfw':
+    case '+18':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.nsfw = isEnable
+      break
+
+    case 'autolevelup':
+      isUser = true
+      user.autolevelup = isEnable
+      break
+
+    case 'chatbot':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
           global.dfail('admin', m, conn)
@@ -152,8 +152,8 @@ case 'البايو':
       }
       chat.chatbot = isEnable
       break
-     
-    case 'القيود':
+
+    case 'restrict':
     case 'restringir':
       isAll = true
       if (!isOwner) {
@@ -162,7 +162,7 @@ case 'البايو':
       }
       bot.restrict = isEnable
       break
-      case 'اوتوسين':
+    case 'autotype':
     case 'alwaysonline':
       isAll = true
       if (!isOwner) {
@@ -171,17 +171,17 @@ case 'البايو':
       }
       chat.autotype = isEnable
       break
-      
-      case 'مضاد-المكالمات':
-        case 'nocall':
-          isAll = true
-          if (!isOwner) {
-            global.dfail('owner', m, conn)
-            throw false
-          }
-          bot.antiCall = isEnable
-          break
-    case 'للخاص':
+
+    case 'anticall':
+    case 'nocall':
+      isAll = true
+      if (!isOwner) {
+        global.dfail('owner', m, conn)
+        throw false
+      }
+      bot.antiCall = isEnable
+      break
+    case 'onlypv':
     case 'onlydm':
     case 'onlymd':
     case 'solopv':
@@ -192,8 +192,8 @@ case 'البايو':
       }
       global.opts['pconly'] = isEnable
       break
-      
-    case 'للجروب':
+
+    case 'gponly':
     case 'onlygp':
     case 'grouponly':
     case 'sologp':
@@ -205,44 +205,47 @@ case 'البايو':
       }
       global.opts['gconly'] = isEnable
       break
-      
+
     default:
-     if (!/[01]/.test(command)) return m.reply(`
+      if (!/[01]/.test(command))
+        return m.reply(`
 ≡ List of options
 
-◈──『 *الادمن*』───⳹
-⛊ الترحيب
-⛊ مضاد-لينكات
-⛊ اوتواستيكر
-⛊ الاشعارات
-⛊ البايو
-⛊ مضاد-سبام
-⛊ مضاد-العلوق
+◈──『 *ADMIN*』───⳹
+⛊ welcome
+⛊ antilink
+⛊ nsfw
+⛊ autosticker
+⛊ detect
+⛊ jarvis
+⛊ antispam
+⛊ antitoxic
 ╰──────────⳹ 
-◈──『 *المستخدمين*』───⳹
-⛊ اوتولفل
-⛊ شات 
+◈──『 *USERS*』───⳹
+⛊ autolevelup
+⛊ chatbot 
 ╰──────────⳹
-◈──『 *المالك*』───⳹
-⛊ للخاص
-⛊ للجروب
-⛊ اوتوسين
-⛊ القيود
+◈──『 *OWNER*』───⳹
+⛊ onlydm
+⛊ grouponly
+⛊ autotype
+⛊ autobio
 ╰──────────⳹
-*📌 مثال :*
-*${usedPrefix}تشغيل* الترحيب
-*${usedPrefix}تعطيل* الترحيب
+*📌 Example :*
+*${usedPrefix}on* welcome
+*${usedPrefix}off* welcome
 `)
       throw false
   }
 
-m.reply(`
-✅ *${type}* الان *${isEnable ? 'نشط' : 'Deactive'}* ${isAll ? 'لهذا البوت' : isUser ? '' : 'لهذا البوت'}
-`.trim()) 
-
+  m.reply(
+    `
+✅ *${type}* Now *${isEnable ? 'Active' : 'Deactive'}* ${isAll ? 'for this bot' : isUser ? '' : 'for this bot'}
+`.trim()
+  )
 }
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['config']
-handler.command = /^((en|dis)able|(turn)?ت(n|عطيل)|[01])$/i
+handler.command = /^((en|dis)able|(turn)?o(n|ff)|[01])$/i
 
 export default handler
