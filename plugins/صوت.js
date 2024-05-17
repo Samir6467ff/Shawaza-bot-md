@@ -15,44 +15,7 @@ throw false
 }
 
 try {    
-if (command == 'acertijo' || command == 'acert' || command == 'adivinanza' || command == 'tekateki') {
-let tekateki = JSON.parse(fs.readFileSync(`./src/game/acertijo.json`))
-let json = tekateki[Math.floor(Math.random() * tekateki.length)]
-let _clue = json.response
-let clue = _clue.replace(/[A-Za-z]/g, '_')
-let caption = `
-ⷮ *${json.question}*
-
-*• Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
-*• Bono:* +${poin} Exp
-`.trim()
-conn.tekateki[id] = [
-await conn.reply(m.chat, caption, m),
-json, poin, setTimeout(async () => {
-if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!\n*Respuesta:* ${json.response}`, conn.tekateki[id][0])
-delete conn.tekateki[id]
-}, timeout)]}
-
-if (command == 'advpe' || command == 'adv' || command == 'peliculas' || command == 'pelicula') {    
-let tekateki = JSON.parse(fs.readFileSync(`./src/game/peliculas.json`))
-let json = tekateki[Math.floor(Math.random() * tekateki.length)]
-let _clue = json.response
-let clue = _clue.replace(/[A-Za-z]/g, '_')
-let caption = `
-ⷮ *${json.question}*
-
-*• Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
-*• Bono:* +${poin} Exp
-`.trim()
-conn.tekateki[id] = [
-await //conn.reply(m.chat, caption, m),
-conn.sendMessage(m.chat, { text: caption, contextInfo:{forwardingScore: 9999999, isForwarded: true, "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "body": `• ADIVINAN LA PELÍCULA CON EMOJIS •`, "previewType": "PHOTO", thumbnail: imagen1, sourceUrl: md}}}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100}), json, poin, setTimeout(async () => {
-if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!\n*Respuesta:* ${json.response}`, conn.tekateki[id][0])
-delete conn.tekateki[id]
-}, timeout)
-]}
-
-if (command == 'cancion' || command == 'canción') {
+if (command == 'cancion' || command == 'صوت') {
 conn.tebaklagu = conn.tebaklagu ? conn.tebaklagu : {};
 const id = m.chat;
 if (id in conn.tebaklagu) {
@@ -73,52 +36,6 @@ const aa = await conn.sendMessage(m.chat, {audio: {url: json.link_song}, fileNam
 if (!aa) return conn.sendFile(m.chat, json.link_song, 'coba-lagi.mp3', '', m);
 };
 
-//Créditos a Katashi Fukushima
-if (command == 'palabra' || command == 'word' || command == 'ordenar' || command == 'order') {
-
-let tekateki = JSON.parse(fs.readFileSync(`./src/game/palabra.json`))
-let json = tekateki[Math.floor(Math.random() * tekateki.length)]
-let _clue = json.response
-let clue = _clue.replace(/[A-Za-z]/g, '_')
-let caption = `
-ⷮ *${json.question}*
-
-*• Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
-*• Bono:* +${poin} Exp
-
-✨ Responde a este mensaje con la palabra correcta ✨
-`.trim()
-conn.tekateki[id] = [
-await conn.reply(m.chat, caption, m),
-json, poin, setTimeout(async () => {
-if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!\n*Palabra:* ${json.response}`, conn.tekateki[id][0])
-delete conn.tekateki[id]
-}, timeout)
-]}
-
-// Créditos a Katashi Fukushima
-// Créditos a Wilson Waoz
-if (command == 'trivia' || command == 'triviador') {
-let tekateki = JSON.parse(fs.readFileSync(`./src/game/trivia.json`))
-let json = tekateki[Math.floor(Math.random() * tekateki.length)]
-let _clue = json.response
-let clue = _clue.replace(/[A-Za-z]/g, '_')
-let caption = `
-ⷮ *${json.question}*
-
-*• Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
-*• Bono:* +${poin} Exp
-
-💫 Responde a este mensaje con la letra de la opción correcta ✅
-`.trim()
-conn.tekateki[id] = [
-await conn.reply(m.chat, caption, m),
-json, poin, setTimeout(async () => {
-if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!`, conn.tekateki[id][0])
-delete conn.tekateki[id]
-}, timeout)
-]}
-
 if (command == 'hint' || command == 'pista') {
 conn.tebaklagu = conn.tebaklagu ? conn.tebaklagu : {};
 const id = m.chat;
@@ -128,12 +45,10 @@ const nya = json.jawaban;
 const nyanya = nya.replace(/[bcdfghjklmnñpqrstvwxyzBCDEFGHJKLMNÑPQRSTVWXYZ]/g, '_');
 m.reply('' + nyanya + '');
 }} catch (e) {
-//await conn.reply(m.chat, `${lenguajeGB['smsMalError3']()}#report ${lenguajeGB['smsMensError2']()} ${usedPrefix + command}\n\n${wm}`, fkontak, m)
-//console.log(`❗❗ ${lenguajeGB['smsMensError2']()} ${usedPrefix + command} ❗❗`)
 console.log(e)}}
 handler.help = ['acertijo']
 handler.tags = ['game']
-handler.command = /^(acertijo|acert|adivinanza|tekateki|advpe|adv|peliculas|pelicula|cancion|canción|palabra|word|ordenar|order|trivia|triviador|hint|pista|صوت)$/i
+handler.command = /^(cancion|hint|pista|صوت)$/i
 
 export default handler
 
