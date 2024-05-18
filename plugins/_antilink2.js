@@ -27,9 +27,15 @@ export async function before(m, {conn, isAdmin, isBotAdmin, text}) {
         await this.sendMessage(m.chat, {text: tradutor.texto1, mentions: [m.sender]}, {quoted: m});
         if (!isBotAdmin) return m.reply(tradutor.texto2);
         if (isBotAdmin) {
-            await conn.sendMessage(m.chat, {delete: {remoteJid: m.chat, fromMe: false, id: bang, participant: delet}});
-            const responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
-            if (responseb[0].status === '404') return;
+            if (isAdmin) { // Check if the sender is an admin
+                // If the sender is an admin, send a warning message
+                return m.reply('*انت ادمن اعمل اللي انت عايزو*');
+            } else {
+                // If the sender is not an admin, remove the message and kick the user
+                await conn.sendMessage(m.chat, {delete: {remoteJid: m.chat, fromMe: false, id: bang, participant: delet}});
+                const responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
+                if (responseb[0].status === '404') return;
+            }
         }
         return false;
     }
