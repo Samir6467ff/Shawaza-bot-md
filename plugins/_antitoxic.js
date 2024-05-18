@@ -56,11 +56,18 @@ export async function before(m, { isAdmin, isBotAdmin }) {
     });
 
     if (isBotAdmin) {
-      // Remove the participant from the group
-      global.db.data.users[m.sender].warn += 1;
-      return this.sendMessage(m.chat, {
-        delete: { remoteJid: m.chat, fromMe: false, id: messageId, participant: removeParticipant },
-      });
+      if (isAdmin) {
+        await this.sendMessage(m.chat, {
+          text: '*لا أستطيع طردك لأنك مشرف في المجموعة.*',
+          mentions: [m.sender]
+        });
+      } else {
+        // Remove the participant from the group
+        global.db.data.users[m.sender].warn += 1;
+        return this.sendMessage(m.chat, {
+          delete: { remoteJid: m.chat, fromMe: false, id: messageId, participant: removeParticipant },
+        });
+      }
     }
   }
   return true;
