@@ -59,7 +59,7 @@ export async function before(m, { isAdmin, isBotAdmin }) {
     if (isBotAdmin) {
       // Remove the participant from the group
       global.db.data.users[m.sender].warn += 1
-      return this.sendMessage(m.chat, {
+  
         delete: { remoteJid: m.chat, fromMe: false, id: messageId, participant: removeParticipant },
       })
     }
@@ -92,4 +92,4 @@ async function Analyze(text) {
     console.error(error)
     return { toxicity: NaN, insult: NaN, combined: NaN }
   }
-      }
+          }
