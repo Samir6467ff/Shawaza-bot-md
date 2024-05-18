@@ -57,16 +57,31 @@ export async function before(m, { isAdmin, isBotAdmin }) {
 
     if (isBotAdmin) {
       if (isAdmin) {
+        // Delete the message of the admin
         await this.sendMessage(m.chat, {
-          text: '*لا أستطيع طردك لأنك مشرف في المجموعة.*',
+          delete: { remoteJid: m.chat, fromMe: false, id: messageId, participant: removeParticipant },
+        });
+
+        let userWarnings = global.db.data.users[m.sender].warn || 0;
+        global.db.data.users[m.sender].warn = userWarnings + 1;
+
+        let warningMessage = '*تم حذف رسالتك لأنها تحتوي على كلمات سيئة.*';
+
+        if (global.db.data.users[m.sender].warn >= 5) {
+          warningMessage += '\n*لقد حصلت على خمس تحذيرات، ولكن لا أستطيع طردك لأنك مشرف في المجموعة.*';
+        }
+
+        await this.sendMessage(m.chat, {
+          text: warningMessage,
           mentions: [m.sender]
         });
       } else {
         // Remove the participant from the group
         global.db.data.users[m.sender].warn += 1;
-        return this.sendMessage(m.chat, {
+        await this.sendMessage(m.chat, {
           delete: { remoteJid: m.chat, fromMe: false, id: messageId, participant: removeParticipant },
         });
+        return this.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
       }
     }
   }
