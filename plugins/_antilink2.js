@@ -24,13 +24,8 @@ export async function before(m, {conn, isAdmin, isBotAdmin, text}) {
       if (m.text.includes(linkThisGroup2)) return !0;
       if (m.text.includes(linkThisGroup3)) return !0;
     }
-    await this.sendMessage(m.chat, {text: tradutor.texto1, mentions: [m.sender]}, {quoted: m});
-    if (!isBotAdmin) return m.reply(tradutor.texto2);
-    if (isBotAdmin && bot.restrict) {
-      await conn.sendMessage(m.chat, {delete: {remoteJid: m.chat, fromMe: false, id: bang, participant: delet}});
-      const responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
-     if (responseb[0].status === '404') return;
-    } else if (!bot.restrict) return m.reply(tradutor.texto3);
+    await this.sendMessage(m.chat, {text: `${tradutor.texto1}\n\n${user}`, contextInfo: { mentionedJid: [m.sender] }}, {quoted: m});
+    return !0;
   }
   return !0;
 }
