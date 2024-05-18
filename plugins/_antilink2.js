@@ -29,7 +29,7 @@ export async function before(m, {conn, isAdmin, isBotAdmin, text}) {
         if (isBotAdmin) {
             if (isAdmin) { // Check if the sender is an admin
                 // If the sender is an admin, send a warning message
-                return m.reply('*انت ادمن اعمل اللي انت عايزو*');
+                return m.reply(tradutor.texto4);
             } else {
                 // If the sender is not an admin, remove the message and kick the user
                 await conn.sendMessage(m.chat, {delete: {remoteJid: m.chat, fromMe: false, id: bang, participant: delet}});
