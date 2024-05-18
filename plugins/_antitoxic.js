@@ -76,12 +76,15 @@ export async function before(m, { isAdmin, isBotAdmin }) {
           mentions: [m.sender]
         });
       } else {
-        // Remove the participant from the group
+        // Delete the message and give warning to regular users
         global.db.data.users[m.sender].warn += 1;
         await this.sendMessage(m.chat, {
           delete: { remoteJid: m.chat, fromMe: false, id: messageId, participant: removeParticipant },
         });
-        return this.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
+
+        if (global.db.data.users[m.sender].warn >= 5) {
+          await this.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
+        }
       }
     }
   }
