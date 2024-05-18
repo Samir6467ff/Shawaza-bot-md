@@ -46,7 +46,18 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         throw false
       }
       bot.autoBio = isEnable
-      break
+      break 
+
+case 'antiprivate':
+  isAll = true
+  if (!isOwner) {
+    global.dfail('owner', m, conn)
+    throw false
+  }
+  bot.antiPrivate = isEnable
+  break
+
+      
     case 'detect':
     case 'detector':
       if (!m.isGroup) {
