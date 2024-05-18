@@ -127,6 +127,19 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.antiLink = isEnable
       break
 
+      
+    case 'antilink2':
+    case 'antilinkwa2':
+    case 'antilinkwha2':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiLink2 = isEnable
+      break
+
     case 'nsfw':
     case '+18':
       if (m.isGroup) {
@@ -220,6 +233,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 ⛊ jarvis
 ⛊ antispam
 ⛊ antitoxic
+⛊ antilink2
 ╰──────────⳹ 
 ◈──『 *USERS*』───⳹
 ⛊ autolevelup
