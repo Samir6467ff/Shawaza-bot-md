@@ -24,12 +24,12 @@ export async function before(m, { isAdmin, isBotAdmin }) {
       '☠️  ☠️  ☠️  ☠️  ☠️', // Extremely toxic!
     ];
     var toxicityVerdict = [
-      'You are so friendly. Very welcoming to know you!',
-      'You are not too toxic, is it fun?',
-      'You appear to be toxic. Calm down!',
-      "Don't be so toxic. You can relax!",
-      "There's nothing more I could say, you're totally the most toxic person in the world!",
-      'Your toxic meter also goes above 100%.',
+      'أنت ودود جداً. من الرائع معرفتك!',
+      'أنت لست سامًا جداً، هل هو ممتع؟',
+      'يبدو أنك سام. اهدأ قليلاً!',
+      'لا تكن سامًا لهذه الدرجة. يمكنك الاسترخاء!',
+      'ليس لدي شيء آخر لأقوله، أنت بالفعل الشخص الأكثر سمية في العالم!',
+      'مستوى سمّيتك تجاوز 100%.',
     ];
 
     const toxicityPercentage = Number(analysisResult.toxicity * 100).toFixed(2);
@@ -48,10 +48,10 @@ export async function before(m, { isAdmin, isBotAdmin }) {
       toxicityIndex = 5;
     }
 
-    var caption = `*[ TOXIC STRENGTH ]*\n\n${toxicityLevels[toxicityIndex]}\n${toxicityVerdict[toxicityIndex]}\n`;
+    var caption = `*[ قوة السمية ]*\n\n${toxicityLevels[toxicityIndex]}\n${toxicityVerdict[toxicityIndex]}\n`;
 
     await this.sendMessage(m.chat, {
-      text: `*Bad Words Detected!*\n ${caption}`,
+      text: `*تم اكتشاف كلمات سيئة!*\n ${caption}`,
       mentions: [m.sender]
     });
 
