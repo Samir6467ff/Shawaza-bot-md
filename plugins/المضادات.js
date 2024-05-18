@@ -253,6 +253,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 ⛊ onlydm
 ⛊ grouponly
 ⛊ autotype
+⛊ antiPrivate
 ⛊ autobio
 ╰──────────⳹
 *📌 Example :*
