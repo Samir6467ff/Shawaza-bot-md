@@ -25,13 +25,10 @@ export async function before(m, {conn, isAdmin, isBotAdmin, text}) {
             if (m.text.includes(linkThisGroup3)) return true;
         }
         await this.sendMessage(m.chat, {text: tradutor.texto1, mentions: [m.sender]}, {quoted: m});
-        if (isBotAdmin && bot.restrict) {
-            await conn.sendMessage(m.chat, {delete: {remoteJid: m.chat, fromMe: false, id: bang, participant: delet}});
-            const responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
-            if (responseb[0].status === '404') return;
-        } else if (!bot.restrict) {
-            return m.reply(tradutor.texto3);
-        }
+        // Remove the link from the message
+        const cleanText = m.text.replace(linkRegex, '');
+        // Edit the message without the link
+        await this.modifyMessage(m.chat, m.key.id, cleanText);
         return false;
     }
     return true;
