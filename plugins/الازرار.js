@@ -1,11 +1,13 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
+const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
+
     conn.relayMessage(m.chat, {
       viewOnceMessage: {
         message: {
           interactiveMessage: {
             header: {
               title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
-*🐉✬⃝╿↵ مرحــبـا ⌊${m.sender.split("@")[0]}⌉*
+*🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
 ┏━━🤖 _مـعلـومـات البـوت:_🤖━━┓
