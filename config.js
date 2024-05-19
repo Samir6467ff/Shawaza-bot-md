@@ -18,6 +18,7 @@ global.prems = ['201508628077'];
 
 global.packname = '☾︎ zezo_bot ☽︎';
 global.author = '✩zezo_bot☆';
+global.vs = 'V2 • 1.0.5'; 
 global.wm = '✯zezo_bot✯';
 global.titulowm = '☾︎ zezo_bot ☽︎';
 global.titulowm2 = `☾︎ zezo_bot ☽︎`
