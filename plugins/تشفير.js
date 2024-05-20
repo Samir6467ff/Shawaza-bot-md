@@ -1,9 +1,12 @@
-import js from 'javascript-obfuscator';
+import javascriptObfuscator from 'javascript-obfuscator';
 
-let handler = async ( m, { conn, text } ) => { 
-if(!m.quoted.text) throw 'قم بالرد على الكود الذي تريد تشفيرة!';
+let handler = async (m, { conn, text }) => {
+  if (!m.quoted || !m.quoted.text) {
+    throw 'قم بالرد على الكود الذي تريد تشفيرة!';
+  }
 
-let res = js.obfuscate( m.quoted.text, {
+  let codeToObfuscate = m.quoted.text;
+  let obfuscatedCode = javascriptObfuscator.obfuscate(codeToObfuscate, {
     compact: true,
     controlFlowFlattening: false,
     controlFlowFlatteningThreshold: 0.75,
@@ -43,9 +46,7 @@ let res = js.obfuscate( m.quoted.text, {
     stringArrayCallsTransform: true,
     stringArrayCallsTransformThreshold: 0.5,
     stringArrayEncoding: [],
-    stringArrayIndexesType: [
-        'hexadecimal-number'
-    ],
+    stringArrayIndexesType: ['hexadecimal-number'],
     stringArrayIndexShift: true,
     stringArrayRotate: true,
     stringArrayShuffle: true,
@@ -57,15 +58,18 @@ let res = js.obfuscate( m.quoted.text, {
     target: 'browser',
     transformObjectKeys: false,
     unicodeEscapeSequence: false
-}).getObfuscatedCode()
-  
- if(!res) throw "خطأ :("
-return m.reply(res);
+  }).getObfuscatedCode();
+
+  if (!obfuscatedCode) {
+    throw "خطأ في عملية التشفير :(";
+  }
+
+  return m.reply(obfuscatedCode);
 }
 
-handler.help = ['enc']
-handler.tags = ['tools']
-handler.alias = ['enc']
-handler.command = /^(enc|تشفير)$/i
+handler.help = ['enc'];
+handler.tags = ['tools'];
+handler.alias = ['enc'];
+handler.command = /^(enc|تشفير)$/i;
 
 export default handler;
