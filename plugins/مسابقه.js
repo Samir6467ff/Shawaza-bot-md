@@ -15,8 +15,8 @@ let handler = async (m, { conn, command, text }) => {
             return conn.reply(m.chat, 'ادخل عدد اللاعبين', m);
         } else if (isNaN(text)) {
             return conn.reply(m.chat, 'يرجى إدخال رقم لعدد اللاعبين', m);
-        } else if (text > 8 || text < 5) {
-            return conn.reply(m.chat, 'الحد الأقصى للاعبين ثمانية, والحد الأدنى خمسه', m);
+        } else if (text > 8 || text < 3) {
+            return conn.reply(m.chat, 'الحد الأقصى للاعبين ثمانية, والحد الأدنى تلاته', m);
         } else {
             maxPlayers = text;
         }
@@ -77,7 +77,7 @@ handler.before = async function (m, { conn }) {
 
       if (players.length === 2) {
           let winner = players[playerIndex];
-          this.reply(m.chat, `المسابقة انتهت! الفائز هو @${winner.id.split('@')[0]} بـ ${winner.points} نقطة.`, m, { mentions: [winner.id] });
+          this.reply(m.chat, `المسابقة انتهت! الفائز هو @${winner.id.split('@')[0]} بـ ${winner.points} نقطة.\n*BY: ☆𝑀𝑙𝑘𝑠𝒉 𝐹𝑦𝒉⭆🎧✨*`, m, { mentions: [winner.id] });
           delete this.tekateki1[id];
       } else {
           // إرسال قائمة باللاعبين المتبقين
