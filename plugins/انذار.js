@@ -17,7 +17,13 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
     throw m.reply(warntext, m.chat, { mentions: conn.parseMention(warntext) });
   }
 
-  const user = global.db.data.users[who];
+  // التأكد من أن المستخدم موجود في قاعدة البيانات
+  let user = global.db.data.users[who];
+  if (!user) {
+    global.db.data.users[who] = { warn: 0 }; // إنشاء المستخدم إذا لم يكن موجودًا
+    user = global.db.data.users[who];
+  }
+
   const dReason = 'بدون سبب';
   const msgtext = text || dReason;
   const sdms = msgtext.replace(/@\d+-?\d* /g, '');
