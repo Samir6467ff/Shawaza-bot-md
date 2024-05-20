@@ -18,10 +18,6 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
   }
 
   const user = global.db.data.users[who];
-  if (!user) {
-    throw m.reply('*المستخدم غير موجود في قاعدة البيانات*', m.chat);
-  }
-
   const dReason = 'بدون سبب';
   const msgtext = text || dReason;
   const sdms = msgtext.replace(/@\d+-?\d* /g, '');
