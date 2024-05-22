@@ -8,7 +8,7 @@ const handler = async (m, {conn, text, participants, args}) => {
   const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
   const tradutor = _translate.plugins.gc_add
 
-  if (!global.db.data.settings[conn.user.jid].restrict) throw tradutor.texto1;
+  //if (!global.db.data.settings[conn.user.jid].restrict) throw tradutor.texto1;
   if (!args[0]) throw tradutor.texto2;
   try {
     const _participants = participants.map((user) => user.id);
