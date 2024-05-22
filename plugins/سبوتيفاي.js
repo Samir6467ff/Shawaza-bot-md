@@ -8,7 +8,7 @@ import axios from 'axios';
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   const datas = global
   const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
+  const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
   const tradutor = _translate.plugins.descargas_spotify
 
  if (!text) throw `${tradutor.texto1} _${usedPrefix + command} Good Feeling - Flo Rida_`;
@@ -35,7 +35,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     throw tradutor.texto3;
   }
 };
-handler.command = /^(spotify|music)$/i;
+handler.command = /^(سبوتيفاي|سبوتي)$/i;
 export default handler;
 
 //***Código antiguo/obsoleto.
