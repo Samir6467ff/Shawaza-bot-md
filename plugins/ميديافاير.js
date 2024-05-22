@@ -8,7 +8,8 @@ let handler = async (m, { conn, args, usedPrefix, command, isOwner, isPrems }) =
      else limit = 100
    if (!args[0]) throw `*✳️ أدخل رابط ميديافاير بجوار الأمر*`
     if (!args[0].match(/mediafire/gi)) throw `❎ الرابط غير صحيح`
-    m.react(rwait)
+    await conn.sendMessage(m.chat, { react: { text: '🤌🏻', key: m.key } })
+
     let full = /f$/i.test(command)
     let u = /https?:\/\//.test(args[0]) ? args[0] : 'https://' + args[0]
     let ss = await (await fetch(`https://image.thum.io/get/fullpage/${u}`)).buffer()
@@ -27,7 +28,8 @@ ${isLimit ? `\n▢ الملف يتجاوز حد التنزيل *+${limit} ميغ
     await conn.sendFile(m.chat, ss, 'ssweb.png', caption, m)
     
     if(!isLimit) await conn.sendFile(m.chat, url, filename, '', m, null, { mimetype: ext, asDocument: true })
-    m.react(done)
+    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
+
 }
 handler.help = ['mediafire <url>']
 handler.tags = ['downloader', 'premium']
