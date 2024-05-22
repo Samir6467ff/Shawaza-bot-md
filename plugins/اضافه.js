@@ -5,7 +5,7 @@ const {getBinaryNodeChild, getBinaryNodeChildren} = (await import('@whiskeysocke
 const handler = async (m, {conn, text, participants, args}) => {
   const datas = global
   const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
+  const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
   const tradutor = _translate.plugins.gc_add
 
   if (!global.db.data.settings[conn.user.jid].restrict) throw tradutor.texto1;
@@ -40,6 +40,6 @@ const handler = async (m, {conn, text, participants, args}) => {
 };
 handler.help = ['add', '+'].map((v) => v + ' número');
 handler.tags = ['group'];
-handler.command = /^(add|agregar|añadir|\+)$/i;
+handler.command = /^(ضيف)$/i;
 handler.admin = handler.group = handler.botAdmin = true;
 export default handler;
