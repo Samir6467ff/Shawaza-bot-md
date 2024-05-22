@@ -1,6 +1,6 @@
 // TheMystic-Bot-MD@BrunoSobrino - descargas-spotify.js
 // Creditos de los tags a @darlyn1234 y diseño a @ALBERTO9883
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 import fs from 'fs';
 import axios from 'axios';
 
@@ -36,11 +36,11 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 handler.command = /^(سبوتيفاي|سبوتي)$/i;
-export default handler;
+export default handler;*/
 
 //***Código antiguo/obsoleto.
 
-/*import fetch from 'node-fetch';
+import fetch from 'node-fetch';
 import Spotify from 'spotifydl-x';
 import fs from 'fs';
 import NodeID3 from 'node-id3';
@@ -111,7 +111,7 @@ const handler = async (m, { conn, text }) => {
     throw '*[❗] Error, no se encontraron resultados.*';
   }
 };
-handler.command = /^(spotify|music)$/i;
+handler.command = /^(سبوتي|سبوتيفاي)$/i;
 export default handler;
 
 async function spotifydl(url) {
@@ -130,4 +130,4 @@ async function spotifydl(url) {
       reject(error);
     }
   });
-}*/
+}
