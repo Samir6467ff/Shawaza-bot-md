@@ -23,11 +23,25 @@ const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
             },
             nativeFlowMessage: {
               buttons: [
+            
                 {
-            urlButton: {
-              displayText: '⌬ ❛╏المطور',
-              url: 'https://wa.me/201508628077'
-            }, 
+                  name: 'single_select',
+                  buttonParamsJson: JSON.stringify({
+                    title: 'اضغط',
+                    sections: [
+                      {
+                        title: 'قوائم',
+                        highlight_label: 'new',
+                        rows: [
+                          {
+                            header: 'info',
+                            title: '⌬ ❛╏المطور',
+                            description: '',
+                            id: '.المطور'
+                          }, 
+                    } 
+              } 
+          }, 
                 {
                   name: 'single_select',
                   buttonParamsJson: JSON.stringify({
