@@ -1,8 +1,12 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-    const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
+  const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 
-    const interactiveMessage = {
-        text: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
+  conn.relayMessage(m.chat, {
+    viewOnceMessage: {
+      message: {
+        interactiveMessage: {
+          header: {
+            title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -12,20 +16,85 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ 📍  *رقم المطور: 201508628077*
 ┃ 📚  *اسم المطور: zezo*  
 ┗━━━━━━━━━━━━━┛
-⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`,
-        footer: '> استمتع بالبوت',
-        templateButtons: [
-            { index: 1, quickReplyButton: { displayText: 'اضغط', id: '.1' }},
-            { index: 2, quickReplyButton: { displayText: 'اضغط هنا', id: '.2' }},
-            { index: 3, quickReplyButton: { displayText: 'المطور', id: '.المطور' }},
-            { index: 4, quickReplyButton: { displayText: 'التنزيلات', id: '.4' }},
-            { index: 5, quickReplyButton: { displayText: 'قائمه الجروب', id: '.5' }},
-            { index: 6, quickReplyButton: { displayText: 'الالعاب', id: '.6' }},
-            { index: 7, quickReplyButton: { displayText: 'قائمة الاوامر', id: '.10' }}
-        ]
+⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
+          },
+          body: {
+            text: '> استمتع بالبوت'
+          },
+          footer: {
+            text: 'اختر أحد الخيارات التالية:'
+          },
+          buttons: [
+            {
+              buttonId: '.المطور',
+              buttonText: { displayText: '⌬ ❛╏المطور' },
+              type: 1
+            },
+            {
+              buttonId: '.قائمة',
+              buttonText: { displayText: '⌬ ❛╏قائمة الأوامر' },
+              type: 1
+            }
+          ],
+          nativeFlowMessage: {
+            buttons: [
+              {
+                name: 'single_select',
+                buttonParamsJson: JSON.stringify({
+                  title: 'اضغط',
+                  sections: [
+                    {
+                      title: 'قوائم',
+                      highlight_label: 'new',
+                      rows: [
+                        {
+                          header: 'info',
+                          title: '⌬ ❛╏المطور',
+                          description: '',
+                          id: '.المطور'
+                        },
+                        {
+                          header: 'قوائم',
+                          title: '⌬ ❛╏التنزيلات',
+                          description: '',
+                          id: '.4'
+                        },
+                        {
+                          header: 'قوائم',
+                          title: '⌬ ❛╏قائمه الجروب',
+                          description: '',
+                          id: '.5'
+                        },
+                        {
+                          header: 'قوائم',
+                          title: '⌬ ❛╏الالعاب',
+                          description: '',
+                          id: '.6'
+                        },
+                        {
+                          header: 'قوائم',
+                          title: '⌬ ❛╏الالعاب',
+                          description: '',
+                          id: '.6'
+                        },
+                        {
+                          header: 'كل الاوامر',
+                          title: '⌬ ❛╏قائمة الاوامر',
+                          description: '',
+                          id: '.10'
+                        }
+                      ]
+                    }
+                  ]
+                }),
+                messageParamsJson: 'ZEZO bot'
+              }
+            ]
+          }
+        }
+      }
     }
-
-    await conn.sendMessage(m.chat, interactiveMessage, { quoted: m })
+  }, {})
 }
 
 handler.help = ['info']
