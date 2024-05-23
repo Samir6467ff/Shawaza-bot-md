@@ -4,12 +4,12 @@ const handler = async (m, {conn, text}) => {
     const res = await fetch('https://api.thecatapi.com/v1/images/search');
     const img = await res.json();
     const caption = `
-_©The Mystic - Bot_
+*_⌬ ❛╏ BY: 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕_*
 `.trim();
     conn.sendFile(m.chat, img[0].url, 'cat.jpg', caption, m);
   } catch (e) {
     console.log(e);
-    throw '*Error!*';
+    throw '*⌬ ❛╏خطأ!*';
   }
 };
 handler.help = ['cat'];
