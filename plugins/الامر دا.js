@@ -7,7 +7,7 @@ const exec = promisify(_exec).bind(cp);
 const handler = async (m, {conn, isROwner, usedPrefix, command, text}) => {
   const datas = global
   const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
+  const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
   const tradutor = _translate.plugins.owner_getplugin
   
   const ar = Object.keys(plugins);
@@ -33,6 +33,6 @@ const handler = async (m, {conn, isROwner, usedPrefix, command, text}) => {
 };
 handler.help = ['getplugin'].map((v) => v + ' *<nombre>*');
 handler.tags = ['owner'];
-handler.command = /^(getplugin|gp)$/i;
+handler.command = /^(getplugin|gp|الامردا)$/i;
 handler.rowner = true;
 export default handler;
