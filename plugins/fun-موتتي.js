@@ -1,6 +1,6 @@
 // By S H A D O W
 let handler  = async (m, { conn }) => {
-conn.reply(m.chat,`سبب موتك ← ${pickRandom(global.hinax)}\n\n تاريخ الوفاة ←  ${Math.floor(Math.random() * 30)}/${pickRandom(global.hinaxx)}/ ${pickRandom(global.hina)}\n\nالمطور ← شادو`, m)
+conn.reply(m.chat,`*⌬ ❛╏ سبب الوفاه ${pickRandom(global.hinax)}*\n\n*⌬ ❛╏تاريخ الوفاة ←  ${Math.floor(Math.random() * 30)}/${pickRandom(global.hinaxx)}/ ${pickRandom(global.hina)}*\n\n*⌬ ❛╏الله يرحمك يسطا*\n\n*⌬ ❛╏ BY: 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕*`, m)
 }
 handler.help = ['S H A D O W']
 handler.tags = ['S H A D O W']
