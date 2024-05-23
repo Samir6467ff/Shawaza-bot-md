@@ -6,7 +6,7 @@ import MessageType from '@whiskeysockets/baileys';
 const handler = async (m, {conn, text}) => {
   const datas = global
   const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
+  const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
   const tradutor = _translate.plugins.sticker_kiss
 
   try {
@@ -21,6 +21,6 @@ const handler = async (m, {conn, text}) => {
     conn.sendFile(m.chat, stiker, null, null, m, false, {asSticker: true});
   } catch { }
 };
-handler.command = /^(kiss|skiss|kis|besos|beso)$/i;
+handler.command = /^(kiss|skiss|kis|besos|beso|قبله|بوسه)$/i;
 handler.group = true;
 export default handler;
