@@ -5,7 +5,7 @@ import fetch from "node-fetch";
 const handler = async (m, { conn, args, usedPrefix, command }) => {
   const datas = global
   const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
+  const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
   const tradutor = _translate.plugins.sticker_slap
 
     let who;
@@ -19,7 +19,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
   try {
     let name;
     if (who === m.chat) {
-      name = "𝚃𝚑𝚎 𝙼𝚢𝚜𝚝𝚒𝚌 - 𝙱𝚘𝚝";
+      name = "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕";
     } else {
       name = conn.getName(who);
     }
@@ -35,5 +35,5 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
 };
 handler.help = ["slap"];
 handler.tags = ["General"];
-handler.command = /^(slap|bofetada)$/i;
+handler.command = /^(slap|bofetada|صفعه|ضربه)$/i;
 export default handler;
