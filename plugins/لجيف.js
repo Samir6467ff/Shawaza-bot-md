@@ -4,7 +4,7 @@
 const handler = async (m, {conn, usedPrefix, command}) => {
   const datas = global
   const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
+  const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
   const tradutor = _translate.plugins.convertidor_togifaud
 
 
@@ -16,5 +16,5 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   const media = await q.download();
   conn.sendMessage(m.chat, {video: media, gifPlayback: true, caption: `*${tradutor.texto3}*`}, {quoted: m});
 };
-handler.command = ['togifaud'];
+handler.command = ['لجيف'];
 export default handler;
