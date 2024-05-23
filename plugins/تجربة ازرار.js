@@ -2,11 +2,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 
   conn.relayMessage(m.chat, {
-    viewOnceMessage: {
-      message: {
-        interactiveMessage: {
-          header: {
-            title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
+    templateMessage: {
+      hydratedTemplate: {
+        hydratedContentText: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -16,82 +14,23 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ 📍  *رقم المطور: 201508628077*
 ┃ 📚  *اسم المطور: zezo*  
 ┗━━━━━━━━━━━━━┛
-⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
-          },
-          body: {
-            text: '> استمتع بالبوت'
-          },
-          footer: {
-            text: 'اختر أحد الخيارات التالية:'
-          },
-          buttons: [
-            {
-              buttonId: '.المطور',
-              buttonText: { displayText: '⌬ ❛╏المطور' },
-              type: 1
-            },
-            {
-              buttonId: '.قائمة',
-              buttonText: { displayText: '⌬ ❛╏قائمة الأوامر' },
-              type: 1
+⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
+> استمتع بالبوت`,
+        hydratedFooterText: 'اختر أحد الخيارات التالية:',
+        hydratedButtons: [
+          {
+            urlButton: {
+              displayText: '⌬ ❛╏المطور',
+              url: 'https://wa.me/201508628077'
             }
-          ],
-          nativeFlowMessage: {
-            buttons: [
-              {
-                name: 'single_select',
-                buttonParamsJson: JSON.stringify({
-                  title: 'اضغط',
-                  sections: [
-                    {
-                      title: 'قوائم',
-                      highlight_label: 'new',
-                      rows: [
-                        {
-                          header: 'info',
-                          title: '⌬ ❛╏المطور',
-                          description: '',
-                          id: '.المطور'
-                        },
-                        {
-                          header: 'قوائم',
-                          title: '⌬ ❛╏التنزيلات',
-                          description: '',
-                          id: '.4'
-                        },
-                        {
-                          header: 'قوائم',
-                          title: '⌬ ❛╏قائمه الجروب',
-                          description: '',
-                          id: '.5'
-                        },
-                        {
-                          header: 'قوائم',
-                          title: '⌬ ❛╏الالعاب',
-                          description: '',
-                          id: '.6'
-                        },
-                        {
-                          header: 'قوائم',
-                          title: '⌬ ❛╏الالعاب',
-                          description: '',
-                          id: '.6'
-                        },
-                        {
-                          header: 'كل الاوامر',
-                          title: '⌬ ❛╏قائمة الاوامر',
-                          description: '',
-                          id: '.10'
-                        }
-                      ]
-                    }
-                  ]
-                }),
-                messageParamsJson: 'ZEZO bot'
-              }
-            ]
+          },
+          {
+            quickReplyButton: {
+              displayText: '⌬ ❛╏قائمة الأوامر',
+              id: '.قائمة_الأوامر'
+            }
           }
-        }
+        ]
       }
     }
   }, {})
@@ -99,6 +38,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 handler.help = ['info']
 handler.tags = ['main']
-handler.command = ['كل']
+handler.command = ['تجربه']
 
 export default handler
