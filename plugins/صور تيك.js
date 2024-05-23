@@ -1,9 +1,3 @@
-// Code by Xnuvers007 ft. Jikarinka
-// https://github.com/Xnuvers007/
-// 
-// Mejorado por @BrunoSobrino
-////////////////////////////////////
-
 import axios from 'axios';
 import cheerio from 'cheerio';
 
@@ -11,7 +5,7 @@ import cheerio from 'cheerio';
 let handler = async (m, { conn, text: tiktok, args, command, usedPrefix }) => {
     const datas = global
     const idioma = datas.db.data.users[m.sender].language
-    const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
+    const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
     const tradutor = _translate.plugins.downloader_tiktok_img
 
     if (!tiktok) throw tradutor.texto1;
@@ -30,7 +24,7 @@ let handler = async (m, { conn, text: tiktok, args, command, usedPrefix }) => {
         throw tradutor.texto2
     }
 };
-handler.command = /^(ttimg|tiktokimg)$/i;
+handler.command = /^(ttimg|tiktokimg|صور_تيك|صور-تيك)$/i;
 export default handler;
 
 async function ttimg(link) {
