@@ -10,14 +10,14 @@ const handler = async (m, {text, conn, usedPrefix, command}) => {
   if (!who) conn.reply(m.chat, why, m, {mentions: [m.sender]});
   const res = [];
   switch (command) {
-    case 'blok': case 'block': case 'بلوك': 
+     case 'block': case 'بلوك': 
       if (who) {
         await conn.updateBlockStatus(who, 'block').then(() => {
           res.push(who);
         });
       } else conn.reply(m.chat, why, m, {mentions: [m.sender]});
       break;
-    case 'بلوك_فك': case 'unblock': case 'فك_بلوك'
+    case 'بلوك_فك': case 'فك_بلوك'
       if (who) {
         await conn.updateBlockStatus(who, 'unblock').then(() => {
           res.push(who);
