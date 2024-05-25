@@ -86,13 +86,13 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
   }
   const responses = tradutor.texto23;
   const response = responses[Math.floor(Math.random() * responses.length)];
-  const cal = `━━━━⬣ ${tradutor.texto24} ⬣━━━━
+  const cal = `━━━━⬣ *_𝒁𝒆𝒛𝒐 𝑩𝒐𝒕_* ⬣━━━━
 
-—◉ ${description}
+—◉ *${description}
 
 *"${response}"*
 
-━━━━⬣ ${tradutor.texto24} ⬣━━━━`.trim()  
+━━━━⬣ *_𝒁𝒆𝒛𝒐 𝑩𝒐𝒕_* ⬣━━━━`.trim()  
   async function loading() {
 var hawemod = [
 "《 █▒▒▒▒▒▒▒▒▒▒▒》10%",
