@@ -5,13 +5,12 @@ let kickte = `*مــنشـن الـشـخص !*`
 if (!m.mentionedJid[0] && !m.quoted) return m.reply(kickte, m.chat, { mentions: conn.parseMention(kickte)}) 
 
 let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
-let owr = m.chat.split`-`[0]
 
 // التحقق مما إذا كان الشخص الذي سيتم طرده هو المالك
 if (user === owner) {
   return m.reply('*لايمكنني طرد مطوري*')
 }
-
+else
 await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
 m.reply(`*تـــم الــطرد !*`) 
 
