@@ -2,7 +2,7 @@ let handler = async (m, { conn, text }) => {
     let who
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text
     else who = m.chat
-    if (!who) throw '✳️ *منشن شخص ما*\n\n📌 مثال : ${usedPrefix + command} @الشخص'
+    if (!who) throw '✳️ *منشن شخص ما*\n\n📌 مثال : .بريم @الشخص'
     if (global.owner.includes(who.split('@')[0])) throw 'لقد أصبح هذا الشخص هو المالك!'
     global.owner.push([who.split('@')[0], m.name, true])
     const caption = `
@@ -10,7 +10,7 @@ let handler = async (m, { conn, text }) => {
 
 *@${who.split`@`[0]} الان لقد اصبحت مستخدم بريميام !!*
 
-*⌬ ❛╏ المنشن:* ${user.name}
+*⌬ ❛╏ المنشن:* @${who.split`@`[0]}
 `
     await conn.reply(m.chat, caption, m, {
         mentions: conn.parseMention(caption)
