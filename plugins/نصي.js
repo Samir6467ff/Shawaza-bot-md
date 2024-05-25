@@ -11,8 +11,8 @@ let handler = async (m, { conn, args }) => {
     }
 
     const d = new Date();
-    const tgl = d.toLocaleDateString('id-ID');
-    const hari = d.toLocaleDateString('id-ID', { weekday: 'long' });
+    const tgl = d.toLocaleDateString('ar-EG');
+    const hari = d.toLocaleDateString('ar-EG', { weekday: 'long' });
     const teks = args.join(' ');
 
     const bufs = [];
@@ -46,14 +46,14 @@ let handler = async (m, { conn, args }) => {
     process.on('error', e => m.reply(format(e)));
     process.stdout.on('data', chunk => bufs.push(chunk));
     process.on('close', () => {
-        m.reply('*⏳Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ... ฅ^•ﻌ•^ฅ⏳*');
-        conn.sendFile(m.chat, Buffer.concat(bufs), 'txt.jpg', '✅ Es mejor de lo que escribes tú ✍🏻');
+        m.reply('*⏳ انتظر لحظة... ฅ^•ﻌ•^ฅ⏳*');
+        conn.sendFile(m.chat, Buffer.concat(bufs), 'txt.jpg', '✅ أفضل مما تكتب أنت ✍🏻');
     });
 };
 
-handler.help = ['txt *<texto>*'];
+handler.help = ['txt *<النص>*'];
 handler.tags = ['fun'];
-handler.command = ['escribe', 'txt'];
+handler.command = ['اكتب', 'txt','نصي'];
 handler.register = true;
 
 export default handler;
