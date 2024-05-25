@@ -6,7 +6,7 @@ const inputPath = 'src/kertas/magernulis1.jpg';
 
 let handler = async (m, { conn, args }) => {
     if (!global.support.convert && !global.support.magick && !global.support.gm) {
-        handler.disabled = true; // Disable if not supported
+        handler.disabled = true; // تعطيل الأمر إذا لم يتم دعمه
         return;
     }
 
@@ -57,6 +57,3 @@ handler.command = ['اكتب', 'txt'];
 handler.register = true;
 
 export default handler;
-
-// BY MFARELS
-// https://GitHub.com/MFarelS/
