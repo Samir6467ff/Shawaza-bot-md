@@ -1,27 +1,20 @@
-import { randomBytes } from 'crypto'
+import fs from 'fs'
 
-let handler = async (m, { conn, text }) => {
+let handler = async (m, { conn, text } ) => {
   if (!text) throw 'الرجاء إدخال نص لإرسال الإعلان إلى جميع المجموعات'
-  let chats = Object.entries(conn.chats).filter(([_, chat]) => chat.isChats).map(v => v[0])
-  let imagen1 = 'https://telegra.ph/file/5f08d0d2ac9c7fb73d43c.png'
-  let fakegif = { key: {participant: `0@s.whatsapp.net`, ...("6289643739077-1613049930@g.us" ? { remoteJid: "6289643739077-1613049930@g.us" } : {})},message: {"videoMessage": { "title": 'lolibot', "h": `Hmm`,'seconds': '99999', 'gifPlayback': 'true', 'caption': 'Broadcast 🐈', 'jpegThumbnail': imgen1 }}}
-  let teks = `\t\t\t\t*إعلان | مجموعات*\n\n${text}`
-  for (let id of chats) {
-  await conn.sendMessage(id, { text: teks }, { quoted: fakegif })
+  let groups = Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats && !chat.metadata?.read_only && !chat.metadata?.announce).map(v => v[0])
+  let fproducto = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "17608914335@s.whatsapp.net" } : {}) }, message: { "productMessage": { "product": { "productImage":{ "mimetype": "image/jpeg", "jpegThumbnail": catalogo }, "title": `🐢𝐀𝐍𝐔𝐍𝐂𝐈𝐎 𝐃𝐄 𝐆𝐑𝐔𝐏𝐎🐢`, "description": "NyanCatBot-MD", "currencyCode": "USD", "priceAmount1000": "200000000", "retailerId": "Ghost", "productImageCount": 1 }, "businessOwnerJid": `0@s.whatsapp.net` }}}
+  let teks = `\t\t\t\t*إعلان | المجموعات*\n\n${text}`
+  for (let id of groups) {
+  await conn.sendMessage(id, { text: teks, mentions: (await conn.groupMetadata(`${id}`)).participants.map(v => v.id) }, { quoted: fproducto })
   }
-  conn.reply(m.chat, `تم إرسال الإعلان إلى *${chats.length} مجموعة*!`, m)
+  conn.reply(m.chat, `✅ *_تم إرسال الإعلان إلى -${groups.length}- مجموعة!_*`, m)
 }
 
-handler.help = ['إذاعة']
-handler.tags = ['المالك']
-handler.command = /^(broadcast|bc|ذيعها)$/i
+handler.help = ['bcgc']
+handler.tags = ['owner']
+handler.command = /^(ذيعها)$/i
 
 handler.owner = true
 
 export default handler
-
-
-const more = String.fromCharCode(8206)
-const readMore = more.repeat(4001)
-
-const randomID = length => randomBytes(Math.ceil(length * .5)).toString('hex').slice(0, length)
