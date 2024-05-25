@@ -15,7 +15,7 @@ let handler = async (m, { conn }) => {
 *~🇵🇸『𝑪.𝑵.𝑹⊰🐦‍🔥⊱𝐏𝐇𝐎𝐄𝐍𝐈𝐗』🇵🇸~*`;
     
 
-    conn.sendFile(m.chat, 'https://telegra.ph/file/722efd258d6ac9bd9f645.jpg', 'image.jpg', message, m);
+    conn.sendFile(m.chat, 'https://telegra.ph/file/02651f9c930babf8b2fc6.jpg', 'image.jpg', message, m);
 };
 
 handler.customPrefix = /^(11|استماره|الاستماره)$/i;
