@@ -25,19 +25,19 @@ let handler = async (m, { conn, args }) => {
         '-size', '1024x784',
         '-pointsize', '20',
         '-interline-spacing', '1',
-        '-annotate', '+806+78', hari,
+        '-annotate', '+806+78', `label:${hari}`,
         '-font', fontPath,
         '-fill', 'blue',
         '-size', '1024x784',
         '-pointsize', '18',
         '-interline-spacing', '1',
-        '-annotate', '+806+102', tgl,
+        '-annotate', '+806+102', `label:${tgl}`,
         '-font', fontPath,
         '-fill', 'blue',
         '-size', '1024x784',
         '-pointsize', '20',
         '-interline-spacing', '-7.5',
-        '-annotate', '+344+142', teks,
+        '-annotate', '+344+142', `label:${teks}`,
         'jpg:-'
     ];
 
@@ -53,7 +53,7 @@ let handler = async (m, { conn, args }) => {
 
 handler.help = ['txt *<النص>*'];
 handler.tags = ['fun'];
-handler.command = ['اكتب', 'txt','نصي'];
+handler.command = ['اكتب', 'txt'];
 handler.register = true;
 
 export default handler;
