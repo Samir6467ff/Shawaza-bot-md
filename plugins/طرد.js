@@ -8,7 +8,7 @@ let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
 let owr = m.chat.split`-`[0]
 
 // التحقق مما إذا كان الشخص الذي سيتم طرده هو المالك
-if (user === owr) {
+if (user === owner) {
   return m.reply('*لايمكنني طرد مطوري*')
 }
 
