@@ -1,11 +1,17 @@
-
 let handler = async (m, { conn, participants, usedPrefix, command }) => {
 
 let kickte = `*مــنشـن الـشـخص !*`
 
 if (!m.mentionedJid[0] && !m.quoted) return m.reply(kickte, m.chat, { mentions: conn.parseMention(kickte)}) 
+
 let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
 let owr = m.chat.split`-`[0]
+
+// التحقق مما إذا كان الشخص الذي سيتم طرده هو المالك
+if (user === owr) {
+  return m.reply('*لايمكنني طرد مطوري*')
+}
+
 await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
 m.reply(`*تـــم الــطرد !*`) 
 
