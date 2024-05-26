@@ -20,7 +20,7 @@ if ((m.isBaileys && m.fromMe) || m.fromMe ) return true
 
 if (chat.chatbot) {
 //▪AQUÍ AGREGA LOS COMANDOS▪
-let sticker1A = /بوت/i
+let sticker1A = /لول|هلو/i
 let sticker1B = sticker1A.exec(m.text)
 
 let sticker2A = /nyan|cat|Nyan|Cat/i
