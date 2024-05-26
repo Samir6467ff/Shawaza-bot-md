@@ -2,7 +2,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 const time = moment.tz('Africa/Egypt').format('HH')
 let wib = moment.tz('Africa/Egypt').format('HH:mm:ss')
-let datet = d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })
+let date = d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })
   
     conn.relayMessage(m.chat, {
       viewOnceMessage: {
