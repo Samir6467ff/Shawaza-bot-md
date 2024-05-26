@@ -34,11 +34,11 @@ let date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long
                 {
                   name: 'single_select',
                   buttonParamsJson: JSON.stringify({
-                    title: 'اضغط',
+                    title: '『』CLICK《',
                     sections: [
                       {
-                        title: 'قوائم',
-                        highlight_label: 'new',
+                        title: '『』MENUS《',
+                        highlight_label: 'NEW',
                         rows: [
                           {
                             header: 'info',
@@ -47,33 +47,40 @@ let date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long
                             id: '.المطور'
                           }, 
                           {
-                                header: 'قوائم', 
+                                header: '『』menu《', 
                                 title:'⌬ ❛╏التنزيلات', 
                                 description: '', 
                                 id: '.4', 
                          }, 
                             {
-                                header: 'قوائم', 
+                                header: '『』menu《', 
                                 title: '⌬ ❛╏قائمه الجروب', 
                                 description: '', 
                                 id: '.5', 
                          }, 
                             {
-                                header: 'قوائم', 
+                                header: '『』menu《', 
                                 title: '⌬ ❛╏الالعاب', 
                                 description: '', 
                                 id: '.6', 
                          }, 
                             
                             {
-                                header: 'قوائم', 
+                                header: '『』menu《', 
                                 title: '⌬ ❛╏الالعاب', 
                                 description: '', 
                                 id: '.6', 
                          }, 
+                           
+                            {
+                                header: '『』menu《', 
+                                title: '⌬ ❛╏والصور', 
+                                description: '', 
+                                id: '.2', 
+                         }, 
                             
                             {
-                                header: 'كل الاوامر', 
+                                header: '『』All menu《', 
                                 title: '⌬ ❛╏قائمة الاوامر', 
                                 description: '', 
                                 id: '.10', 
