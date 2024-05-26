@@ -15,10 +15,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 https://telegra.ph/file/aa3da4c558a6975817eb7.png`,
             image: {
               link: 'https://telegra.ph/file/aa3da4c558a6975817eb7.png',
-              aspectRatio: '2:2', // Aspect ratio of the image (width:height), adjust according to your image
-              border: true, // Whether to add a border around the image
-              borderRadius: '100%', // Border radius of the image, adjust as needed
-            }
+                  }
           },
           body: {
             text: '> اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n> ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
