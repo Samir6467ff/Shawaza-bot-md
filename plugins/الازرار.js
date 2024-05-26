@@ -47,40 +47,40 @@ let date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long
                             id: '.المطور'
                           }, 
                           {
-                                header: '『』menu《', 
+                                header: '『』MENU《', 
                                 title:'⌬ ❛╏التنزيلات', 
                                 description: '', 
                                 id: '.4', 
                          }, 
                             {
-                                header: '『』menu《', 
+                                header: '『』MENU《', 
                                 title: '⌬ ❛╏قائمه الجروب', 
                                 description: '', 
                                 id: '.5', 
                          }, 
                             {
-                                header: '『』menu《', 
+                                header: '『』MENU《', 
                                 title: '⌬ ❛╏الالعاب', 
                                 description: '', 
                                 id: '.6', 
                          }, 
                             
                             {
-                                header: '『』menu《', 
-                                title: '⌬ ❛╏الالعاب', 
+                                header: '『』MENU《', 
+                                title: '⌬ ❛╏الترفيه', 
                                 description: '', 
                                 id: '.6', 
                          }, 
                            
                             {
-                                header: '『』menu《', 
-                                title: '⌬ ❛╏والصور', 
+                                header: '『』MENU《', 
+                                title: '⌬ ❛╏الصور', 
                                 description: '', 
                                 id: '.2', 
                          }, 
                             
                             {
-                                header: '『』All menu《', 
+                                header: '『』All MENU《', 
                                 title: '⌬ ❛╏قائمة الاوامر', 
                                 description: '', 
                                 id: '.10', 
