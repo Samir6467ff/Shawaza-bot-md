@@ -12,12 +12,12 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
-`,
+https://telegra.ph/file/aa3da4c558a6975817eb7.png`,
             image: {
               link: 'https://telegra.ph/file/aa3da4c558a6975817eb7.png',
-              aspectRatio: '1:1', // Aspect ratio of the image (width:height), adjust according to your image
+              aspectRatio: '2:2', // Aspect ratio of the image (width:height), adjust according to your image
               border: true, // Whether to add a border around the image
-              borderRadius: '50%', // Border radius of the image, adjust as needed
+              borderRadius: '100%', // Border radius of the image, adjust as needed
             }
           },
           body: {
