@@ -20,6 +20,6 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
 
 handler.help = ['wa']
 handler.tags = ['tools']
-handler.command = ['wa']
+handler.command = ['وتساب']
 
 export default handler
