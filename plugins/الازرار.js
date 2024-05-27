@@ -40,16 +40,15 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                     sections: [
                       {
                         title: '『』MENUS《',
-                        highlight_label: 'OWNER',
-                        highlight_label:'NEW', 
+                        highlight_label: 'OWNER', 
                         rows: [
                           {
                             header: 'info',
                             title: '⌬ ❛╏المطور',
                             description: '',
                             id: '.المطور'
-                          }, 
-                          {
+                          },
+                           {
                                 header: '『』MENU《', 
                                 title:'⌬ ❛╏التنزيلات', 
                                 description: '', 
