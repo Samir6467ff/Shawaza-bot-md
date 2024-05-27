@@ -32,12 +32,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
           },
           buttons: [
             {
-              quickReplyButton: {
-                displayText: 'القائمة',
-                id: 'main_menu'
-              }
-            },
-            {
               urlButton: {
                 displayText: 'زيارة الموقع',
                 url: 'https://chat.whatsapp.com/BQlougGA8yh6LKZKlgPazS'
