@@ -1,10 +1,18 @@
-import axios from "axios";
+import { promises as fs } from 'fs';
+import path from 'path';
 
 let handler = async (m, { command, conn, usedPrefix }) => {
     const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
-    let res = (await axios.get(`https://raw.githubusercontent.com/zyad5yasser/zezo-bot-md/scr/photo/صور.json`)).data;
-    let imageUrl = res[Math.floor(res.length * Math.random())];    
-    conn.sendFile(m.chat, imageUrl, 'image.jpg', `
+
+    // قراءة الملف من المسار المحلي
+    let data = await fs.readFile(path.join(__dirname, 'src/photo/صور.json'), 'utf-8');
+    let res = JSON.parse(data);
+    // اختيار صورة عشوائية من القائمة
+    let imagePath = res[Math.floor(res.length * Math.random())];    
+    let fullPath = path.join(__dirname, 'src/photo', imagePath);
+
+    // إرسال الملف مع الرسالة المعدلة
+    conn.sendFile(m.chat, fullPath, 'image.jpg', `
 *◉═══ • ❁ 『』WELCOME 《 ❁ • ═══◉*
 WELCOME ➳『 ${taguser} 』
 *『 ️اليك قائمه بمعلومات المطور  』*
