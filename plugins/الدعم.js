@@ -3,7 +3,7 @@ let handler = async (m, {command, conn, usedPrefix}) => {
 //let res = (await axios.get(`https://raw.githubusercontent.com/socona12/TheMystic-Bot-MD/master/src/JSON/anime-Venom.json`)).data  
 //let haha = await res[Math.floor(res.length * Math.random())]  
 const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
-conn.sendFile(m.chat, `
+conn.sendFile(m.chat,'error.png',`
 *◉═══ • ❁ 『』WELCOME 《 ❁ • ═══◉*
 WELCOME ➳『 ${taguser} 』
 *『 ️اليك قائمه بمعلومات المطور  』*
