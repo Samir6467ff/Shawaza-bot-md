@@ -1,11 +1,11 @@
 import axios from "axios"
 let handler = async (m, {command, conn, usedPrefix}) => {
- const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
-let res = (await axios.get(`https://telegra.ph/file/2f45911315b2da73f1579.png`)).data  
+const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
+let res = (await axios.get(`https://raw.githubusercontent.com/ zyad5yasser/ zezo-bot-md/master/scr/photo/صور.json`)).data  
 let haha = await res[Math.floor(res.length * Math.random())]    
 conn.sendFile(m.chat, haha, 'error.jpg', `
 *◉══ • ❁『』WELCOME 《 ❁ • ═◉*
-WELCOME ➳『 ${taguser} 』
+WELCOME ➳『 ${m.pushName} 』
 *『 ️اليك قائمه بمعلومات المطور  』*
 
 *『 ️واتساب 』*
