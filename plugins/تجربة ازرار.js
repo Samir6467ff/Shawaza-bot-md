@@ -38,6 +38,18 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                   name: 'single_select',
                   buttonParamsJson: JSON.stringify({
                     title: '『』CLICK《',
+                    sections:[
+                       {
+                        title: '『』MENUS《',
+                        highlight_label: 'OWNER', 
+                        rows: [
+                          {
+                            header: 'info',
+                            title: '⌬ ❛╏المطور',
+                            description: '',
+                            id: '.المطور'
+                          }
+                        
                 {
                   name: 'single_select',
                   buttonParamsJson: JSON.stringify({
