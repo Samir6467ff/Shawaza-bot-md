@@ -23,7 +23,7 @@ let uptime = clockString(_uptime)
 throw `*🤖 وقت العمل: ${uptime} ┃ LOOK LIKE YOU*`}}
 handler.help = ['estado']
 handler.tags = ['main']
-handler.command = /^(الدعوم|ظعم)$/i
+handler.command = ['الدعم','الدعوم'] 
 export default handler
 function clockString(ms) {
 let d = isNaN(ms) ? '--' : Math.floor(ms / 86400000)
