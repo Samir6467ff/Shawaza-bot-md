@@ -1,8 +1,12 @@
 import { promises as fs } from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 let handler = async (m, { command, conn, usedPrefix }) => {
     const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
+    
+    // الحصول على __dirname في بيئة ES Module
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
     // قراءة الملف من المسار المحلي
     let data = await fs.readFile(path.join(__dirname, 'src/photo/صور.json'), 'utf-8');
