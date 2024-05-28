@@ -10,8 +10,8 @@ let handler = async (m, { command, conn, usedPrefix }) => {
 //  let imagen4 = haha.image;
 
   // إرسال الصورة
-  await conn.sendFile(m.chat, imagen4, 'image.jpg', `*◉═══ • ❁ 『』WELCOME 《 ❁ • ═══◉*
-WELCOME ➳『 ${taguser} 』
+  await conn.sendFile(m.chat, imagen4, 'image.jpg', `*◉═• ❁ 『』WELCOME 《 ❁ •═◉*
+WELCOME ➳『 ${m.pushName} 』
 *『 ️اليك قائمه بمعلومات المطور  』*
 
 *『☯️』ī وتسابي ī《*
