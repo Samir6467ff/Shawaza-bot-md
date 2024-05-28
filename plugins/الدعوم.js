@@ -4,8 +4,8 @@ import fetch from 'node-fetch';
 let handler = async (m, { command, conn, usedPrefix }) => {
   try {
     // جلب بيانات JSON من الرابط المحدد
-    let res = (await axios.get(`https://raw.githubusercontent.com/socona12/TheMystic-Bot-MD/master/src/JSON/anime-Venom.json`)).data;  
-    let haha = await res[Math.floor(res.length * Math.random())];  
+    //let res = (await axios.get(`https://raw.githubusercontent.com/socona12/TheMystic-Bot-MD/master/src/JSON/anime-Venom.json`)).data;  
+//   let haha = await res[Math.floor(res.length * Math.random())];  
     const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
 
     // استخدم حقل الصورة من البيانات التي تم جلبها
@@ -41,8 +41,8 @@ WELCOME ➳『 ${m.pushName} 』
     
     let buttonMessage = {
       image: { img: imagen4 },
-      caption: str,
-      footer: 'Footer text here', // ضع النص التذييلي هنا
+      caption:'هلا',
+      footer: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕', // ضع النص التذييلي هنا
       buttons: buttons,
       headerType: 4
     };
