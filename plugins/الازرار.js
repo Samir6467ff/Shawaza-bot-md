@@ -1,7 +1,7 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 const time = moment.tz('Africa/Egypt').format('HH')
-let wib = moment.tz('Africa/Egypt').format('HH:mm:ss')
+let wib = moment.tz('Africa/Egypt').format('HH+3:mm:ss')
 let date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long', year: 'numeric' }); 
 await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
 
