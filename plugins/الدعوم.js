@@ -9,7 +9,7 @@ let handler = async (m, { command, conn, usedPrefix }) => {
     const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
 
     // استخدم حقل الصورة من البيانات التي تم جلبها
-    let imagen4 = 'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'; // استبدل هذا برابط الصورة الصحيح
+    //let imagen4 = 'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'; // استبدل هذا برابط الصورة الصحيح
 
     let _uptime = process.uptime() * 1000;
     let uptime = clockString(_uptime);
@@ -40,7 +40,7 @@ WELCOME ➳『 ${m.pushName} 』
     ];
     
     let buttonMessage = {
-      image: { url: imagen4 },
+      image: { img: imagen4 },
       caption: str,
       footer: 'Footer text here', // ضع النص التذييلي هنا
       buttons: buttons,
