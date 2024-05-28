@@ -49,7 +49,7 @@ let handler = async (m, { conn }) => {
 
 handler.help = ['estado'];
 handler.tags = ['main'];
-handler.command = ['معلومات', 'الدعوم'];
+handler.command = /الدعوم/i;
 
 export default handler;
 
