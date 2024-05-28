@@ -35,8 +35,8 @@ WELCOME ➳『 ${m.pushName} 』
 `.trim();
 
     let buttons = [
-      { buttonId: '#menu', buttonText: { displayText: 'قائمة الاوامر 📜' }, type: 1 },
-      { buttonId: '#info', buttonText: { displayText: 'معلومات' }, type: 1 }
+      { buttonId: '.اوامر', buttonText: { displayText: 'قائمة الاوامر 📜' }, type: 1 },
+      { buttonId: '.معلومات', buttonText: { displayText: 'معلومات' }, type: 1 }
     ];
     
     let buttonMessage = {
@@ -48,12 +48,12 @@ WELCOME ➳『 ${m.pushName} 』
     };
 
     await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
-  } catch (e) {
+  }/*catch (e) {
     console.error(e);
     let _uptime = process.uptime() * 1000;
     let uptime = clockString(_uptime);
     throw `*🤖 وقت العمل: ${uptime} ┃ LOOK LIKE YOU*`;
-  }
+  }*/
 };
 
 handler.command = handler.help = ['م'];
