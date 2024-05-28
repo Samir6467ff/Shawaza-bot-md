@@ -40,7 +40,7 @@ WELCOME ➳『 ${m.pushName} 』
     ];
     
     let buttonMessage = {
-      image: { img: imagen4 },
+      //image: { img: imagen4 },
       caption:'هلا',
       footer: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕', // ضع النص التذييلي هنا
       buttons: buttons,
