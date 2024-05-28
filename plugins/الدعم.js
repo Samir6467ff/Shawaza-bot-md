@@ -10,10 +10,27 @@ let handler = async (m, { command, conn, usedPrefix }) => {
 //  let imagen4 = haha.image;
 
   // إرسال الصورة
-  await conn.sendFile(m.chat, imagen4, 'image.jpg', '');
+  await conn.sendFile(m.chat, imagen4, 'image.jpg', `*◉═══ • ❁ 『』WELCOME 《 ❁ • ═══◉*
+WELCOME ➳『 ${taguser} 』
+*『 ️اليك قائمه بمعلومات المطور  』*
+
+*『☯️』ī وتسابي ī《*
+
+*⊱≼ https://wa.me/+201508628077 ≽⊰⊹*
+
+*『🥱』معلوماتي《*
+
+*⊱≼ https://tinyurl.com/259ho5p3 ≽⊰⊹*
+
+*『👀』ī جروب الوتساب ī《*
+
+*⊱≼ https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0 ≽⊰⊹*
+*『』𝒁𝒆𝒛𝒐 𝑩𝒐𝒕《*
+*◉═══ • ❁ BAY ❁ • ═══◉* 
+`);
 
   // إرسال الرسالة النصية
-  conn.sendMessage(m.chat, `
+/*conn.sendMessage(m.chat, `
 *◉═══ • ❁ 『』WELCOME 《 ❁ • ═══◉*
 WELCOME ➳『 ${taguser} 』
 *『 ️اليك قائمه بمعلومات المطور  』*
@@ -31,7 +48,7 @@ WELCOME ➳『 ${taguser} 』
 *⊱≼ https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0 ≽⊰⊹*
 *『』𝒁𝒆𝒛𝒐 𝑩𝒐𝒕《*
 *◉═══ • ❁ BAY ❁ • ═══◉* 
-  `, 'conversation');
+  `, 'conversation');*/
 }
 
 handler.command = handler.help = ['معلومات', 'الدعم'];
