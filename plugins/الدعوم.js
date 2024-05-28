@@ -7,9 +7,9 @@ let handler = async (m, { command, conn, usedPrefix }) => {
     let res = (await axios.get(`https://raw.githubusercontent.com/socona12/TheMystic-Bot-MD/master/src/JSON/anime-Venom.json`)).data;  
     let haha = await res[Math.floor(res.length * Math.random())];  
     const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
-    
+
     // استخدم حقل الصورة من البيانات التي تم جلبها
-    //let imagen4 = 'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'; // استبدل هذا برابط الصورة الصحيح
+    let imagen4 = 'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'; // استبدل هذا برابط الصورة الصحيح
 
     let _uptime = process.uptime() * 1000;
     let uptime = clockString(_uptime);
@@ -34,27 +34,19 @@ WELCOME ➳『 ${m.pushName} 』
 *=> 🤖 وقت عمل البوت:* ${uptime}
 `.trim();
 
-    let buttons = [{ buttonId: '#menu', buttonText: { displayText: 'قائمة الاوامر 📜' }, type: 1 }];
+    let buttons = [
+      { buttonId: '#menu', buttonText: { displayText: 'قائمة الاوامر 📜' }, type: 1 },
+      { buttonId: '#info', buttonText: { displayText: 'معلومات' }, type: 1 }
+    ];
+    
     let buttonMessage = {
-      image: { url: imagen4 }, // التأكد من استخدام صيغة صحيحة للصورة
-      caption: str.trim(),
-      mentions: [m.sender],
-      footer: global.wm, // تأكد من تعريف global.wm
+      image: { url: imagen4 },
+      caption: str,
+      footer: 'Footer text here', // ضع النص التذييلي هنا
       buttons: buttons,
-      headerType: 4,
-      contextInfo: {
-        mentionedJid: [m.sender],
-        externalAdReply: {
-          showAdAttribution: true,
-          mediaType: 2, // تأكد من استخدام نوع الوسائط الصحيح
-          mediaUrl: null,
-          title: 'اضغط هنا لدخول قروب الدعم',
-          body: 'بواسطة صاصا',
-          thumbnail: await (await fetch('https://chat.whatsapp.com/BxBsz6WSLiIK13w2NtWKJm')).buffer(),
-          sourceUrl: 'https://chat.whatsapp.com/BxBsz6WSLiIK13w2NtWKJm'
-        }
-      }
+      headerType: 4
     };
+
     await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
   } catch (e) {
     console.error(e);
