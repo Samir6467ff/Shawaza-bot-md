@@ -9,7 +9,7 @@ let handler = async(m, { conn }) => {
 "https://telegra.ph/file/c97f77e4f97962615ed84.png"
     ];  
     //اختيار صوره عشوائي لتحويلها استيكر
-    let stiker = await sticker(null, xvi[Math.floor(Math.random() * s.length)])
+    let stiker = await sticker(null, xvi[Math.floor(Math.random() * xvi.length)])
     if (stiker) {
         conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
     }
