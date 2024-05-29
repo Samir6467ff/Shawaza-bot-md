@@ -15,5 +15,5 @@ const handler = async (m, {text}) => {
 };
 handler.help = ['afk [alasan]'];
 handler.tags = ['main'];
-handler.command = /^afk$/i;
+handler.command = /^اختفاء$/i;
 export default handler;
