@@ -33,7 +33,7 @@ let handler = async (m, { command, conn, usedPrefix }) => {
 
 *_『』رقم المطور《_*
 
-*✿ ⟦201508628077⟧*➪
+『 https://wa.me/201508628077 』
 
 *_『』اسم المطور《_*
 
