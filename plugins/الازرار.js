@@ -80,6 +80,23 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                                 description: '', 
                                 id: '.2', 
                          }, 
+
+                           
+                            {
+                                header: '『』MENU《', 
+                                title: '⌬ ❛╏شروط', 
+                                description: '', 
+                                id: '.20', 
+                         }, 
+
+
+                            {
+                                header: '『』MENU《', 
+                                title: '⌬ ❛╏الدعم', 
+                                description: '', 
+                                id: '.الدعم', 
+                         }, 
+
                             
                             {
                                 header: '『』All MENU《', 
