@@ -9,13 +9,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     // تحميل الصورة كـ buffer
     const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer());
 
-    conn.relayMessage(m.chat, {
-        viewOnceMessage: {
-            message: {
-                imageMessage: {
-                    mimetype: 'image/jpeg',
-                    jpegThumbnail: imageBuffer,
-                    caption: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
+    conn.sendMessage(m.chat, {
+        image: imageBuffer,
+        caption: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -30,11 +26,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ 📆  *تـاريـخ اليـوم:* 『』${date}《 
 ┃ ⏲️  *الـوقـت الـحالـي:* 『』${wib}《 
 ┗━━━━━━━━━━━━━┛
-⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
-                }
-            }
-        }
-    }, {});
+⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`,
+        mimetype: 'image/jpeg' // تحديد نوع الوسائط كصورة JPEG
+    });
 
     conn.sendMessage(m.chat, {
         interactiveMessage: {
@@ -178,7 +172,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 ]
             }
         }
-    }, {});
+    });
 };
 
 handler.help = ['info'];
