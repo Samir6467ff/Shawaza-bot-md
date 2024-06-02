@@ -29,11 +29,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`,
         mimetype: 'image/jpeg' // تحديد نوع الوسائط كصورة JPEG
     });
-
-    conn.sendMessage(m.chat, {
+, {
         interactiveMessage: {
             header: {
-                title: `*🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*`
+                title: ``
             },
             body: {
                 text: '> اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n> ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
