@@ -143,20 +143,6 @@ conn.relayMessage(m.chat, {
 
 handler.help = ['info'];
 handler.tags = ['main'];
-handler.command = ['ازرار']
+handler.command = ['ازرار']; 
 
-export default handler;
-           title: 'سكربت_بوت_جاهز_للتعديل_👨🏻‍💻',
-                                                    description: '',
-                                                    id: '.م10'
-                                               }
-                                            ]
-                                        }
-                                    ]
-                                }),
-                  messageParamsJson: ''
-                     },
-                     {
-               name: "cta_url",
-               buttonParamsJson: '{"display_text":"⌈📲╎قـنـاة الـمـطـور╎📲⌋","url":"https://whatsapp.com/channel/0029VaXddtu0lwgiREisx82C","merchant_url":"https://whatsapp.com/channel/0029VaXddtu0lwgiREisx82C"}'
-                            
+export default handler; 
