@@ -6,17 +6,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
-    // Fetch the image and send it as an image message
+    // Fetch the image buffer
     const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer());
-//   await conn.sendMessage(m.chat, { image: imageBuffer });
 
-    // Send the interactive message
-    conn.sendMessage(m.chat, { image: imageBuffer }, {
-        viewOnceMessage: {
-            message: {
-                interactiveMessage: {
-                    header: {
-                        title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
+    // Construct the interactive message with the image
+    const message = {
+        image: { url: 'https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg' },
+        caption: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -31,148 +27,29 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ 📆  *تـاريـخ اليـوم:* 『』${date}《 
 ┃ ⏲️  *الـوقـت الـحالـي:* 『』${wib}《 
 ┗━━━━━━━━━━━━━┛
-⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
-                    },
-                    body: {
-                        floot: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
-                    },
-                    nativeFlowMessage: {
-                        buttons: [
-                            {
-                                name: 'single_select',
-                                buttonParamsJson: JSON.stringify({
-                                    title: '『』CLICK《',
-                                    sections: [
-                                        {
-                                            title: '『』MENUS《',
-                                            highlight_label: 'OWNER',
-                                            rows: [
-                                                {
-                                                    header: 'info',
-                                                    title: '⌬ ❛╏المطور',
-                                                    description: '',
-                                                    id: '.المطور'
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏التنزيلات',
-                                                    description: '',
-                                                    id: '.4',
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏قائمه الجروب',
-                                                    description: '',
-                                                    id: '.5',
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏الالعاب',
-                                                    description: '',
-                                                    id: '.6',
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏الترفيه',
-                                                    description: '',
-                                                    id: '.6',
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏الصور',
-                                                    description: '',
-                                                    id: '.2',
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏شروط',
-                                                    description: '',
-                                                    id: '.20',
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏الدعم',
-                                                    description: '',
-                                                    id: '.الدعم',
-                                                },
-                                                {
-                                                    header: '『』All MENU《',
-                                                    title: '⌬ ❛╏قائمة الاوامر',
-                                                    description: '',
-                                                    id: '.10',
-                                                },
-                                            ]
-                                        }
-                                    ]
-                                }),
-                                messageParamsJson: 'ZEZO bot'
-                            },
-                            {
-                                name: "single_select",
-                                buttonParamsJson: JSON.stringify({
-                                    title: '『』MORE COMMANDS《',
-                                    sections: [
-                                        {
-                                            title: '『』MORE MENUS《',
-                                            highlight_label: 'OWNER',
-                                            rows: [
-                                                {
-                                                    header: 'info',
-                                                    title: '⌬ ❛╏الترجمات',
-                                                    description: '',
-                                                    id: '.translations'
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏البحث',
-                                                    description: '',
-                                                    id: '.search',
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏الطقس',
-                                                    description: '',
-                                                    id: '.weather',
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏الأخبار',
-                                                    description: '',
-                                                    id: '.news',
-                                                },
-                                                {
-                                                    header: '『』MENU《',
-                                                    title: '⌬ ❛╏التواصل',
-                                                    description: '',
-                                                    id: '.contact',
-                                                },
-                                            ]
-                                        }
-                                    ]
-                                }),
-                                messageParamsJson: 'ZEZO bot'
-                            },
-                            {
-                                name: "cta_url",
-                                buttonParamsJson: JSON.stringify({
-                                    display_text: "『』WEBSITE《",
-                                    merchant_url: "https://atom.bio/zyad_yasser"
-                                })
-                            },
-                            {
-                                name: "cta_url",
-                                buttonParamsJson: JSON.stringify({
-                                    display_text: "『』CHANNEL《",
-                                    url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a",
-                                    merchant_url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a"
-                                })
-                            }
-                        ]
-                    }
-                }
+⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`,
+        buttons: [
+            {
+                buttonId: '.المطور',
+                buttonText: { displayText: '⌬ ❛╏المطور' },
+                type: 1
+            },
+            {
+                buttonId: '.4',
+                buttonText: { displayText: '⌬ ❛╏التنزيلات' },
+                type: 1
+            },
+            {
+                buttonId: '.5',
+                buttonText: { displayText: '⌬ ❛╏قائمه الجروب' },
+                type: 1
             }
-        }
-    }, {});
+        ],
+        footer: 'اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
+    };
+
+    // Send the interactive message
+    await conn.sendMessage(m.chat, message, { quoted: m });
 };
 
 handler.help = ['info'];
