@@ -6,12 +6,14 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
+    const imageBuffer = await fetch('https://path-to-your-image.jpg').then(res => res.buffer());
+
     conn.relayMessage(m.chat, {
         viewOnceMessage: {
             message: {
-                interactiveMessage: {
-                    header: {
-                        title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
+                imageMessage: {
+                    jpegThumbnail: imageBuffer,
+                    caption: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -27,6 +29,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ ⏲️  *الـوقـت الـحالـي:* 『』${wib}《 
 ┗━━━━━━━━━━━━━┛
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
+                },
+                interactiveMessage: {
+                    header: {
+                        title: `*🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*`
                     },
                     body: {
                         text: '> اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n> ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
