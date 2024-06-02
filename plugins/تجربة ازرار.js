@@ -10,7 +10,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer());
 
     // Send the interactive message
-    conn.relayMessage(m.chat, {
+ const buttonMessage = conn.relayMessage(m.chat, {
         viewOnceMessage: {
             message: {
                 interactiveMessage: {
@@ -103,7 +103,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                             ]
                                         }
                                     ]
-                                },  conn.sendMessage(m.chat, { image: imageBuffer }) ),
+                                }, await  conn.sendMessage(m.chat, { image: imageBuffer })),
+                                  await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
                                 messageParamsJson: 'ZEZO bot'
                             },
                             {
