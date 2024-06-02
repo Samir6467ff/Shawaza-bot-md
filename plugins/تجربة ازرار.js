@@ -20,7 +20,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     ];
 
     const buttonMessage = {
-        image: imageBuffer,
         caption: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
