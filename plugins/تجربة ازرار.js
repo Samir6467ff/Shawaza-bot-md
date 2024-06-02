@@ -1,3 +1,6 @@
+import fetch from 'node-fetch';
+import moment from 'moment-timezone';
+
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
     const time = moment.tz('Africa/Egypt').format('HH');
@@ -11,7 +14,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     // Construct the interactive message with the image
     const message = {
-        image: { url: 'https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg' },
+        image: imageBuffer,
         caption: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
@@ -28,27 +31,16 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ ⏲️  *الـوقـت الـحالـي:* 『』${wib}《 
 ┗━━━━━━━━━━━━━┛
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`,
+        footer: 'اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄',
         buttons: [
-            {
-                buttonId: '.المطور',
-                buttonText: { displayText: '⌬ ❛╏المطور' },
-                type: 1
-            },
-            {
-                buttonId: '.4',
-                buttonText: { displayText: '⌬ ❛╏التنزيلات' },
-                type: 1
-            },
-            {
-                buttonId: '.5',
-                buttonText: { displayText: '⌬ ❛╏قائمه الجروب' },
-                type: 1
-            }
+            { buttonId: '.المطور', buttonText: { displayText: '⌬ ❛╏المطور' }, type: 1 },
+            { buttonId: '.4', buttonText: { displayText: '⌬ ❛╏التنزيلات' }, type: 1 },
+            { buttonId: '.5', buttonText: { displayText: '⌬ ❛╏قائمه الجروب' }, type: 1 },
         ],
-        footer: 'اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
+        headerType: 4 // 4 means it's an image message
     };
 
-    // Send the interactive message
+    // Send the interactive message with the image
     await conn.sendMessage(m.chat, message, { quoted: m });
 };
 
