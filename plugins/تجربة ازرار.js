@@ -132,6 +132,12 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                             title: '⌬ ❛╏المطور',
                             description: '',
                             id: '.المطور'
+                }, 
+                {
+                            header: 'info',
+                            title: '⌬ ❛╏المطور',
+                            description: '',
+                            id: '.المطور'
                 }
               ]
             }
