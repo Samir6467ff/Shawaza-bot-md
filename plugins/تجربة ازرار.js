@@ -11,7 +11,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 //   await conn.sendMessage(m.chat, { image: imageBuffer });
 
     // Send the interactive message
-    conn.relayMessage(m.chat, { image: imageBuffer }, {
+    conn.sendMessage(m.chat, { image: imageBuffer }, {
         viewOnceMessage: {
             message: {
                 interactiveMessage: {
