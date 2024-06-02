@@ -28,8 +28,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┗━━━━━━━━━━━━━┛
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`,
         mimetype: 'image/jpeg' // تحديد نوع الوسائط كصورة JPEG
-    });
-, {
+    }), 
+ {
         interactiveMessage: {
             header: {
                 title: ``
