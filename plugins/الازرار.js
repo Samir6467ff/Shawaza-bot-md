@@ -29,7 +29,7 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
             },
             body: {
-              text: '> اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n> ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
+              footer: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
             },
             nativeFlowMessage: {
               buttons: [
