@@ -32,10 +32,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
           },
           buttons: [
             {
-              urlButton: {
-                displayText: 'زيارة الموقع',
-                url: 'https://chat.whatsapp.com/BQlougGA8yh6LKZKlgPazS'
-              }
+               name: "cta_url",
+               buttonParamsJson: '{"display_text":"⌈📲╎قـنـاة الـمـطـور╎📲⌋","url":"https://whatsapp.com/channel/0029VaXddtu0lwgiREisx82C","merchant_url":"https://whatsapp.com/channel/0029VaXddtu0lwgiREisx82C"}'
+                       }
             }
           ]
         }
