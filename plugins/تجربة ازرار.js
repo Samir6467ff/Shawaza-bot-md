@@ -104,6 +104,17 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                                 description: '', 
                                 id: '.10', 
                          }, 
+                           
+                      {
+                        title: '『』MENUS《',
+                        highlight_label: 'OWNER', 
+                        rows: [
+                          {
+                            header: 'info',
+                            title: '⌬ ❛╏المطور',
+                            description: '',
+                            id: '.المطور'
+                          },
                         ]
                       }
                     ]
