@@ -116,7 +116,7 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                 }, 
                      {
                name: "cta_url",
-               buttonParamsJson: '{"display_text":"『』CHANNEL《","url":"https://whatsapp.com/channel/0029VaXddtu0lwgiREisx82C","merchant_url":"https://whatsapp.com/channel/0029VaXddtu0lwgiREisx82C"}'
+               buttonParamsJson: '{"display_text":"『』CHANNEL《","url":"https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a","merchant_url":"https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a"}'
                      }
               ]
             }
