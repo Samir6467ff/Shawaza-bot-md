@@ -104,7 +104,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                         }
                                     ]
                                 }, await  conn.sendMessage(m.chat, { image: imageBuffer })),
-                                  await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+                                 // await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
                                 messageParamsJson: 'ZEZO bot'
                             },
                             {
