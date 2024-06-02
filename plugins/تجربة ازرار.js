@@ -112,7 +112,7 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                 }, 
                 {
                name: "cta_url",
-               buttonParamsJson: '{"display_text":"『』group《","url":"https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0"}'
+               buttonParamsJson: '{"display_text":"『』group《","merchant_url":"https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0"}'
                 }, 
                      {
                name: "cta_url",
