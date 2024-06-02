@@ -112,7 +112,7 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                 }, 
                 {
                name: "cta_url",
-               buttonParamsJson: '{"display_text":"⌈📲╎قـنـاة الـمـطـور╎📲⌋","url":"https://whatsapp.com/channel/0029VaXddtu0lwgiREisx82C","merchant_url":"https://whatsapp.com/channel/0029VaXddtu0lwgiREisx82C"}'
+               buttonParamsJson: '{"display_text":"『』جروب الدعم《","url":"https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0","merchant_url":"https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0"}'
                 }
               ]
             }
