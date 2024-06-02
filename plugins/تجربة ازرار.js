@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
     // تحميل الصورة كـ buffer
-    const imageBuffer = await fetch('https://telegra.ph/file/a79388f9fa9385f59d6a3.png').then(res => res.buffer());
+    const imageBuffer = await fetch('').then(res => res.buffer());
 
     conn.relayMessage(m.chat, {
         viewOnceMessage: {
