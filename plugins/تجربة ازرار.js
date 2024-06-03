@@ -16,8 +16,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 interactiveMessage: {
                     header: { 
                    //  image: imageBuffer, 
-                      title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
-        ${imageBuffer}        
+                      title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢        
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -32,7 +31,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ 📆  *تـاريـخ اليـوم:* 『』${date}《 
 ┃ ⏲️  *الـوقـت الـحالـي:* 『』${wib}《 
 ┗━━━━━━━━━━━━━┛
-⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
+⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
+${imageBuffer}`
                     },
                     body: {
                         floot: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
