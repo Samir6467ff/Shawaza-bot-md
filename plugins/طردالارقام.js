@@ -17,7 +17,6 @@ let handler = async (m, { conn, args, groupMetadata, participants, usedPrefix, c
             break   
 
         case "طرد_الارقام":  
-            //if (!bot.restrict) return m.reply(`⚠️ الإجراء محظور. يرجى التواصل مع مالك البوت لتفعيل صلاحية الطرد.`) 
             if (!isBotAdmin) return m.reply(`⚠️ يجب أن يكون البوت مشرفاً في المجموعة للقيام بهذا الإجراء.`)          
 
             conn.reply(m.chat, `⚠️ بدء عملية الطرد للأرقام التي تبدأ بالرمز +${lol}. سيتم طرد مستخدم كل 10 ثوانٍ.`, m)            
@@ -26,17 +25,26 @@ let handler = async (m, { conn, args, groupMetadata, participants, usedPrefix, c
 
             for (let user of users) {
                 let error = `@${user.split("@")[0]} قد تم طرده أو غادر المجموعة بالفعل.`    
-                if (user !== ownerGroup + '@s.whatsapp.net' && user !== global.conn.user.jid && user !== global.owner + '@s.whatsapp.net' && user.startsWith(lol || lol) && user !== isSuperAdmin && isBotAdmin) { 
+                let isAdmin = participants.find(p => p.id === user).admin !== null
+
+                if (user !== ownerGroup + '@s.whatsapp.net' && user !== global.conn.user.jid && user !== global.owner + '@s.whatsapp.net' && user.startsWith(lol || lol) && user !== isSuperAdmin && isBotAdmin && !isAdmin) { 
                     await delay(2000)    
                     let responseb = await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
                     if (responseb[0].status === "404") m.reply(error, m.chat, { mentions: conn.parseMention(error)})  
                     await delay(10000)
-                } else return m.reply(`⚠️ الإجراء محظور.`)
+                } else if (isAdmin) {
+                    m.reply(`⚠️ لا يمكن طرد المسؤولين من المجموعة.`)
+                } else {
+                    return m.reply(`⚠️ الإجراء محظور.`)
+                }
             }
             break            
     }
 }
+
 handler.command = /^(قائمة_الارقام|طرد_الارقام)$/i
 handler.group = handler.botAdmin = handler.admin = true
 handler.fail = null
 export default handler
+
+const delay = time => new Promise(res => setTimeout(res, time))
