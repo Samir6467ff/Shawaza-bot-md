@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
 conn.sendMessage(m.chat, {
-text: text,
+text:'لول',
 contextInfo: {
 externalAdReply: {
 title: 'BOBIZA BOT ♥',
