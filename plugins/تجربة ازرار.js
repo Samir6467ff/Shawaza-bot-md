@@ -7,7 +7,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
     // Fetch the image and send it as an image message
-    let imageBuffer = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'}},
+   const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer())
+    var messa = await prepareWAMessageMedia({ image: imageBuffer },
     // Send the interactive message
  const buttonMessage = conn.relayMessage(m.chat, {
         viewOnceMessage: {
@@ -30,7 +31,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ ⏲️  *الـوقـت الـحالـي:* 『』${wib}《 
 ┗━━━━━━━━━━━━━┛
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`,
-                imageMessage: imageBuffer.imageMessage,
+                        hasMediaAttachment: true,
+                imageMessage: messa.imageMessage
                     },
                     body: {
                         text: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄',  
