@@ -6,8 +6,17 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
-    // Fetch the image and send it as an image message
-    const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer())
+conn.sendMessage(m.chat, {
+text: text,
+contextInfo: {
+externalAdReply: {
+title: 'BOBIZA BOT ♥',
+body: "أول بوت واتساب في العالم العربي 💖",
+thumbnailUrl: 'https://telegra.ph/file/2829c7653514416d207e2.jpg',
+sourceUrl: 'https://instagram.com/noureddine_ouafy',
+mediaType: 1,
+renderLargerThumbnail: true
+}}}, { quoted: m})
 
     // Send the interactive message
  const buttonMessage = conn.relayMessage(m.chat, {
@@ -15,9 +24,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             message: {
                 interactiveMessage: {
                     header: { 
-                      ///image: imageBuffer, 
-                      title: await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer());
- `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢        
+                   //  image: imageBuffer, 
+                      title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢        
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -35,10 +43,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
                     },
                     body: {
-                        text: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄',  
+                        text: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄', 
+                        image: imageBuffer 
                     },
                     nativeFlowMessage: {
-                        //image: imageBuffer, 
                         buttons: [
                             {
                                 name: 'single_select',
