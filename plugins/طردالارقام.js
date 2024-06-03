@@ -17,7 +17,7 @@ let handler = async (m, { conn, args, groupMetadata, participants, usedPrefix, c
             break   
 
         case "طرد_الارقام":  
-            if (!bot.restrict) return m.reply(`⚠️ الإجراء محظور. يرجى التواصل مع مالك البوت لتفعيل صلاحية الطرد.`) 
+            //if (!bot.restrict) return m.reply(`⚠️ الإجراء محظور. يرجى التواصل مع مالك البوت لتفعيل صلاحية الطرد.`) 
             if (!isBotAdmin) return m.reply(`⚠️ يجب أن يكون البوت مشرفاً في المجموعة للقيام بهذا الإجراء.`)          
 
             conn.reply(m.chat, `⚠️ بدء عملية الطرد للأرقام التي تبدأ بالرمز +${lol}. سيتم طرد مستخدم كل 10 ثوانٍ.`, m)            
