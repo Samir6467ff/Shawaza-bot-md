@@ -15,7 +15,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             message: {
                 interactiveMessage: {
                     header: { 
-                      ///image: imageBuffer, 
+                     image: {
+                      image: imageBuffer, 
                       title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢        
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
