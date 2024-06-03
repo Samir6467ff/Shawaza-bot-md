@@ -8,7 +8,22 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long', year: 'numeric' });
 
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
+    const buttons = [
+        { buttonId: '.المطور', buttonText: { displayText: '⌬ ❛╏المطور' }, type: 1 },
+        { buttonId: '.4', buttonText: { displayText: '⌬ ❛╏التنزيلات' }, type: 1 },
+        { buttonId: '.5', buttonText: { displayText: '⌬ ❛╏قائمه الجروب' }, type: 1 },
+        // Add more buttons as needed
+    ];
 
+    const buttonMessage = {
+        text: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄',
+        footer: '',
+        buttons: buttons,
+        headerType: 1 // 1 means it's a text message with buttons
+    };
+
+    await conn.relayMessage(m.chat, buttonMessage, { quoted: m });
+};
     // Fetch the image buffer
     const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer());
 
@@ -34,22 +49,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }, { quoted: m });
 
     // Create and send the interactive message (buttons)
-    const buttons = [
-        { buttonId: '.المطور', buttonText: { displayText: '⌬ ❛╏المطور' }, type: 1 },
-        { buttonId: '.4', buttonText: { displayText: '⌬ ❛╏التنزيلات' }, type: 1 },
-        { buttonId: '.5', buttonText: { displayText: '⌬ ❛╏قائمه الجروب' }, type: 1 },
-        // Add more buttons as needed
-    ];
-
-    const buttonMessage = {
-        text: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄',
-        footer: '',
-        buttons: buttons,
-        headerType: 1 // 1 means it's a text message with buttons
-    };
-
-    await conn.relayMessage(m.chat, buttonMessage, { quoted: m });
-};
 
 handler.help = ['info'];
 handler.tags = ['main'];
