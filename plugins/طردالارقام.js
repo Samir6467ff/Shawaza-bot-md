@@ -26,7 +26,7 @@ let handler = async (m, { conn, args, groupMetadata, participants, usedPrefix, c
 
             for (let user of users) {
                 let error = `@${user.split("@")[0]} قد تم طرده أو غادر المجموعة بالفعل.`    
-                if (user !== ownerGroup + '@s.whatsapp.net' && user !== global.conn.user.jid && user !== global.owner + '@s.whatsapp.net' && user.startsWith(lol || lol) && user !== isSuperAdmin && isBotAdmin && bot.restrict) { 
+                if (user !== ownerGroup + '@s.whatsapp.net' && user !== global.conn.user.jid && user !== global.owner + '@s.whatsapp.net' && user.startsWith(lol || lol) && user !== isSuperAdmin && isBotAdmin) { 
                     await delay(2000)    
                     let responseb = await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
                     if (responseb[0].status === "404") m.reply(error, m.chat, { mentions: conn.parseMention(error)})  
