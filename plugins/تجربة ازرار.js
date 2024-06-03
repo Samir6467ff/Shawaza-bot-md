@@ -48,7 +48,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         headerType: 1 // 1 means it's a text message with buttons
     };
 
-    await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+    await conn.relayMessage(m.chat, buttonMessage, { quoted: m });
 };
 
 handler.help = ['info'];
