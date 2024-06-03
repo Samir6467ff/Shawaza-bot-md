@@ -15,8 +15,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             message: {
                 interactiveMessage: {
                     header: { 
-                      image: imageBuffer, 
-                      title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢        
+                      ///image: imageBuffer, 
+                      title: await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer());
+ `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢        
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -37,7 +38,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                         text: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄',  
                     },
                     nativeFlowMessage: {
-                        image: imageBuffer, 
+                        //image: imageBuffer, 
                         buttons: [
                             {
                                 name: 'single_select',
