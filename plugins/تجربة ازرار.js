@@ -15,8 +15,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             message: {
                 interactiveMessage: {
                     header: { 
-                      title:  await conn.sendMessage(m.chat, { image: imageBuffer })
-                          `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
+                      title:  
+                   ${imageBuffer}    `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
                       
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
