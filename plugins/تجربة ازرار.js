@@ -1,3 +1,7 @@
+const { prepareWAMessageMedia, relayMessage } = require('@adiwajshing/baileys');
+const fetch = require('node-fetch');
+const moment = require('moment-timezone');
+
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
     const time = moment.tz('Africa/Egypt').format('HH');
@@ -6,16 +10,20 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
-    // Fetch the image and send it as an image message
-   const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer())
-    var messa = await prepareWAMessageMedia({ image: imageBuffer },
+    // Fetch the image
+    const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer());
+
+    // Prepare the image for WhatsApp
+    const messa = await prepareWAMessageMedia({ image: imageBuffer }, { upload: conn.waUploadToServer });
+
     // Send the interactive message
- const buttonMessage = conn.relayMessage(m.chat, {
+    const buttonMessage = {
         viewOnceMessage: {
             message: {
+                imageMessage: messa.imageMessage,
                 interactiveMessage: {
                     header: {
-                      title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢        
+                        title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢        
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -30,15 +38,12 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ 📆  *تـاريـخ اليـوم:* 『』${date}《 
 ┃ ⏲️  *الـوقـت الـحالـي:* 『』${wib}《 
 ┗━━━━━━━━━━━━━┛
-⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`,
-                        hasMediaAttachment: true,
-                imageMessage: messa.imageMessage
+⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
                     },
                     body: {
-                        text: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄',  
+                        text: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
                     },
                     nativeFlowMessage: {
-                        //image: imageBuffer, 
                         buttons: [
                             {
                                 name: 'single_select',
@@ -59,60 +64,59 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏التنزيلات',
                                                     description: '',
-                                                    id: '.4',
+                                                    id: '.4'
                                                 },
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏قائمه الجروب',
                                                     description: '',
-                                                    id: '.5',
+                                                    id: '.5'
                                                 },
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏الالعاب',
                                                     description: '',
-                                                    id: '.6',
+                                                    id: '.6'
                                                 },
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏الترفيه',
                                                     description: '',
-                                                    id: '.6',
+                                                    id: '.6'
                                                 },
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏الصور',
                                                     description: '',
-                                                    id: '.2',
+                                                    id: '.2'
                                                 },
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏شروط',
                                                     description: '',
-                                                    id: '.20',
+                                                    id: '.20'
                                                 },
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏الدعم',
                                                     description: '',
-                                                    id: '.الدعم',
+                                                    id: '.الدعم'
                                                 },
                                                 {
                                                     header: '『』All MENU《',
                                                     title: '⌬ ❛╏قائمة الاوامر',
                                                     description: '',
-                                                    id: '.10',
-                                                },
+                                                    id: '.10'
+                                                }
                                             ]
                                         }
                                     ]
                                 }),
-                                image: imageBuffer, 
-                                messageParamsJson: 'ZEZO bot', 
-                                image: imageBuffer 
+                                image: messa.imageMessage,
+                                messageParamsJson: 'ZEZO bot'
                             },
                             {
-                                name: "single_select",
+                                name: 'single_select',
                                 buttonParamsJson: JSON.stringify({
                                     title: '『』MORE COMMANDS《',
                                     sections: [
@@ -130,26 +134,26 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏البحث',
                                                     description: '',
-                                                    id: '.search',
+                                                    id: '.search'
                                                 },
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏الطقس',
                                                     description: '',
-                                                    id: '.weather',
+                                                    id: '.weather'
                                                 },
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏الأخبار',
                                                     description: '',
-                                                    id: '.news',
+                                                    id: '.news'
                                                 },
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏التواصل',
                                                     description: '',
-                                                    id: '.contact',
-                                                },
+                                                    id: '.contact'
+                                                }
                                             ]
                                         }
                                     ]
@@ -157,14 +161,14 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                 messageParamsJson: 'ZEZO bot'
                             },
                             {
-                                name: "cta_url",
+                                name: 'cta_url',
                                 buttonParamsJson: JSON.stringify({
                                     display_text: "『』WEBSITE《",
                                     merchant_url: "https://atom.bio/zyad_yasser"
                                 })
                             },
                             {
-                                name: "cta_url",
+                                name: 'cta_url',
                                 buttonParamsJson: JSON.stringify({
                                     display_text: "『』CHANNEL《",
                                     url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a",
@@ -176,11 +180,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 }
             }
         }
-    }, {});
+    };
+
+    await relayMessage(m.chat, buttonMessage, {});
 };
 
 handler.help = ['info'];
 handler.tags = ['main'];
 handler.command = ['لول'];
 
-export default handler;
+module.exports = handler;
