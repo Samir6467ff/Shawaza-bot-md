@@ -14,7 +14,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         viewOnceMessage: {
             message: {
                 imageMessage: {
-                    jpegThumbnail: imageBuffer, // The image to be sent
+                    image: imageBuffer, // The image to be sent
                     caption: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢        
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
