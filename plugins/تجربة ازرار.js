@@ -32,7 +32,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┗━━━━━━━━━━━━━┛
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`, 
                 hasMediaAttachment: true,
-                imageMessage: messa.imageMessage,
+                imageMessage: imageBuffer.imageMessage,
                     },
                     body: {
                         text: ' اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄',  
