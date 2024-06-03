@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
     // Fetch the image and send it as an image message
-    const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer());
+    const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer())
 
     // Send the interactive message
  const buttonMessage = conn.relayMessage(m.chat, {
