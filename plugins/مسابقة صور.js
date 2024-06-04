@@ -1,22 +1,14 @@
-/*
-        Itachi xvi 🤍
-        Itachi xvi 🤍
-        Itachi xvi 🤍
-        Itachi xvi 🤍
-        Itachi xvi 🤍
-        Itachi xvi 🤍
-*/
 import fetch from 'node-fetch';
 
 let points = 50;
 let maxPlayers = 10;
 let maxQuestions = 50;
-let questionTimeout = 25 * 1000; 
+let questionTimeout = 25 * 1000;
 
 let handler = async (m, { conn, command }) => {
     let id = m.chat;
     conn.itachixvi = conn.itachixvi ? conn.itachixvi : {};
-//شرط بدا اللعبه هنبدا هنا تمام
+
     if (command === "مسابقه-صور") {
         if (id in conn.itachixvi) {
             conn.reply(m.chat, '*المسابقه شغاله حالياً يمكنك المشاركه*', conn.itachixvi[id][0]);
@@ -29,7 +21,6 @@ let handler = async (m, { conn, command }) => {
 
         conn.reply(m.chat, '*المسابقه تم تفعيلها استخدم .انضم-صور للانضمام للمسابقه*', m);
         throw false;
-      //زرار الانضمام
     } else if (command === "انضم-صور") {
         if (!(id in conn.itachixvi)) {
             conn.reply(m.chat, '*المعذره لايوجد مسابقه حالياً*', m);
@@ -48,7 +39,7 @@ let handler = async (m, { conn, command }) => {
 
         conn.itachixvi[id][2].push({ id: m.sender, points: 0, correctAnswers: 0 });
         conn.reply(m.chat, `تـم الـتـسـجـيـل بـنـجـاح\nتـبـقـي للـانـضـمـام: ${maxPlayers - conn.itachixvi[id][2].length}`, m);
-//وقفنا هنا تمام
+
         if (conn.itachixvi[id][2].length >= 2) {
             let itachixvi = await (await fetch(`https://raw.githubusercontent.com/DK3MK/worker-bot/main/eye.json`)).json();
             let json = itachixvi[Math.floor(Math.random() * itachixvi.length)];
@@ -60,7 +51,7 @@ let handler = async (m, { conn, command }) => {
 *•💰 الجائزة:* ⌊ ${points} ⌉ *نقطة* , \`لكل جواب صحيح\`
 ╯──────────────────⟢ـ`.trim()
             conn.sendFile(m.chat, json.img, '', caption, m)
-//لضبط الوقت
+
             conn.itachixvi[id][5] = setTimeout(() => {
                 conn.reply(m.chat, `*•┇❖↞الوقت أنتهي الاجابه هي┇⏳❯*\n ${json.name}\n╯──────────────────⟢ـ`, conn.itachixvi[id][0]);
                 clearTimeout(conn.itachixvi[id][5]);
@@ -78,14 +69,14 @@ let handler = async (m, { conn, command }) => {
 *•💰 الجائزة:* ⌊ ${points} ⌉ *نقطة* , \`لكل جواب صحيح\`
 ╯──────────────────⟢ـ`.trim()
                     conn.sendFile(m.chat, newJson.img, '', newCaption, m)
-                }, 1000); 
+                }, 1000);
             }, questionTimeout);
-        }//شرط الحذق
+        }
     } else if (command === "حذف-صور") {
         if (!conn.itachixvi[id]) {
             conn.reply(m.chat, '*لا يوجد احد قام بتشغيل المسابقه*', m);
         } else {
-            clearTimeout(conn.itachixvi[id][5]); 
+            clearTimeout(conn.itachixvi[id][5]);
             delete conn.itachixvi[id];
             conn.reply(m.chat, '*تم الفاء مسابقه صور بنجاح*', m);
         }
@@ -103,7 +94,7 @@ handler.before = async function (m, { conn }) {
     let questionCount = this.itachixvi[id][3];
 
     if (json && json.name && m.text.toLowerCase() === json.name.toLowerCase()) {
-        clearTimeout(this.itachixvi[id][5]); // Clear timeout
+        clearTimeout(this.itachixvi[id][5]);
         let playerIndex = players.findIndex(player => player.id === m.sender);
         players[playerIndex].points += points;
         players[playerIndex].correctAnswers++;
@@ -124,32 +115,4 @@ handler.before = async function (m, { conn }) {
             let caption = `┐┈┈┈〈 *📍 مـسـابـقـه صـور 📍* 〉┈┈┈◆
 *•🔢 رقـم الـسـوال ${this.itachixvi[id][4] + 1}*
 *•🍷 اجب بسرعه قبل اي شخص اخر*
-*•💰 الجائزة:* ⌊ ${points} ⌉ *نقطة* , \`لكل جواب صحيح\`
-╯──────────────────⟢ـ`.trim()
-            this.sendFile(m.chat, json.img, '', caption, m)
-
- 
-            this.itachixvi[id][5] = setTimeout(() => {
-                this.reply(m.chat, `*•┇❖↞الوقت أنتهي الاجابه هي┇⏳❯*\n ${json.name}\n╯──────────────────⟢ـ`, this.itachixvi[id][0]);
-                clearTimeout(this.itachixvi[id][5]);
-                this.itachixvi[id][5] = null;
-
-                setTimeout(async () => {
-                    let newJson = itachixvi[Math.floor(Math.random() * itachixvi.length)];
-                    this.itachixvi[id][1] = newJson;
-                    this.itachixvi[id][3]++;
-                    this.itachixvi[id][4]++;
-//تكرار الشروط مهمه
-                    let newCaption = `┐┈┈┈〈 *📍 مـسـابـقـه صـور 📍* 〉┈┈┈◆
-*•🔢 رقـم الـسـوال ${this.itachixvi[id][4] + 1}*
-*•🍷 اجب بسرعه قبل اي شخص اخر*
-*•💰 الجائزة:* ⌊ ${points} ⌉ *نقطة* , \`لكل جواب صحيح\`╯──────────────────⟢ـ`.trim()
-                    this.sendFile(m.chat, newJson.img, '', newCaption, m)
-                }, 1000); 
-            }, questionTimeout);
-        }
-    }
-};
-handler.command = /^(مسابقه-صور|انضم-صور|حذف-صور)$/i;
-
-export default handler;
+*•💰 الجائزة:* ⌊ ${points} ⌉ *نقطة* , \`لكل جواب صحيح\
