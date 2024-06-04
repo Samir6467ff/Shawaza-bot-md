@@ -10,7 +10,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
   // إرسال الرسالة مع الصورة والمعلومات التفاعلية
   await conn.sendMessage(m.chat, {
-    image: { url: 'https://link_to_your_image.com/your_image.jpg' }, // قم بوضع رابط الصورة هنا
+    image: { url: 'https://telegra.ph/file/a79388f9fa9385f59d6a3.png' }, // قم بوضع رابط الصورة هنا
     caption: `معلومات المستخدم:
 اهلا يا ${taguser}
 ليفللك: 0
