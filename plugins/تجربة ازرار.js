@@ -14,7 +14,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     const imageBuffer = await fetch('https://telegra.ph/file/2bcdd8e6cc7a486803d88.jpg').then(res => res.buffer());
 
     // Prepare the image for WhatsApp
-    const messa = await prepareWAMessageMedia({ image: imageBuffer }, { upload: conn.waUploadToServer });
+    //const messa = await prepareWAMessageMedia({ image: imageBuffer }, { upload: conn.waUploadToServer });
 
     // Send the interactive message
     const buttonMessage = {
@@ -112,7 +112,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                         }
                                     ]
                                 }),
-                                image: messa.imageMessage,
+                                image: imageBuffer.imageMessage,
                                 messageParamsJson: 'ZEZO bot'
                             },
                             {
