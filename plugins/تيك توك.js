@@ -1,42 +1,40 @@
-import { tiktokdl } from '@bochilteam/scraper'
-import fg from 'api-dylux'
+//مقدمه من قناه Zoro Codes ' https://whatsapp.com/channel/0029VaYMyqu4CrfgGRLXfv3c '
+import fetch from 'node-fetch';
+import fs from 'fs';
 
-let handler = async (m, { conn, text, args, usedPrefix, command }) => {
-  if (!args[0] && m.quoted && m.quoted.text) {
-    args[0] = m.quoted.text
-  }
-  if (!args[0] && !m.quoted) throw `Give the link of the video Tiktok or quote a tiktok link`
-  if (!args[0].match(/tiktok/gi)) throw `Verify that the link is from TikTok`
-
-  let txt = 'Here your Requested video'
+let handler = async (m, { conn, usedPrefix, args, command, text }) => {
+  if (!text) throw `*يجب عليك إعطاء رابط أي فيديو أو صورة من TikTok*`;
+  m.reply('*الرجاء الانتظار...*');
 
   try {
-    const {
-      author: { nickname },
-      video,
-      description,
-    } = await tiktokdl(args[0])
-    const url =
-      video.no_watermark2 ||
-      video.no_watermark ||
-      'https://tikcdn.net' + video.no_watermark_raw ||
-      video.no_watermark_hd
+    let mediaURL = await zoro(text);
 
-    if (!url) throw global.error
+    if (!mediaURL) throw 'لم يتم العثور على فيديو للرابط المعطى';
 
-    conn.sendFile(m.chat, url, 'tiktok.mp4', '', m)
-  } catch (err) {
-    try {
-      let p = await fg.tiktok(args[0])
-      conn.sendFile(m.chat, p.play, 'tiktok.mp4', txt, m)
-    } catch {
-      m.reply('*An unexpected error occurred*')
-    }
+    conn.sendFile(m.chat, mediaURL, '', 'هذا هو الفيديو ⚡', m, false, { mimetype: 'video/mp4' });
+  } catch (error) {
+    throw `حدث خطأ: ${error.message}`;
   }
+};
+
+async function zoro(text) {
+  let res = await fetch(`https://api-me-4ef1b6491458.herokuapp.com/api/tiktok?url=${encodeURIComponent(text)}`);
+  if (!res.ok) return false;
+
+  const fileName = 'Zoro_tiktok_video.mp4';
+  const fileStream = fs.createWriteStream(fileName);
+  res.body.pipe(fileStream);
+
+  await new Promise((resolve, reject) => {
+    fileStream.on('finish', resolve);
+    fileStream.on('error', reject);
+  });
+
+  return fileName;
 }
 
-handler.help = ['tiktok'].map(v => v + ' <url>')
-handler.tags = ['downloader']
-handler.command = /^t(t|iktok(d(own(load(er)?)?|l))?|td(own(load(er)?)?|l)|تيك)$/i
+handler.help = ['tiktok'];
+handler.tags = ['downloader'];
+handler.command = /^(تيكتوك|تيك)$/i;
 
-export default handler
+export default handler;
