@@ -112,8 +112,8 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
               }, 
               {
                   "name": "quick_reply",
-                  "buttonParamsJson": "{\"display_text\":\"『』OWNER《\",\"id\":\".المطور\"}
-               },
+                  "buttonParamsJson": "{\"display_text\":\"『』OWNER《\",\"id\":\".المطور\"}" 
+               }, 
                {
                   "name": "cta_url",
                   "buttonParamsJson": "{\"display_text\":\"『』WEBSITE《\",\"url\":\"https://atom.bio/zyad_yasser\",\"merchant_url\":\"https://atom.bio/zyad_yasser\"}"
