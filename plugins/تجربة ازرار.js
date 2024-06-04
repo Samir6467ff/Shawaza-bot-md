@@ -27,7 +27,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ┃ ⏲️  *الـوقـت الـحالـي:* 『』${wib}《 
 ┗━━━━━━━━━━━━━┛
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
-  }) 
+  }); 
     
 await conn.relayMassege(m.chat, {
     viewOnceMessage: {
