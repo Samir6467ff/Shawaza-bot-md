@@ -158,7 +158,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                             },
                             {
                              "name": "quick_reply",
-                             "buttonParamsJson": "{\"display_text\":\"owner\",\"id\":\"المطور\"}"
+                             "buttonParamsJson": "{\"display_text\":\"owner\",\"id\":\".المطور\"}"
                             },
                             {
                               "name": "cta_url",
