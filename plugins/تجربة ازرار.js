@@ -35,10 +35,12 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                   //  image: imageBuffer 
                     },
                     body: {
+                    hasMediaAttachment: true,
+                    image: imageBuffer, 
                     footer: { text: `ᴹᴿ᭄࿐𝒁𝒆𝒛𝒐࿐ᴹᴿ᭄`.trim() }, 
                     },
                     nativeFlowMessage: {
-                        image: imageBuffer, 
+                      //  image: imageBuffer, 
                         buttons: [
                             {
                                 name: 'single_select',
@@ -155,7 +157,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                 messageParamsJson: 'ZEZO bot'
                             },
                             {
-                                name: "web_url",
+                                name: "cta_url",
                                 buttonParamsJson: JSON.stringify({
                                     display_text: "『』WEBSITE《",
                                     merchant_url: "https://atom.bio/zyad_yasser"
