@@ -157,6 +157,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                 messageParamsJson: 'ZEZO bot'
                             },
                             {
+                             "name": "quick_reply",
+                             "buttonParamsJson": "{\"display_text\":\"owner\",\"id\":\"المطور\"}"
+                            },
+                            {
                               "name": "cta_url",
                               "buttonParamsJson": "{\"display_text\":\"WEBSITE\",\"url\":\"https://atom.bio/zyad_yasser\",\"merchant_url\":\"https://atom.bio/zyad_yasser\"}"
                             },
