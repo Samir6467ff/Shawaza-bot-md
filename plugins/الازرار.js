@@ -109,7 +109,23 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                     ]
                   }),
                   messageParamsJson:'ZEZO bot'
-                }
+              }, 
+              {
+                  "name": "quick_reply",
+                  "buttonParamsJson": "{\"display_text\":\"『』OWNER《\",\"id\":\".المطور\"}
+               },
+               {
+                  "name": "cta_url",
+                  "buttonParamsJson": "{\"display_text\":\"『』WEBSITE《\",\"url\":\"https://atom.bio/zyad_yasser\",\"merchant_url\":\"https://atom.bio/zyad_yasser\"}"
+                },
+                {
+                   name: "cta_url",
+                   buttonParamsJson: JSON.stringify({
+                   display_text: "『』CHANNEL《",
+                   url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a",
+                   merchant_url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a"
+               })
+               }
               ]
             }
           }
