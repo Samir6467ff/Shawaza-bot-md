@@ -5,8 +5,9 @@ let wib = moment.tz('Africa/Cairo').format('HH:mm:ss')
 let date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long', year: 'numeric' }); 
 await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
 var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'}}) 
-   
-    const viewOnceMessage = {
+
+  conn.relayMessage(m.chat, {
+      viewOnceMessage: {
         message: {
           interactiveMessage: {
             body: {
@@ -29,12 +30,13 @@ var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/a
             },
             footer: {
               text: '> اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n> ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
-                 }, 
-             header: {
-                title: `* بـحــث فــي الـيـوتـيــوب *`,
-                hasMediaAttachment: true,
+            },
+            header:{
+               title:'لول', 
+               hasMediaAttachment: true,
                 imageMessage: messa.imageMessage,
             },
+
             nativeFlowMessage: {
               buttons: [
                 {
@@ -113,15 +115,7 @@ var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/a
                     ]
                   }),
                   messageParamsJson:'ZEZO bot'
-                }, 
-let msg= generateWAMessageFromContent(m.chat, {
-            viewOnceMessage: {
-                message: {
-                    interactiveMessage,
-                },
-            },
-        }, { userJid: conn.user.jid, quoted: m })
-        conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id});
+              }, 
               {
                   "name": "quick_reply",
                   "buttonParamsJson": "{\"display_text\":\"『』OWNER《\",\"id\":\".المطور\"}" 
@@ -149,6 +143,6 @@ let msg= generateWAMessageFromContent(m.chat, {
 
 handler.help = ['info']
 handler.tags = ['main']
-handler.command = ['لول']
+handler.command = ['اوامر']
 
 export default handler
