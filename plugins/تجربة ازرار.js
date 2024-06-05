@@ -143,6 +143,6 @@ var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/a
 
 handler.help = ['info']
 handler.tags = ['main']
-handler.command = ['اوامر']
+handler.command = ['لول']
 
 export default handler
