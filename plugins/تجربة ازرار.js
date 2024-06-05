@@ -8,11 +8,14 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   conn.relayMessage(m.chat, {
     message: {
       viewOnceMessage: {
-        message: {
+    message: {
+      image:{url:'https://telegra.ph/file/cde68161ed7a78ea2c819.jpg'}, 
+      }, 
+     /*   message: {
           "messageContextInfo": {
             "deviceListMetadata": {},
             "deviceListMetadataVersion": 2
-          },
+          },*/
           interactiveMessage: {
             body: {
               text: "test",
