@@ -6,8 +6,7 @@ const time = moment.tz('Africa/Egypt').format('HH')
 let wib = moment.tz('Africa/Cairo').format('HH:mm:ss')
 let date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long', year: 'numeric' }); 
 await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
-var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/9c5f3db7081f5fc0f8ad2.jpg'}}) 
-   
+var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'} }, { upload: conn.waUploadToServer });   
   conn.relayMessage(m.chat, {
       viewOnceMessage: {
         message: {
