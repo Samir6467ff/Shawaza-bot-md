@@ -4,13 +4,9 @@ const time = moment.tz('Africa/Egypt').format('HH')
 let wib = moment.tz('Africa/Cairo').format('HH:mm:ss')
 let date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long', year: 'numeric' }); 
 await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
-
+var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'}}) 
    
-  conn.relayMessage(m.chat, {
-      viewOnceMessage: {
-        message: {
-          image: { url:'https://telegra.ph/file/cde68161ed7a78ea2c819.jpg'}
-            }, 
+    const viewOnceMessage = {
         message: {
           interactiveMessage: {
             body: {
@@ -33,6 +29,11 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
             },
             footer: {
               text: '> اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n> ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
+                 }, 
+             header: {
+                title: `* بـحــث فــي الـيـوتـيــوب *`,
+                hasMediaAttachment: true,
+                imageMessage: messa.imageMessage,
             },
             nativeFlowMessage: {
               buttons: [
@@ -112,7 +113,15 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
                     ]
                   }),
                   messageParamsJson:'ZEZO bot'
-              }, 
+                }, 
+let msg= generateWAMessageFromContent(m.chat, {
+            viewOnceMessage: {
+                message: {
+                    interactiveMessage,
+                },
+            },
+        }, { userJid: conn.user.jid, quoted: m })
+        conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id});
               {
                   "name": "quick_reply",
                   "buttonParamsJson": "{\"display_text\":\"『』OWNER《\",\"id\":\".المطور\"}" 
