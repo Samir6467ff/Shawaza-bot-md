@@ -29,10 +29,19 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     `,
     footer: 'اختر خيار من القائمة:',
     buttons: [
-      {buttonId: '.المطور', buttonText: {displayText: 'المطور'}, type: 1},
-      {buttonId: '.الاشتراكات', buttonText: {displayText: 'الاشتراكات'}, type: 1},
-      {buttonId: '.الصور', buttonText: {displayText: 'الصور'}, type: 1}
-    ],
+{
+    "name": "single_select",
+    "buttonParamsJson": "{\"title\":\"title\",\"sections\":[{\"title\":\"title\",\"highlight_label\":\"label\",\"rows\":[{\"header\":\"اوامر\",\"title\":\"اوامر\",\"description\":\"\",\"id\":\".اوامر\"},{\"header\":\"المطور\",\"title\":\"المطور\",\"description\":\"\",\"id\":\".المطور\"}]}]}"
+},
+{
+    "name": "quick_reply",
+    "buttonParamsJson": "{\"display_text\":\"المطور\",\"id\":\".المطور\"}"
+},
+{
+     "name": "cta_url",
+     "buttonParamsJson": "{\"display_text\":\"ويب\",\"url\":\"https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0\",\"merchant_url\":\"https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0\"}"
+}
+         ],
     headerType: 4 // هذا النوع يمثل رسالة تحتوي على صورة
   });
 
