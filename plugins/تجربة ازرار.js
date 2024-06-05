@@ -9,8 +9,18 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
-    // استخدام conn أو sock في prepareWAMessageMedia
-    var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'} }, { upload: conn.waUploadToServer });
+    // قائمة عناوين URL للصور
+    const images = [
+        'https://telegra.ph/file/a79388f9fa9385f59d6a3.png',
+        'https://telegra.ph/file/9c5f3db7081f5fc0f8ad2.jpg',
+        'https://telegra.ph/file/187d2833c018e15d866c4.jpg'  // أضف عنوان URL ثالث هنا
+    ];
+
+    // اختيار عشوائي لعنوان URL من القائمة
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+
+    // إعداد رسالة الوسائط
+    var messa = await prepareWAMessageMedia({ image: { url: randomImage } }, { upload: conn.waUploadToServer });
 
     conn.relayMessage(m.chat, {
         viewOnceMessage: {
@@ -38,7 +48,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                         text: '➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
                     },
                     header: {
-                        title: 'لول',
+                        title: '',
                         hasMediaAttachment: true,
                         imageMessage: messa.imageMessage,
                     },
@@ -139,6 +149,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 handler.help = ['info'];
 handler.tags = ['main'];
-handler.command = ['اوامر','الاوامر','menu','المهام'];
+handler.command = ['لول'];
 
 export default handler;
