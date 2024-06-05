@@ -1,17 +1,18 @@
-let handler = async (m, { conn, args, usedPrefix, command }) => {
+import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys'
+import handler = async (m, { conn, args, usedPrefix, command }) => {
 const taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 const time = moment.tz('Africa/Egypt').format('HH')
 let wib = moment.tz('Africa/Cairo').format('HH:mm:ss')
 let date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long', year: 'numeric' }); 
 await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
-
+ var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/9c5f3db7081f5fc0f8ad2.jpg'}}
    
   conn.relayMessage(m.chat, {
       viewOnceMessage: {
         message: {
           interactiveMessage: {
-            header: {
-              title: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
+            body: {
+              text: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
@@ -28,8 +29,12 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
 ┗━━━━━━━━━━━━━┛
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
             },
-            body: {
-              text: '> اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n> ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
+            footer: {
+              text:'➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
+            },
+            header:{
+               hasMediaAttachment: true,
+                imageMessage: messa.imageMessage,
             },
             nativeFlowMessage: {
               buttons: [
@@ -137,6 +142,6 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
 
 handler.help = ['info']
 handler.tags = ['main']
-handler.command = ['اوامر']
+handler.command = ['لول']
 
 export default handler
