@@ -15,11 +15,9 @@ await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
         },
         interactiveMessage:{
           body: {
-            text: "test"
-          }, 
+            text: "test", 
           footer: {
-            text: "test"
-          },
+            text: "test",
           header:{
             title: "test",
             subtitle: "test",
@@ -43,57 +41,49 @@ image:{url:'https://telegra.ph/file/a79388f9fa9385f59d6a3.png'},
                             description: '',
                             id: '.المطور'
                           },
-                           {
+                          {
                                 header: '『』MENU《', 
                                 title:'⌬ ❛╏التنزيلات', 
                                 description: '', 
                                 id: '.4', 
                          }, 
-                            {
+                         {
                                 header: '『』MENU《', 
                                 title: '⌬ ❛╏قائمه الجروب', 
                                 description: '', 
                                 id: '.5', 
                          }, 
-                            {
+                         {
                                 header: '『』MENU《', 
                                 title: '⌬ ❛╏الالعاب', 
                                 description: '', 
                                 id: '.6', 
                          }, 
-                            
-                            {
+                         {
                                 header: '『』MENU《', 
                                 title: '⌬ ❛╏الترفيه', 
                                 description: '', 
                                 id: '.6', 
-                         }, 
-                           
-                            {
+                         },  
+                         {
                                 header: '『』MENU《', 
                                 title: '⌬ ❛╏الصور', 
                                 description: '', 
                                 id: '.2', 
                          }, 
-
-                           
-                            {
+                         {
                                 header: '『』MENU《', 
                                 title: '⌬ ❛╏شروط', 
                                 description: '', 
                                 id: '.20', 
                          }, 
-
-
-                            {
+                         {
                                 header: '『』MENU《', 
                                 title: '⌬ ❛╏الدعم', 
                                 description: '', 
                                 id: '.الدعم', 
                          }, 
-
-                            
-                            {
+                         {
                                 header: '『』All MENU《', 
                                 title: '⌬ ❛╏قائمة الاوامر', 
                                 description: '', 
