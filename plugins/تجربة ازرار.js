@@ -23,7 +23,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             header: {
               title: "test",
               subtitle: "test",
-              hasMediaAttachment: true,
+              hasMediaAttachment: false,
               image: { url: 'https://telegra.ph/file/a79388f9fa9385f59d6a3.png' }
             },
             nativeFlowMessage: {
