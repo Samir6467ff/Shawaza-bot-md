@@ -35,7 +35,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
                     },
                     footer: {
-                        text: '> اذا واجهتك مشكله اكتب ابلاغ واكتب رسالتك\n> ➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
+                        text: '➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
                     },
                     header: {
                         title: 'لول',
@@ -139,6 +139,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 handler.help = ['info'];
 handler.tags = ['main'];
-handler.command = ['لول'];
+handler.command = ['اوامر','الاوامر','menu','المهام'];
 
 export default handler;
