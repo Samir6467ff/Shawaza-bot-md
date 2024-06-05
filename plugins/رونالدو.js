@@ -1,3 +1,4 @@
+import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
 import axios from 'axios';
 
 const handler = async (m, { conn, usedPrefix, command }) => {
