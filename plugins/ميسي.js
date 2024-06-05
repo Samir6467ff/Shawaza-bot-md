@@ -1,4 +1,4 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
+/*import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
 import axios from 'axios';
 const handler = async (m, {conn, usedPrefix, command}) => {
   const res = (await axios.get(`https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/Messi.json`)).data;
@@ -36,4 +36,4 @@ const handler = async (m, {conn, usedPrefix, command}) => {
 handler.help = ['messi'];
 handler.tags = ['internet'];
 handler.command = /^(ميسي)$/i;
-export default handler;
+export default handler;*/
