@@ -18,7 +18,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
             header:{
               hasMediaAttachment: true,
       image: mediaMessage.imageMessage,
-        title:'', 
+        title:''}, 
          /*  body: {
       text: '*ميسي عمك*',
         }, 
