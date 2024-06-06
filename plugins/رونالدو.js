@@ -26,14 +26,16 @@ const handler = async (m, { conn, usedPrefix, command }) => {
         hasMediaAttachment: true,
         imageMessage: mediaMessage.imageMessage
       },
+      nativeFlowMessage: {
       buttons: [
         {
           buttonId: 'ميسي',
           buttonText: { displayText: 'التالي' },
           type: 1
         }
-      ]
-    };
+      } 
+    ]
+   };
 
     // إنشاء رسالة عرض مرة واحدة
     const msg = generateWAMessageFromContent(m.chat, {
