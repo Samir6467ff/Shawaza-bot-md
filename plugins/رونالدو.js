@@ -28,7 +28,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
                 "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\".الدون\"}"
         }
       ],
-      headerType: 4 // يشير إلى أن الرسالة تحتوي على صورة
+      //headerType: 4 // يشير إلى أن الرسالة تحتوي على صورة
     };
 
     // إنشاء رسالة عرض مرة واحدة
