@@ -40,7 +40,8 @@ const handler = async (m, { conn, usedPrefix, command }) => {
       viewOnceMessage: {
         message: {
           interactiveMessage, 
-      }
+        }, 
+      }, 
     }, { quoted: m });
 
     // إرسال الرسالة
