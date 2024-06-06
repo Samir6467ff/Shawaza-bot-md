@@ -21,9 +21,8 @@ const handler = async (m, { conn, usedPrefix, command }) => {
       image: mediaMessage.imageMessage,
       buttons: [
         {
-          buttonId: 'الدون',
-          buttonText: { displayText: 'التالي' },
-          type: 1
+                "name": "quick_reply",
+                "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\".الدون\"}"
         }
       ],
       headerType: 4 // يشير إلى أن الرسالة تحتوي على صورة
