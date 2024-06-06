@@ -17,11 +17,11 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     const interactiveMessage = {
       body: {
       text: '*ميسي عمك*'},
-      footer:{ text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'},
+     // footer:{ text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'},
       header:{
-        title:'عمك'}, 
-    //  hasMediaAttachment: true,
-      //image: mediaMessage.imageMessage},
+        title:'عمك', 
+      hasMediaAttachment: true,
+      image: mediaMessage.imageMessage},
       buttons: [
         {
                 "name": "quick_reply",
