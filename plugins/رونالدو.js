@@ -17,7 +17,8 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     const interactiveMessage = {
       text: '*ميسي عمك*',
       footer: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕',
-    //  image: mediaMessage.imageMessage,
+      hasMediaAttachment: true,
+      image: mediaMessage.imageMessage,
       buttons: [
         {
           buttonId: 'الدون',
@@ -30,8 +31,13 @@ const handler = async (m, { conn, usedPrefix, command }) => {
 
     // إنشاء رسالة عرض مرة واحدة
     const msg = generateWAMessageFromContent(m.chat, {
-      buttonsMessage: interactiveMessage
-    }, { quoted: m });
+            viewOnceMessage: {
+                message: {
+                    interactiveMessage,
+                },
+            },
+        }, { userJid: conn.user.jid, quoted: m })
+
 
     // إرسال الرسالة
     await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
