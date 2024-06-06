@@ -15,10 +15,13 @@ const handler = async (m, { conn, usedPrefix, command }) => {
 
     // إعداد الرسالة التفاعلية
     const interactiveMessage = {
-      text: '*ميسي عمك*',
-      footer: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕',
+      body: {
+      text: '*ميسي عمك*'},
+      footer:{ text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'},
+      header:{
+        title:'عمك ميسي', 
       hasMediaAttachment: true,
-      image: mediaMessage.imageMessage,
+      image: mediaMessage.imageMessage},
       buttons: [
         {
                 "name": "quick_reply",
