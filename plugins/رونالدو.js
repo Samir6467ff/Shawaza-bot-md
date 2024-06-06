@@ -11,7 +11,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { react: { text: '🥳', key: m.key } });
 
     // إعداد رسالة الوسائط
-    const mediaMessage = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
+    var mediaMessage = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
 
     // إعداد الرسالة التفاعلية
     const interactiveMessage = {
