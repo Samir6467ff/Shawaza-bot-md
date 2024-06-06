@@ -17,10 +17,11 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     const interactiveMessage = {
       header:{
         title:'', 
-      hasMediaAttachment: true,
+           body: {
+      text: '*ميسي عمك*',
+        hasMediaAttachment: true,
       image: mediaMessage.imageMessage},
-     body: {
-      text: '*ميسي عمك*'},
+        }, 
       footer:{ text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'},
             buttons: [
         {
