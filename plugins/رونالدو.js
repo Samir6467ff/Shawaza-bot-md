@@ -45,7 +45,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
 
 
     // إرسال الرسالة
-    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+    await conn.sendMessage(m.chat, msg.message, { messageId: msg.key.id });
   } catch (error) {
     console.error(error);
   }
