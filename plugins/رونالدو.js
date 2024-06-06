@@ -28,36 +28,13 @@ const handler = async (m, { conn, usedPrefix, command }) => {
       },
       nativeFlowMessage: {
                 buttons: [
-                    {
-                        name: 'single_select',
-                        buttonParamsJson: JSON.stringify({
-                            title: 'نـتـائــج الـبـحــث',
-                            sections:'هلو', 
-                                rows: [
-                                    {
-                                        header:'المطور',
-                                        title: '',
-               
-description:'',
-                                        id: `.المطور`
-                                    },
-                                    {
-                                        header:'',
-                                        title:'الاوامر',
-                                        description:'',
-                                        id: `.. اوامر`
-                                    }
-                                ]
-                            }))
-                        })
-                    }
-                ],
-                messageParamsJson: ''
+                messageParamsJson: '', 
       {
                 "name": "quick_reply",
                 "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\"ميسي\"}"
         }
             }
+    ], 
         };        
     // إنشاء رسالة عرض مرة واحدة
     const msg = generateWAMessageFromContent(m.chat, {
