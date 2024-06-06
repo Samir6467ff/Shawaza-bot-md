@@ -29,9 +29,8 @@ const handler = async (m, { conn, usedPrefix, command }) => {
       nativeFlowMessage: {
       buttons: [
         {
-          buttonId: 'ميسي',
-          buttonText: { displayText: 'التالي' },
-          type: 1
+                "name": "quick_reply",
+                "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\".الدون\"}"
         }
       } 
     ]
