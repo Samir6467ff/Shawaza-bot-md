@@ -17,7 +17,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     const interactiveMessage = {
       text: '*ميسي عمك*',
       footer: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕',
-      image: mediaMessage.imageMessage,
+    //  image: mediaMessage.imageMessage,
       buttons: [
         {
           buttonId: 'الدون',
