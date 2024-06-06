@@ -38,7 +38,8 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     // إنشاء رسالة عرض مرة واحدة
     const msg = generateWAMessageFromContent(m.chat, {
       viewOnceMessage: {
-        message: interactiveMessage
+        message: {
+          interactiveMessage, 
       }
     }, { quoted: m });
 
