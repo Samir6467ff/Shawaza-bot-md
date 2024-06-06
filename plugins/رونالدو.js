@@ -19,8 +19,9 @@ const handler = async (m, { conn, usedPrefix, command }) => {
       text: '*ميسي عمك*'},
       footer:{ text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'},
       header:{
-      hasMediaAttachment: true,
-      image: mediaMessage.imageMessage},
+        title:'عمك'}, 
+    //  hasMediaAttachment: true,
+      //image: mediaMessage.imageMessage},
       buttons: [
         {
                 "name": "quick_reply",
