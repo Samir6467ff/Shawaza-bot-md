@@ -23,11 +23,13 @@ const handler = async (m, { conn, usedPrefix, command }) => {
       text: '*ميسي عمك*',
         }, 
       footer:{ text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'},*/
+      nativeFlowMessage: {
             buttons: [
         {
                 "name": "quick_reply",
                 "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\".الدون\"}"
         }
+        } 
       ],
       //headerType: 4 // يشير إلى أن الرسالة تحتوي على صورة
     };
