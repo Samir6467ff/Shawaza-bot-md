@@ -28,12 +28,14 @@ const handler = async (m, { conn, usedPrefix, command }) => {
           footer:{
             text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'
           },
+          nativeFlowMessage:{
           buttons: [
             {
                 "name": "quick_reply",
                 "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\".الدون\"}"
             }
-          ],
+          ]
+          }, 
           headerType: 4
         }
       }
