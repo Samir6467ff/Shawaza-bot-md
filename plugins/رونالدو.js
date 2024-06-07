@@ -11,41 +11,29 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { react: { text: '🥳', key: m.key } });
 
     // إعداد رسالة الوسائط
-    var mediaMessage = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
+    const mediaMessage = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
 
     // إعداد الرسالة التفاعلية
     const interactiveMessage = {
-            header:{
-              hasMediaAttachment: true,
-      image: mediaMessage.imageMessage,
-        title:''}, 
-         /*  body: {
-      text: '*ميسي عمك*',
-        }, 
-      footer:{ text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'},*/
-      nativeFlowMessage: {
-            buttons: [
-        {
-                "name": "quick_reply",
-                "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\".الدون\"}"
+      viewOnceMessage: {
+        message: {
+          imageMessage: mediaMessage.imageMessage,
+          caption: '*Siiiuuuuuu*\nHinaBot',
+          footer: 'اختر أحد الخيارات:',
+          buttons: [
+            { buttonId: `${usedPrefix}الدون`, buttonText: { displayText: 'التالي 🍷' }, type: 1 },
+            { buttonId: `${usedPrefix}الدعم`, buttonText: { displayText: 'الدعم 🍷' }, type: 1 }
+          ],
+          headerType: 4
         }
-      ],
-    } 
-      //headerType: 4 // يشير إلى أن الرسالة تحتوي على صورة
-  };
+      }
+    };
 
-    // إنشاء رسالة عرض مرة واحدة
-    const msg = generateWAMessageFromContent(m.chat, {
-            viewOnceMessage: {
-                message: {
-                    interactiveMessage,
-                },
-            },
-        }, { userJid: conn.user.jid, quoted: m })
-
+    // إنشاء الرسالة
+    const msg = generateWAMessageFromContent(m.chat, interactiveMessage, { userJid: conn.user.jid, quoted: m });
 
     // إرسال الرسالة
-    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id});
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
   } catch (error) {
     console.error(error);
   }
