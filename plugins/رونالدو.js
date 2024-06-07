@@ -1,7 +1,7 @@
 import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import axios from 'axios';
 
-const handler = async (m, { conn, usedPrefix, command }) => {
+let handler = async (m, { conn, usedPrefix, command, args }) => {
   try {
     // جلب بيانات كريستيانو رونالدو من الملف JSON
     const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
@@ -14,7 +14,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     const mediaMessage = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
 
     // إعداد الرسالة التفاعلية
-    const interactiveMessage = generateWAMessageFromContent(m.chat, {
+    const interactiveMessage = {
         viewOnceMessage: {
             message: {
               hasMediaAttachment: true,
