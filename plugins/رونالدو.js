@@ -1,7 +1,7 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 import axios from 'axios';
 
-let handler = async (m, { conn, usedPrefix, command, args }) => {
+let handler = async (m, { conn, usedPrefix }) => {
   try {
     // جلب بيانات كريستيانو رونالدو من الملف JSON
     const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
@@ -15,23 +15,16 @@ let handler = async (m, { conn, usedPrefix, command, args }) => {
 
     // إعداد الرسالة التفاعلية
     const interactiveMessage = {
-        viewOnceMessage: {
-            message: {
-              hasMediaAttachment: true,
-              imageMessage: mediaMessage.imageMessage,
-                caption: '*عمك ميسي*',
-                footer: 'اختر أحد الخيارات:',
-                buttons: [
-                    { buttonId: `${usedPrefix}الدون`, buttonText: { displayText: 'التالي 🍷' }, type: 1 },
-                    { buttonId: `${usedPrefix}الدعم`, buttonText: { displayText: 'الدعم 🍷' }, type: 1 }
-                ],
-                headerType: 4
-            }
-        }
-    }, { userJid: conn.user.jid, quoted: m });
+      buttons: [
+        { buttonId: `${usedPrefix}الدون`, buttonText: { displayText: 'الدون' }, type: 1 },
+        { buttonId: `${usedPrefix}الدعم`, buttonText: { displayText: 'الدعم' }, type: 1 }
+      ],
+      contentText: '*عمك ميسي*',
+      footerText: 'اختر أحد الخيارات:'
+    };
 
-    // إرسال الرسالة
-    await conn.relayMessage(m.chat, interactiveMessage.message, { messageId: interactiveMessage.key.id });
+    // إرسال الرسالة التفاعلية
+    await conn.sendMessage(m.chat, interactiveMessage, 'buttonsMessage', { quoted: m, contextInfo: { mentionedJid: [ronaldo] } });
   } catch (error) {
     console.error(error);
   }
