@@ -27,7 +27,8 @@ let handler = async (m, { conn, usedPrefix }) => {
     };
 
     // إرسال الرسالة التفاعلية
-    await conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage, { quoted: mediaMessage });
+    await conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage, { quoted: m });
+    await conn.relayWAMessage(mediaMessage);
   } catch (error) {
     console.error(error);
   }
