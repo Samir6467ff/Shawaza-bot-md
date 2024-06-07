@@ -1,4 +1,4 @@
-let handler = async function (m, { conn, args }) {
+/*let handler = async function (m, { conn, args }) {
   let who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
 
   let groupInfo = await conn.groupMetadata(m.chat);
@@ -56,4 +56,4 @@ handler.admin = false;
 handler.botAdmin = false;
 handler.fail = null;
 
-export default handler;
+export default handler;*/
