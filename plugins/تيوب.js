@@ -4,7 +4,10 @@ import yts from 'yt-search';
 const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     const device = await getDevice(m.key.id);
 
-    if (!text) throw `هذا الأمر مخصص لتنزيل مقاطع الفيديو من يوتيوب عبر كتابة الاسم و إختيار الخیارات عبر النقر علي الزر.*\n*~يرجى ملاحظة أنني لست مسؤولا عن محتوى الموسيقى أو ما تشاهده~*\n\n* مثال:*\n*.بحث* edit shikimori`;
+    if (!text) throw `*تقدر تحمل الفيدوهات او الاصوات من الامر دا*
+    *مثال*
+    *يوتيوب المبدأ مروان بابلو.*
+    > ملحوظه انا غير مسؤول عن ما تشاهده`;
 
     if (device !== 'desktop' || device !== 'web') {      
         const results = await yts(text);
@@ -14,10 +17,10 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
 
         var messa = await prepareWAMessageMedia({ image: {url: randomVideo.thumbnail}}, { upload: conn.waUploadToServer })
         const interactiveMessage = {
-            body: { text: `عــدد الـنـتـايــج : *${results.videos.length}*\nالـعـنـوان : *${randomVideo.title}*\nإســم الـحـســاب : *${randomVideo.author.name}*\nعــدد الـمـشــاهـدات : *${randomVideo.views}*\nالـرابــط : *${randomVideo.url}*\nرابــط‌ الـصــوره : *${randomVideo.thumbnail}*\n\nانقر علي الزر تحت لتحميل الفيديو او الصوت.`.trim() },
-            footer: { text: `dark man`.trim() },  
+            body: { text: `عــدد الـنـتـايــج : *${results.videos.length}*\nالـعـنـوان : *${randomVideo.title}*\nإســم الـحـســاب : *${randomVideo.author.name}*\nعــدد الـمـشــاهـدات : *${randomVideo.views}*\nالـرابــط : *『 ${randomVideo.url}』*\nرابــط‌ الـصــوره : *『 ${randomVideo.thumbnail}』*\n\nانقر علي الزر تحت لتحميل الفيديو او الصوت.`.trim() },
+            footer: { text: `𝒁𝒆𝒛𝒐 𝑩𝒐𝒕`.trim() },  
             header: {
-                title: `* بـحــث فــي الـيـوتـيــوب *`,
+                title: `*بـحــث فــي الـيـوتـيــوب*`,
                 hasMediaAttachment: true,
                 imageMessage: messa.imageMessage,
             },
@@ -34,15 +37,21 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
                                         header: video.title,
                                         title: video.author.name,
                
-description: '🎶╎تـحـمـيــل الـصـوتـيــة',
-                                        id: `.شغل ${video.url}`
+description: '🎶╎الـــــصـــــوت',
+                                        id: `.صوتي ${video.url}`
                                     },
                                     {
                                         header: video.title,
                                         title: video.author.name,
-                                        description: '📥╎تـحـمـيــل الـفـيـديــو',
-                                        id: `.ytv ${video.url}`
-                                    }
+                                        description: '📥╎الـــــفـــــيـــــديــو',
+                                        id: `.فيديو ${video.url}`
+                                    }, 
+                                      {
+                                        header: video.title,
+                                        title: video.author.name,
+                                        description: '📥╎الـــــفــــيــــديـو مــــــلــــــف',
+                                        id: `.ملفتيوب ${video.url}`
+                                      }
                                 ]
                             }))
                         })
@@ -79,5 +88,5 @@ description: '🎶╎تـحـمـيــل الـصـوتـيــة',
 };
 handler.help = ['ytsearch <نص>'];
 handler.tags = ['search'];
-handler.command = /^(ytsearch|yts|searchyt|buscaryt|videosearch|audiosearch|تيوب)$/i;
+handler.command = /^(ytsearch|yts|searchyt|buscaryt|videosearch|audiosearch|تيوب|بحث|اغنيه|فيد)$/i;
 export default handler;
