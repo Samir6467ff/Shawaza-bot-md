@@ -1,4 +1,3 @@
-import { MessageType } from '@adiwajshing/baileys';
 import axios from 'axios';
 
 let handler = async (m, { conn, usedPrefix }) => {
@@ -7,13 +6,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
     const ronaldo = cristiano[Math.floor(cristiano.length * Math.random())];
 
-    // إرسال رد فعل الرموز التعبيرية
-    await conn.sendMessage(m.chat, '🥳', MessageType.Text, { quoted: m });
-
-    // إعداد رسالة الوسائط
-    const mediaMessage = await conn.prepareMessage('image', { url: ronaldo }, { thumbnail: Buffer.alloc(0) });
-
-    // إعداد الرسالة التفاعلية
+    // إعداد الرسالة
     const buttons = [
       { buttonId: `${usedPrefix}الدون`, buttonText: { displayText: 'الدون' }, type: 1 },
       { buttonId: `${usedPrefix}الدعم`, buttonText: { displayText: 'الدعم' }, type: 1 }
@@ -26,9 +19,8 @@ let handler = async (m, { conn, usedPrefix }) => {
       headerType: 1
     };
 
-    // إرسال الرسالة التفاعلية
-    await conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage, { quoted: m });
-    await conn.relayWAMessage(mediaMessage);
+    // إرسال الصورة والأزرار مع الوصف
+    await conn.sendMessage(m.chat, { url: ronaldo }, 'imageMessage', { quoted: buttonMessage });
   } catch (error) {
     console.error(error);
   }
