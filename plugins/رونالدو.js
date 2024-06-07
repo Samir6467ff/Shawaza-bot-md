@@ -17,9 +17,17 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     const interactiveMessage = {
       viewOnceMessage: {
         message: {
-          imageMessage: mediaMessage.imageMessage,
-          caption: '*Siiiuuuuuu*\nHinaBot',
-          footer: 'اختر أحد الخيارات:',
+          header:{
+            title:'', 
+            hasMediaAttachment: true,
+          imageMessage: mediaMessage.imageMessage
+          },
+          body:{
+            text:'*siuuuuu*'
+              }, 
+          footer:{
+            text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'
+          },
           buttons: [
             {
                 "name": "quick_reply",
