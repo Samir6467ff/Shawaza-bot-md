@@ -21,8 +21,10 @@ const handler = async (m, { conn, usedPrefix, command }) => {
           caption: '*Siiiuuuuuu*\nHinaBot',
           footer: 'اختر أحد الخيارات:',
           buttons: [
-            { buttonId: `${usedPrefix}الدون`, buttonText: { displayText: 'التالي 🍷' }, type: 1 },
-            { buttonId: `${usedPrefix}الدعم`, buttonText: { displayText: 'الدعم 🍷' }, type: 1 }
+            {
+                "name": "quick_reply",
+                "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\".الدون\"}"
+            }
           ],
           headerType: 4
         }
