@@ -16,7 +16,7 @@ const BK9 = mongoose.model('BK9', bk9Schema);
 
 let handler = async function (message, { conn, text, command, isAdmin }) {
     try {
-        if (command === 'الألقاب') {
+        if (command === 'الالقاب') {
             if (!message.isGroup) {
                 message.reply('هذا الأمر يعمل فقط في المجموعات');
                 return;
@@ -31,33 +31,33 @@ let handler = async function (message, { conn, text, command, isAdmin }) {
             } else {
                 let replyText = '';
                 nicknames.forEach((nickname, index) => {
-                    replyText += (index + 1) + ' ┇ اللقب ' + nickname.bk9 + '\n';
+                    replyText += (index + 1) + ' اللقب ' + *『 nickname.bk9 』* + '\n' +'*_『🌚』تحت رعاية 𝒁𝒆𝒛𝒐࿐𝑩𝒐𝒕᭄《_*';
                 });
                 message.reply('┇الألقـاب المـسـجـلـة:\n\n' + replyText);
             }
         } else if (command === 'تسجيل') {
             if (!message.isGroup) {
-                message.reply('هذا الأمر يعمل فقط في المجموعات');
+                message.reply('*ف الجروبات بس يا حب*');
                 return;
             }
             if (!isAdmin) {
-                message.reply('هذا الأمر يعمل فقط مع الإداريين');
+                message.reply('*للمشرفين بس*');
                 return;
             }
             if (!message.mentionedJid || !text || text.trim() === '') {
-                message.reply('مثال:\n .تسجيل @العضو جيرايا');
+                message.reply('*مثال:\n .تسجيل @العضو زيزو*');
                 return;
             }
             const userId = message.mentionedJid[0].replace('@s.whatsapp.net', '');
             const nickname = text.trim().split(' ').slice(1).filter(part => part.trim() !== '').join(' ');
             if (!/\S/.test(nickname)) {
-                message.reply('مثال:\n .تسجيل @العضو جيرايا');
+                message.reply('*مثال:\n .تسجيل @العضو زيزو*');
                 return;
             }
             const existingNickname = await BK9.findOne({ bk9: nickname, groupId: message.chat });
             if (existingNickname) {
                 const userName = await conn.getName(existingNickname.userId + '@s.whatsapp.net');
-                message.reply('┇ اللقب ' + nickname + ' ماخوذ من طرف @' + userName);
+                message.reply('*┇ اللقب*' + *nickname* +'*ماخوذ من طرف @*' + userName);
             } else {
                 await BK9.findOneAndUpdate({ userId, groupId: message.chat }, { bk9: nickname }, { upsert: true });
                 message.reply('┇ تم تسجيله بلقب ' + nickname + ' بنجاح');
@@ -119,7 +119,7 @@ let handler = async function (message, { conn, text, command, isAdmin }) {
     }
 };
 
-handler.command = ['الألقاب', 'تسجيل', 'لقبي', 'لقبه', 'حذف_لقب', 'اللقب'];
+handler.command = ['الالقاب', 'تسجيل', 'لقبي', 'لقبه', 'حذف_لقب', 'اللقب'];
 handler.tags = ['BK9'];
 
 export default handler;
