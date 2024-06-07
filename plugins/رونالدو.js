@@ -11,43 +11,31 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { react: { text: '🥳', key: m.key } });
 
     // إعداد رسالة الوسائط
-    var messa = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
+    const mediaMessage = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
 
     // إعداد الرسالة التفاعلية
-    conn.relayMessage(m.chat, {
+    const interactiveMessage = generateWAMessageFromContent(m.chat, {
         viewOnceMessage: {
             message: {
-                interactiveMessage: {
-                    body: {
-                        text:'عمك ميسي'
-                          }, 
-                  header:{
-                    title:'', 
-                    hasMediaAttachment: true,
-                    imageMessage: messa.imageMessage,
-                    }, 
-                  nativeFlowMessage: {
-                        buttons: [
-                          {
-                "name": "quick_reply",
-                "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\".الدون\"}"
-                          }
-                          ] 
-                          } 
-                    } 
-                  } 
-              } 
-          }; 
-
-    // إنشاء الرسالة
-   // const msg = generateWAMessageFromContent(m.chat, interactiveMessage, { userJid: conn.user.jid, quoted: m });
+              hasMediaAttachment: true,
+              imageMessage: mediaMessage.imageMessage,
+                caption: '*عمك ميسي*',
+                footer: 'اختر أحد الخيارات:',
+                buttons: [
+                    { buttonId: `${usedPrefix}الدون`, buttonText: { displayText: 'التالي 🍷' }, type: 1 },
+                    { buttonId: `${usedPrefix}الدعم`, buttonText: { displayText: 'الدعم 🍷' }, type: 1 }
+                ],
+                headerType: 4
+            }
+        }
+    }, { userJid: conn.user.jid, quoted: m });
 
     // إرسال الرسالة
-  //  await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
-/*  } catch (error) {
+    await conn.relayMessage(m.chat, interactiveMessage.message, { messageId: interactiveMessage.key.id });
+  } catch (error) {
     console.error(error);
   }
-};*/
+};
 
 handler.help = ['cristianoronaldo', 'cr7', 'الدون'];
 handler.tags = ['internet'];
