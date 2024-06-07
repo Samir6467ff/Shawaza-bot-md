@@ -22,7 +22,7 @@ let n3 = lolh.result.size
 let n4 = lolh.result.thumbnail
 await conn.sendMessage(m.chat, { video: { url: n2 }, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `▢ 𝚃: ${n}\n▢ 𝙿: ${n3}`, thumbnail: await fetch(n4) }, { quoted: m })
 } catch {
-await conn.reply(m.chat, 'تعذر تحميل الفيديو راسل صاصاا لتعرف السبب', m)}
+await conn.reply(m.chat, 'تعذر تحميل الفيديو راسل زيزو لتعرف السبب', m)}
 }}
-handler.command = /^video|yt|يوتيوب$/i
+handler.command = /^video|yt|ملفيوت$/i
 export default handler
