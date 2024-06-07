@@ -11,45 +11,43 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { react: { text: '🥳', key: m.key } });
 
     // إعداد رسالة الوسائط
-    const mediaMessage = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
+    var messa = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
 
     // إعداد الرسالة التفاعلية
-    const interactiveMessage = {
-      viewOnceMessage: {
-        message: {
-          header:{
-            title:'', 
-            hasMediaAttachment: true,
-          imageMessage: mediaMessage.imageMessage
-          },
-          body:{
-            text:'*siuuuuu*'
-              }, 
-          footer:{
-            text: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'
-          },
-          nativeFlowMessage:{
-          buttons: [
-            {
+    conn.relayMessage(m.chat, {
+        viewOnceMessage: {
+            message: {
+                interactiveMessage: {
+                    body: {
+                        text:'عمك ميسي'
+                          }, 
+                  header:{
+                    title:'', 
+                    hasMediaAttachment: true,
+                    imageMessage: messa.imageMessage,
+                    }, 
+                  nativeFlowMessage: {
+                        buttons: [
+                          {
                 "name": "quick_reply",
                 "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\".الدون\"}"
-            }
-          ]
-          }, 
-          headerType: 4
-        }
-      }
-    };
+                          }
+                          ] 
+                          } 
+                    } 
+                  } 
+              } 
+          }; 
 
     // إنشاء الرسالة
-    const msg = generateWAMessageFromContent(m.chat, interactiveMessage, { userJid: conn.user.jid, quoted: m });
+   // const msg = generateWAMessageFromContent(m.chat, interactiveMessage, { userJid: conn.user.jid, quoted: m });
 
     // إرسال الرسالة
-    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
-  } catch (error) {
+  //  await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+/*  } catch (error) {
     console.error(error);
   }
-};
+};*/
 
 handler.help = ['cristianoronaldo', 'cr7', 'الدون'];
 handler.tags = ['internet'];
