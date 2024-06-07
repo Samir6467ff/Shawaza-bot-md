@@ -1,4 +1,4 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys'
+import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
 import yts from 'yt-search';
 
 const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
@@ -9,16 +9,16 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     *يوتيوب المبدأ مروان بابلو.*
     < ملحوظه انا غير مسؤول عن ما تشاهده`;
 
-    if (device !== 'desktop' || device !== 'web') {      
+    if (device !== 'desktop' && device !== 'web') { // Fix the condition here
         const results = await yts(text);
         const videos = results.videos.slice(0, 20);
         const randomIndex = Math.floor(Math.random() * videos.length);
         const randomVideo = videos[randomIndex];
 
-        var messa = await prepareWAMessageMedia({ image: {url: randomVideo.thumbnail}}, { upload: conn.waUploadToServer })
+        const messa = await prepareWAMessageMedia({ image: { url: randomVideo.thumbnail } }, { upload: conn.waUploadToServer });
         const interactiveMessage = {
             body: { text: `عــدد الـنـتـايــج : *${results.videos.length}*\nالـعـنـوان : *${randomVideo.title}*\nإســم الـحـســاب : *${randomVideo.author.name}*\nعــدد الـمـشــاهـدات : *${randomVideo.views}*\nالـرابــط : *『 ${randomVideo.url}』*\nرابــط‌ الـصــوره : *『 ${randomVideo.thumbnail}』*\n\nانقر علي الزر تحت لتحميل الفيديو او الصوت.`.trim() },
-            footer: { text: `𝒁𝒆𝒛𝒐 𝑩𝒐𝒕`.trim() },  
+            footer: { text: `𝒁𝒆𝒛𝒐 𝑩𝒐𝒕`.trim() },
             header: {
                 title: `*بـحــث فــي الـيـوتـيــوب*`,
                 hasMediaAttachment: true,
@@ -36,8 +36,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
                                     {
                                         header: video.title,
                                         title: video.author.name,
-               
-description: '🎶╎الـــــصـــــوت',
+                                        description: '🎶╎الـــــصـــــوت',
                                         id: `.صوتي ${video.url}`
                                     },
                                     {
@@ -45,33 +44,33 @@ description: '🎶╎الـــــصـــــوت',
                                         title: video.author.name,
                                         description: '📥╎الـــــفـــــيـــــديــو',
                                         id: `.فيديو ${video.url}`
-                                    }, 
-                                      {
+                                    },
+                                    {
                                         header: video.title,
                                         title: video.author.name,
                                         description: '📥╎الـــــفــــيــــديـو مــــــلــــــف',
                                         id: `.ملفتيوب ${video.url}`
-                                      }
+                                    }
                                 ]
                             }))
                         })
                     }
                 ],
                 messageParamsJson: ''
-            }, 
+            },
             {
                 "name": "quick_reply",
                 "buttonParamsJson": "{\"display_text\":\"ᴹᴿ᭄𝒁𝒆𝒛𝒐ᴹᴿ᭄\",\"id\":\".المطور\"}"
-        }, 
-                     {
-                                name: "cta_url",
-                                buttonParamsJson: JSON.stringify({
-                                    display_text: "『』⌬╏ قناتي ╏《",
-                                    url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a",
-                                    merchant_url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a"
-                                })
-                         }
-        };        
+            },
+            {
+                name: "cta_url",
+                buttonParamsJson: JSON.stringify({
+                    display_text: "『』⌬╏ قناتي ╏《",
+                    url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a",
+                    merchant_url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a"
+                })
+            }
+        };
 
         let msg = generateWAMessageFromContent(m.chat, {
             viewOnceMessage: {
@@ -79,24 +78,27 @@ description: '🎶╎الـــــصـــــوت',
                     interactiveMessage,
                 },
             },
-        }, { userJid: conn.user.jid, quoted: m })
-        conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id});
+        }, { userJid: conn.user.jid, quoted: m });
+        conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
 
     } else {
         const results = await yts(text);
         const tes = results.all;
-        const teks = results.all.map((v) => {
+        const teks = tes.map((v) => {
             switch (v.type) {
-                case 'video': return `
+                case 'video':
+                    return `
                 ° *_${v.title}_*
                 ↳ 🫐 *_${v.url}_*
                 ↳ 🕒 *_${v.timestamp}_*
                 ↳ 📥 *_${v.ago}_*
                 ↳ 👁 *_${v.views}_*`;
+                default:
+                    return '';
             }
         }).filter((v) => v).join('\n\n◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦\n\n');
-        conn.sendFile(m.chat, tes[0].thumbnail, 'error.jpg', teks.trim(), m);      
-    }    
+        conn.sendFile(m.chat, tes[0].thumbnail, 'error.jpg', teks.trim(), m);
+    }
 };
 handler.help = ['ytsearch <نص>'];
 handler.tags = ['search'];
