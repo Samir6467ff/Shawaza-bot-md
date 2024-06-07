@@ -1,4 +1,4 @@
-import { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+import { MessageType } from '@adiwajshing/baileys';
 import axios from 'axios';
 
 let handler = async (m, { conn, usedPrefix }) => {
@@ -8,23 +8,26 @@ let handler = async (m, { conn, usedPrefix }) => {
     const ronaldo = cristiano[Math.floor(cristiano.length * Math.random())];
 
     // إرسال رد فعل الرموز التعبيرية
-    await conn.sendMessage(m.chat, { react: { text: '🥳', key: m.key } });
+    await conn.sendMessage(m.chat, '🥳', MessageType.Text, { quoted: m });
 
     // إعداد رسالة الوسائط
-    const mediaMessage = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
+    const mediaMessage = await conn.prepareMessage('image', { url: ronaldo }, { thumbnail: Buffer.alloc(0) });
 
     // إعداد الرسالة التفاعلية
-    const interactiveMessage = {
-      buttons: [
-        { buttonId: `${usedPrefix}الدون`, buttonText: { displayText: 'الدون' }, type: 1 },
-        { buttonId: `${usedPrefix}الدعم`, buttonText: { displayText: 'الدعم' }, type: 1 }
-      ],
+    const buttons = [
+      { buttonId: `${usedPrefix}الدون`, buttonText: { displayText: 'الدون' }, type: 1 },
+      { buttonId: `${usedPrefix}الدعم`, buttonText: { displayText: 'الدعم' }, type: 1 }
+    ];
+
+    const buttonMessage = {
       contentText: '*عمك ميسي*',
-      footerText: 'اختر أحد الخيارات:'
+      footerText: 'اختر أحد الخيارات:',
+      buttons: buttons,
+      headerType: 1
     };
 
     // إرسال الرسالة التفاعلية
-    await conn.sendMessage(m.chat, interactiveMessage, 'buttonsMessage', { quoted: m, contextInfo: { mentionedJid: [ronaldo] } });
+    await conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage, { quoted: mediaMessage });
   } catch (error) {
     console.error(error);
   }
