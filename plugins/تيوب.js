@@ -7,7 +7,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     if (!text) throw `*تقدر تحمل الفيدوهات او الاصوات من الامر دا*
     *مثال*
     *يوتيوب المبدأ مروان بابلو.*
-    > ملحوظه انا غير مسؤول عن ما تشاهده`;
+    < ملحوظه انا غير مسؤول عن ما تشاهده`;
 
     if (device !== 'desktop' || device !== 'web') {      
         const results = await yts(text);
@@ -58,7 +58,19 @@ description: '🎶╎الـــــصـــــوت',
                     }
                 ],
                 messageParamsJson: ''
-            }
+            }, 
+            {
+                "name": "quick_reply",
+                "buttonParamsJson": "{\"display_text\":\"ᴹᴿ᭄𝒁𝒆𝒛𝒐ᴹᴿ᭄\",\"id\":\".المطور\"}"
+        }, 
+                     {
+                                name: "cta_url",
+                                buttonParamsJson: JSON.stringify({
+                                    display_text: "『』⌬╏ قناتي ╏《",
+                                    url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a",
+                                    merchant_url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a"
+                                })
+                         }
         };        
 
         let msg = generateWAMessageFromContent(m.chat, {
