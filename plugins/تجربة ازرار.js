@@ -22,7 +22,43 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     // إعداد رسالة الوسائط
     var messa = await prepareWAMessageMedia({ image: { url: randomImage } }, { upload: conn.waUploadToServer });
 
-    conn.relayMessage(m.chat, {
+    const aa = {
+    quoted: m,
+    userJid: conn.user.jid
+};
+
+const mapping = [
+    '1569978UiTszJ', // index 0
+    '147776QZylUI',  // index 1
+    'https://chat.whatsapp.com/JXZC2TWCc5rIhSKP7WPaBz', // index 2
+    '7sSWBcR',       // index 3
+    '7xMJOnp',       // index 4
+    '11715530BdNdMK', // index 5
+    '[ ⚠ ] دعوه - للجروب', // index 6
+    '517528JRcocX',  // index 7
+    '18EariNB',      // index 8
+    '2484010DTCbwt', // index 9
+    '3793365imguMA', // index 10
+    '129476hWOMwq'   // index 11
+];
+
+function _0x3c1a(index) {
+    return mapping[index - 0x0];
+}
+
+const prep = generateWAMessageFromContent(m['chat'], {
+    'extendedTextMessage':{
+        'contextInfo': {
+            'externalAdReply': {
+                'title': '[ ⚠ ] دعوه - للجروب',
+                'body': '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕',
+                'thumbnail': imagen4,
+                'sourceUrl': 'https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0'
+            }
+        }
+    }
+}, aa);
+   conn.relayMessage(m.chat,prep, {
         viewOnceMessage: {
             message: {
                 interactiveMessage: {
@@ -69,13 +105,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                                     description: '',
                                                     id: '.المطور'
                                                 },
-                                                } 
-                                                ] 
-                                                ], 
-                                    sections: [
-                                        {
-                                            title:'الـــقــــوائــــــم', 
-                                            rows:[
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏التنزيلات',
