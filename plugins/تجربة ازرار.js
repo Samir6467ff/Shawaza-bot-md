@@ -1,4 +1,4 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import { prepareWAMessageMedia, generateWAMessageFromContent, proto } from '@whiskeysockets/baileys';
 import moment from 'moment-timezone';
 
 let handler = async (m, { conn }) => {
@@ -19,9 +19,9 @@ let handler = async (m, { conn }) => {
     const randomImage = images[Math.floor(Math.random() * images.length)];
 
     // إعداد رسالة الوسائط
-    var messa = await prepareWAMessageMedia({ image: { url: randomImage } }, { upload: conn.waUploadToServer });
+    const media = await prepareWAMessageMedia({ image: { url: randomImage } }, { upload: conn.waUploadToServer });
 
-    const content = generateWAMessageFromContent(m.chat, {
+    const content = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
         extendedTextMessage: {
             text: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
 *🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
@@ -43,13 +43,13 @@ let handler = async (m, { conn }) => {
                 externalAdReply: {
                     title: 'دعوه للجروب',
                     body: '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕',
+                    thumbnail: media.imageMessage,
                     mediaType: 1,
-                    thumbnail: imagen4.imageMessage,
-                    sourceUrl: 'https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0'
+                    mediaUrl: 'https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0'
                 }
             }
         }
-    }, { quoted: m });
+    }), { quoted: m });
 
     const buttons = [
         {
@@ -105,7 +105,7 @@ let handler = async (m, { conn }) => {
             },
             header: {
                 hasMediaAttachment: true,
-                imageMessage: messa.imageMessage
+                imageMessage: media.imageMessage
             },
             nativeFlowMessage: {
                 buttons: buttons
