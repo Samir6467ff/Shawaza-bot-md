@@ -30,7 +30,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
           header: proto.Message.InteractiveMessage.Header.create({
             title: "ميسي عمك",
             subtitle: "تست",
-            hasMediaAttachment: true, 
+            hasMediaAttachment: false, 
          image: mediaMessage.imageMessage   
           }),
           nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
