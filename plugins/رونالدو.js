@@ -21,7 +21,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     };
 
     // إرسال الصورة مع الأزرار
-    await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+    await conn.relayMessage(m.chat, buttonMessage, { quoted: m });
   } catch (error) {
     console.error(error);
   }
