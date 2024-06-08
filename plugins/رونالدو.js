@@ -4,7 +4,11 @@ import axios from 'axios';
 const { generateWAMessageFromContent, proto } = pkg
 const handler = async (m, { conn, usedPrefix, command }) => {
     // جلب بيانات كريستيانو رونالدو من الملف JSON
-    const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
+    const cristiano = ['https://telegra.ph/file/90d37ccf1896c6baccdea.jpg', 
+                       'https://telegra.ph/file/c6c31dc7c95a131bf5a63.jpg', 
+                       'https://telegra.ph/file/020709d09e6db1055c80d.jpg', 
+                       'https://telegra.ph/file/95db3b2a3c1d593f3310b.png'
+                       ]; 
     const ronaldo = cristiano[Math.floor(cristiano.length * Math.random())];
 
     // إرسال رد فعل الرموز التعبيرية
