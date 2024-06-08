@@ -30,7 +30,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 const mapping = [
     '1569978UiTszJ', // index 0
     '147776QZylUI',  // index 1
-    'https://chat.whatsapp.com/JXZC2TWCc5rIhSKP7WPaBz', // index 2
+    'https://chat.whatsapp.com/JXZC2TWCc5rIhSKP7WPaBzhttps://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0', // index 2
     '7sSWBcR',       // index 3
     '7xMJOnp',       // index 4
     '11715530BdNdMK', // index 5
@@ -58,7 +58,7 @@ const prep = generateWAMessageFromContent(m['chat'], {
         }
     }
 }, aa);
-   conn.relayMessage(m.chat,prep, {
+   conn.relayMessage(m.chat, {
         viewOnceMessage: {
             message: {
                 interactiveMessage: {
@@ -87,6 +87,7 @@ const prep = generateWAMessageFromContent(m['chat'], {
                         title: '',
                         hasMediaAttachment: true,
                         imageMessage: messa.imageMessage,
+                        message: prep, 
                     },
                     nativeFlowMessage: {
                         buttons: [
