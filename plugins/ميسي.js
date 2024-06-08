@@ -41,5 +41,5 @@ await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id 
 // conn.sendButton(m.chat, "*Messi*", author, url, [['⚽ SIGUIENTE ⚽', `${usedPrefix + command}`]], m)}
 handler.help = ['messi'];
 handler.tags = ['internet'];
-handler.command = /^(ميسي)$/i;
+handler.command = /^(ميسي|ليو|عمك|جوت|معزه)$/i;
 export default handler;
