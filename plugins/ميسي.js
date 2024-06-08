@@ -1,39 +1,45 @@
-/*import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
+import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
 import axios from 'axios';
 const handler = async (m, {conn, usedPrefix, command}) => {
   const res = (await axios.get(`https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/Messi.json`)).data;
   const url = await res[Math.floor(res.length * Math.random())];
-      var messa = await prepareWAMessageMedia({ image: {url: url}}, { upload: conn.waUploadToServer })
-        const interactiveMessage = {
-            body: { text:`*ميسي عمك`.trim() },
-            footer: { text: `𝒁𝒆𝒛𝒐 𝑩𝒐𝒕`.trim() },  
-            header: {
-                title: ``,
-                hasMediaAttachment: true,
-                imageMessage: messa.imageMessage,
-            },
-            nativeFlowMessage: {
-                buttons: [
-{
+            await conn.sendMessage(m.chat, { react: { text: '🐐', key: m.key } })
+  let msg = generateWAMessageFromContent(m.chat, {
+  viewOnceMessage: {
+    message: {
+        interactiveMessage: proto.Message.InteractiveMessage.create({
+          body: proto.Message.InteractiveMessage.Body.create({
+            text: "*ميسي عمك🐐*"
+          }),
+          footer: proto.Message.InteractiveMessage.Footer.create({
+            text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
+          }),
+          header: proto.Message.InteractiveMessage.Header.create({
+            title: "*〘 THE GOAT 〙*",
+            subtitle: "",
+            hasMediaAttachment: true, 
+            imageMessage: mediaMessage.imageMessage, 
+          }),
+          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+            buttons: [
+              {
+              "name": "quick_reply",
+                "buttonParamsJson": "{\"display_text\":\"〘 🐐 الــــــتــــــالــــي 〙\",\"id\":\".ميسي\"}"},
+              {
                 "name": "quick_reply",
-                "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\"ميسي\"}"
-              }]        
+                "buttonParamsJson": "{\"display_text\":\"〘 🥺 الـــــدعــــــم 〙\",\"id\":\".الدعم\"}"} 
+        ],         
+      } 
+     }) 
+    }) 
+   }
+  }
+  },{}) 
 
-        let msg= generateWAMessageFromContent(m.chat, {
-            viewOnceMessage: {
-                message: {
-                    interactiveMessage,
-                },
-            },
-        }, { userJid: conn.user.jid, quoted: m })
-        conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id});
-
+await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id })
 }
-  await conn.sendMessage(m.chat, { react: { text: '🐐', key: m.key } })
-
-};
 // conn.sendButton(m.chat, "*Messi*", author, url, [['⚽ SIGUIENTE ⚽', `${usedPrefix + command}`]], m)}
 handler.help = ['messi'];
 handler.tags = ['internet'];
 handler.command = /^(ميسي)$/i;
-export default handler;*/
+export default handler;
