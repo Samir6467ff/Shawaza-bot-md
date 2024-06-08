@@ -13,9 +13,12 @@ let handler = async (m, { conn, usedPrefix }) => {
 
     // إعداد الأزرار التفاعلية
     const buttons = [
-      { body: 'التالي', id: `${usedPrefix}الدون` },
-      { body: 'الدعم', id: `${usedPrefix}الدعم` }
-    ];
+      {
+      "name": "quick_reply",
+     "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\"الدون\"}"
+       } 
+       ];
+    
 
     const buttonMessage = {
       caption: 'اختر أحد الخيارات:',
@@ -25,7 +28,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     };
 
     // إرسال الصورة مع الأزرار
-    await conn.sendMessage(m.chat, media, buttonMessage);
+    await conn.relayMessage(m.chat, media, buttonMessage);
   } catch (error) {
     console.error(error);
   }
