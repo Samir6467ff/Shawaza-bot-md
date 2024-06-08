@@ -17,7 +17,7 @@ let msg = generateWAMessageFromContent(m.chat, {
             text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
           }),
           header: proto.Message.InteractiveMessage.Header.create({
-            title: "*⊱─═⪨༻𓆩 〘 حكمة اليوم 〙 𓆪༺⪩═─⊰*",
+            title: "⊱─═⪨༻𓆩 〘 حكمة اليوم 〙 𓆪༺⪩═─⊰",
             subtitle: "",
             hasMediaAttachment: false
           }),
@@ -25,15 +25,16 @@ let msg = generateWAMessageFromContent(m.chat, {
             buttons: [
               {
               "name": "quick_reply",
-                "buttonParamsJson": "{\"display_text\":\"〘 الــــــتــــــالــــي 〙\",\"id\":\".حكمه\"}"} 
-       ], 
-      }) 
-      }) 
+                "buttonParamsJson": "{\"display_text\":\"〘 الــــــتــــــالــــي 〙\",\"id\":\".حكمه\"}"
+               } 
+         ], 
+        }) 
+       }) 
       } 
     } 
-  },{}) 
-  await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id })
-};
+   }, {}) 
+await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id })
+}
 handler.tags = ['frasss'];
 handler.command = ['حكمه','حكمة'];
 export default handler; 
