@@ -69,6 +69,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                                     description: '',
                                                     id: '.المطور'
                                                 },
+                                                } 
+                                                ] 
+                                                ], 
+                                    sections: [
+                                        {
+                                            title:'الـــقــــوائــــــم', 
+                                            rows:[
                                                 {
                                                     header: '『』MENU《',
                                                     title: '⌬ ❛╏التنزيلات',
