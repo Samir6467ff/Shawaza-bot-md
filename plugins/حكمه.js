@@ -1,5 +1,32 @@
+import { generateWAMessageFromContent, proto} from '@whiskeysockets/baileys';
 const handler = async (m, {conn, text}) => {
-  m.reply(`╆❂━━━━━━❨𝑧ₑ𝑧ₒ_𝑏ₒ𝑡❩━━━━━━❂╆\n*〄⊱حـكـمة⊰☀️⊱الـيـوم⊰〄*\n\n➢ *"${pickRandom(global.hekma)}"*\n╆❂━━━━━━❨𝑧ₑ𝑧ₒ_𝑏ₒ𝑡❩━━━━━━❂╆`);
+
+let msg = generateWAMessageFromContent(m.chat, {
+  viewOnceMessage: {
+    message: {
+        interactiveMessage: proto.Message.InteractiveMessage.create({
+          body: proto.Message.InteractiveMessage.Body.create({
+            text: `${pickRandom(global.hekma)}
+            *⊱─═⪨༻𓆩⚡𓆪༺⪩═─⊰*`
+          }),
+          footer: proto.Message.InteractiveMessage.Footer.create({
+            text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
+          }),
+          header: proto.Message.InteractiveMessage.Header.create({
+            title: "*⊱─═⪨༻𓆩 〘 حكمة اليوم 〙 𓆪༺⪩═─⊰*",
+            subtitle: "",
+            hasMediaAttachment: false
+          }),
+          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+            buttons: [
+              "name": "quick_reply",
+                "buttonParamsJson": "{\"display_text\":\"〘 الــــــتــــــالــــي 〙\",\"id\":\".حكمه\"}"} 
+       ], 
+      }) 
+      }) 
+      } 
+    } 
+  } 
 };
 handler.tags = ['frasss'];
 handler.command = ['حكمه','حكمة'];
