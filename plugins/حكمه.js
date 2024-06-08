@@ -11,8 +11,7 @@ let msg = generateWAMessageFromContent(m.chat, {
     message: {
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `${pickRandom(global.hekma)}
-            *⊱─═⪨༻𓆩⚡𓆪༺⪩═─⊰*`
+            text: `السؤال`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
