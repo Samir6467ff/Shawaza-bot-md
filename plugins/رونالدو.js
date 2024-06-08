@@ -1,3 +1,4 @@
+import { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 import pkg from '@whiskeysockets/baileys';
 import axios from 'axios';
 const { generateWAMessageFromContent, proto } = pkg
