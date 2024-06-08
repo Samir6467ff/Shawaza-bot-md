@@ -8,5 +8,5 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 conn.sendButton(m.chat, "*Siiiuuuuuu*", author, url, [[' الــتــالــي 🍷', `${usedPrefix + command}`], [' الــدعــــم 🍷', `${usedPrefix}الدعم`]], m)}
 handler.help = ['S H A D O W']
 handler.tags = ['S H A D O W']
-handler.command = /^(كرستيانو|رونالدو|الدون|كريس)$/i
+handler.command = /^(دون|كريس)$/i
 export default handler
