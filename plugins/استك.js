@@ -15,6 +15,6 @@ let handler = async(m, { conn }) => {
     }
 }
 //الأمر يعمل بدون نقطه عادي
-handler.customPrefix = /ميسي|معزه|جوت/i 
+handler.customPrefix = /(ميسي|معزه|جوت)/i 
 handler.command = new RegExp
 export default handler
