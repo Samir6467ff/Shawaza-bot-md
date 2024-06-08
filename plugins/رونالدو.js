@@ -1,41 +1,54 @@
-const { Client, MessageMedia, Buttons } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
-const axios = require('axios');
+import pkg from '@whiskeysockets/baileys';
+import axios from 'axios';
+const { generateWAMessageFromContent, proto } = pkg
+const handler = async (m, { conn, usedPrefix, command }) => {
+    // جلب بيانات كريستيانو رونالدو من الملف JSON
+    const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
+    const ronaldo = cristiano[Math.floor(cristiano.length * Math.random())];
 
-const client = new Client();
+    // إرسال رد فعل الرموز التعبيرية
+    await conn.sendMessage(m.chat, { react: { text: '🥳', key: m.key } });
 
-client.on('qr', (qr) => {
-    qrcode.generate(qr, { small: true });
-});
+    // إعداد رسالة الوسائط
+    const mediaMessage = await prepareWAMessageMedia({ image: { url: ronaldo } }, { upload: conn.waUploadToServer });
 
-client.on('ready', () => {
-    console.log('Client is ready!');
-});
+    let msg = generateWAMessageFromContent(m.chat, {
+  viewOnceMessage: {
+    message: {
+        "messageContextInfo": {
+          "deviceListMetadata": {},
+          "deviceListMetadataVersion": 2
+        },
+        interactiveMessage: proto.Message.InteractiveMessage.create({
+          body: proto.Message.InteractiveMessage.Body.create({
+            text: ""
+          }),
+          footer: proto.Message.InteractiveMessage.Footer.create({
+            text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
+          }),
+          header: proto.Message.InteractiveMessage.Header.create({
+            title: "ميسي عمك",
+            subtitle: "",
+            hasMediaAttachment: true, 
+         image: mediaMessage.imageMessage   
+          }),
+          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+            buttons: [
+                {
+                "name": "quick_reply",
+                "buttonParamsJson": "{\"display_text\":\"الــتـــــالـي\",\"id\":\".الدون\"}"
+             }
+           ],
+          }) 
+        }) 
+       } 
+     } 
+   },{}) 
+    // إرسال الرسالة
+    await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id })
+    } 
+handler.help = ['cristianoronaldo', 'cr7', 'الدون'];
+handler.tags = ['internet'];
+handler.command = /^(الدون|رونالدو|كريستيانو)$/i;
 
-client.on('message', async msg => {
-    if (msg.body.toLowerCase() === 'رونالدو') {
-        await sendRonaldoImage(msg);
-    }
-});
-
-async function sendRonaldoImage(msg) {
-    try {
-        const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
-        const ronaldo = cristiano[Math.floor(cristiano.length * Math.random())].result;
-
-        const image = await axios.get(ronaldo, { responseType: 'arraybuffer' });
-        const media = new MessageMedia('image/jpeg', image.data.toString('base64'), 'ronaldo.jpg');
-
-        const buttons = new Buttons('اختر أحد الخيارات:', [
-            { body: 'التالي', id: 'التالي' },
-            { body: 'الدعم', id: 'الدعم' }
-        ], 'العنوان', 'تذييل');
-
-        await client.sendMessage(msg.from, media, { caption: 'اختر أحد الخيارات:' });
-        await client.sendMessage(msg.from, buttons);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-client.initialize();
+export default handler;
