@@ -1,4 +1,4 @@
-import { sticker } from '../lib/sticker.js'
+/*import { sticker } from '../lib/sticker.js'
 let handler = async(m, { conn }) => {
     //صوره الاستيكر
     const xvi = [
@@ -17,4 +17,4 @@ let handler = async(m, { conn }) => {
 //الأمر يعمل بدون نقطه عادي
 handler.customPrefix = /(ميسي|معزه|جوت)/i 
 handler.command = new RegExp
-export default handler
+export default handler*/
