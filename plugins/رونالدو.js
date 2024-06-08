@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { MessageMedia, Buttons } from 'whatsapp-web.js';
 
 let handler = async (m, { conn, usedPrefix }) => {
   try {
@@ -6,26 +7,17 @@ let handler = async (m, { conn, usedPrefix }) => {
     const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
     const ronaldo = cristiano[Math.floor(cristiano.length * Math.random())].result;
 
+    // تحميل الصورة من URL وتحويلها إلى MessageMedia
+    const image = await axios.get(ronaldo, { responseType: 'arraybuffer' });
+    const media = new MessageMedia('image/jpeg', image.data.toString('base64'), 'ronaldo.jpg');
+
     // إعداد الأزرار التفاعلية
     const buttons = [
-      {
-        buttonId: `${usedPrefix}الدون`,
-        buttonText: { displayText: 'التالي' },
-        type: 1,
-        name: "quick_reply",
-        buttonParamsJson: "{\"display_text\":\"التالي\",\"id\":\"الدون\"}"
-      },
-      {
-        buttonId: `${usedPrefix}الدعم`,
-        buttonText: { displayText: 'الدعم' },
-        type: 1,
-        name: "quick_reply",
-        buttonParamsJson: "{\"display_text\":\"الدعم\",\"id\":\"الدعم\"}"
-      }
+      { body: 'التالي', id: `${usedPrefix}الدون` },
+      { body: 'الدعم', id: `${usedPrefix}الدعم` }
     ];
 
     const buttonMessage = {
-      image: { url: ronaldo }, // استخدام URL الصورة مباشرة
       caption: 'اختر أحد الخيارات:',
       footer: 'اختر أحد الخيارات:',
       buttons: buttons,
@@ -33,7 +25,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     };
 
     // إرسال الصورة مع الأزرار
-    await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+    await conn.sendMessage(m.chat, media, buttonMessage);
   } catch (error) {
     console.error(error);
   }
