@@ -1,5 +1,5 @@
 import fs from 'fs'; 
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import { generateWAMessageFromContent, proto } from '@whiskeysockets/baileys';
 
 let timeout = 60000
 let poin = 500
