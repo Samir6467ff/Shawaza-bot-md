@@ -1,41 +1,41 @@
-import axios from 'axios';
-import { MessageMedia, Buttons } from 'whatsapp-web.js';
+const { Client, MessageMedia, Buttons } = require('whatsapp-web.js');
+const qrcode = require('qrcode-terminal');
+const axios = require('axios');
 
-let handler = async (m, { conn, usedPrefix }) => {
-  try {
-    // جلب بيانات كريستيانو رونالدو من الملف JSON
-    const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
-    const ronaldo = cristiano[Math.floor(cristiano.length * Math.random())].result;
+const client = new Client();
 
-    // تحميل الصورة من URL وتحويلها إلى MessageMedia
-    const image = await axios.get(ronaldo, { responseType: 'arraybuffer' });
-    const media = new MessageMedia('image/jpeg', image.data.toString('base64'), 'ronaldo.jpg');
+client.on('qr', (qr) => {
+    qrcode.generate(qr, { small: true });
+});
 
-    // إعداد الأزرار التفاعلية
-    const buttons = [
-      {
-      "name": "quick_reply",
-     "buttonParamsJson": "{\"display_text\":\"التالي\",\"id\":\"الدون\"}"
-       } 
-       ];
-    
+client.on('ready', () => {
+    console.log('Client is ready!');
+});
 
-    const buttonMessage = {
-      caption: 'اختر أحد الخيارات:',
-      footer: 'اختر أحد الخيارات:',
-      buttons: buttons,
-      headerType: 4 // 4 تعني رسالة تحتوي على صورة وأزرار
-    };
+client.on('message', async msg => {
+    if (msg.body.toLowerCase() === 'رونالدو') {
+        await sendRonaldoImage(msg);
+    }
+});
 
-    // إرسال الصورة مع الأزرار
-    await conn.relayMessage(m.chat, media, buttonMessage);
-  } catch (error) {
-    console.error(error);
-  }
-};
+async function sendRonaldoImage(msg) {
+    try {
+        const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
+        const ronaldo = cristiano[Math.floor(cristiano.length * Math.random())].result;
 
-handler.help = ['cristianoronaldo', 'cr7', 'الدون'];
-handler.tags = ['internet'];
-handler.command = /^(الدون|رونالدو|كريستيانو)$/i;
+        const image = await axios.get(ronaldo, { responseType: 'arraybuffer' });
+        const media = new MessageMedia('image/jpeg', image.data.toString('base64'), 'ronaldo.jpg');
 
-export default handler;
+        const buttons = new Buttons('اختر أحد الخيارات:', [
+            { body: 'التالي', id: 'التالي' },
+            { body: 'الدعم', id: 'الدعم' }
+        ], 'العنوان', 'تذييل');
+
+        await client.sendMessage(msg.from, media, { caption: 'اختر أحد الخيارات:' });
+        await client.sendMessage(msg.from, buttons);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+client.initialize();
