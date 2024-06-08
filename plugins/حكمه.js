@@ -1,5 +1,5 @@
 import { generateWAMessageFromContent, proto} from '@whiskeysockets/baileys';
-const handler = async (m, {conn, text}) => {
+const handler = async (m, {conn, text, usedPrefix}) => {
 
 let msg = generateWAMessageFromContent(m.chat, {
   viewOnceMessage: {
