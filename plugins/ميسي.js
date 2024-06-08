@@ -20,7 +20,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
             title: "*〘 THE GOAT 〙*",
             subtitle: "",
             hasMediaAttachment: true, 
-            imageMessage: mediaMessage.imageMessage, 
+            imageMessage: url.imageMessage, 
           }),
           nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
             buttons: [
