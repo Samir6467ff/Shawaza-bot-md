@@ -16,20 +16,16 @@ const handler = async (m, { conn, usedPrefix, command }) => {
     let msg = generateWAMessageFromContent(m.chat, {
   viewOnceMessage: {
     message: {
-        "messageContextInfo": {
-          "deviceListMetadata": {},
-          "deviceListMetadataVersion": 2
-        },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: ""
+            text: "تست"
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
           }),
           header: proto.Message.InteractiveMessage.Header.create({
             title: "ميسي عمك",
-            subtitle: "",
+            subtitle: "تست",
             hasMediaAttachment: true, 
          image: mediaMessage.imageMessage   
           }),
@@ -38,7 +34,11 @@ const handler = async (m, { conn, usedPrefix, command }) => {
                 {
                 "name": "quick_reply",
                 "buttonParamsJson": "{\"display_text\":\"الــتـــــالـي\",\"id\":\".الدون\"}"
-             }
+             }, 
+                {
+                "name": "quick_reply",
+                "buttonParamsJson": "{\"display_text\":\"الـــــــدعــــم\",\"id\":\"الدعم\"}"
+              }
            ],
           }) 
         }) 
