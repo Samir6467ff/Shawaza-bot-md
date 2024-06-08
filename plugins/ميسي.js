@@ -1,5 +1,7 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
+import pkg from '@whiskeysockets/baileys';
+import { prepareWAMessageMedia, getDevice } from '@whiskeysockets/baileys';
 import axios from 'axios';
+const { generateWAMessageFromContent, proto } = pkg
 const handler = async (m, {conn, usedPrefix, command}) => {
   const res = (await axios.get(`https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/Messi.json`)).data;
   const url = await res[Math.floor(res.length * Math.random())];
