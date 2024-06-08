@@ -1,4 +1,4 @@
-import { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+import{ prepareWAMessageMedia } from '@whiskeysockets/baileys';
 import pkg from '@whiskeysockets/baileys';
 import axios from 'axios';
 const { generateWAMessageFromContent, proto } = pkg
@@ -29,9 +29,9 @@ const handler = async (m, { conn, usedPrefix, command }) => {
           }),
           header: proto.Message.InteractiveMessage.Header.create({
             title: "ميسي عمك",
-            subtitle: "تست",
-            hasMediaAttachment: false, 
-         image: mediaMessage.imageMessage   
+            subtitle: "",
+            hasMediaAttachment: true, 
+            imageMessage: mediaMessage.imageMessage,  
           }),
           nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
             buttons: [
