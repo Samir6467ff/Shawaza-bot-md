@@ -6,10 +6,22 @@ let handler = async (m, { conn, usedPrefix }) => {
     const cristiano = (await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/CristianoRonaldo.json')).data;
     const ronaldo = cristiano[Math.floor(cristiano.length * Math.random())].result;
 
-    // إعداد الرسالة
+    // إعداد الأزرار التفاعلية
     const buttons = [
-      { buttonId: `${usedPrefix}الدون`, buttonText: { displayText: 'التالي' }, type: 1 },
-      { buttonId: `${usedPrefix}الدعم`, buttonText: { displayText: 'الدعم' }, type: 1 }
+      {
+        buttonId: `${usedPrefix}الدون`,
+        buttonText: { displayText: 'التالي' },
+        type: 1,
+        name: "quick_reply",
+        buttonParamsJson: "{\"display_text\":\"التالي\",\"id\":\"الدون\"}"
+      },
+      {
+        buttonId: `${usedPrefix}الدعم`,
+        buttonText: { displayText: 'الدعم' },
+        type: 1,
+        name: "quick_reply",
+        buttonParamsJson: "{\"display_text\":\"الدعم\",\"id\":\"الدعم\"}"
+      }
     ];
 
     const buttonMessage = {
@@ -21,7 +33,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     };
 
     // إرسال الصورة مع الأزرار
-    await conn.relayMessage(m.chat, buttonMessage, { quoted: m });
+    await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
   } catch (error) {
     console.error(error);
   }
