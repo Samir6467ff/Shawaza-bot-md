@@ -27,7 +27,8 @@ let msg = generateWAMessageFromContent(m.chat, {
       }) 
       } 
     } 
-  } 
+  },{}) 
+  await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id })
 };
 handler.tags = ['frasss'];
 handler.command = ['حكمه','حكمة'];
