@@ -13,8 +13,8 @@ const randomImage = hekma[Math.floor(Math.random() * hekma.length)];
              'https://telegra.ph/file/46f96abe2d0486290a40f.jpg', 
              'https://telegra.ph/file/636f8e455d8d8263ec80b.jpg'
              ]; 
-  const randomImage = url[Math.floor(Math.random() * url.length)];
-   var messa = await prepareWAMessageMedia({ image: { url: randomImage } }, { upload: conn.waUploadToServer });*/
+  const randomImage = url[Math.floor(Math.random() * url.length)];*/
+   var messa = await prepareWAMessageMedia({ image: { url:'https://telegra.ph/file/95b96de8542d96ac3523b.jpg' } }, { upload: conn.waUploadToServer });
 let msg = generateWAMessageFromContent(m.chat, {
   viewOnceMessage: {
     message: {
