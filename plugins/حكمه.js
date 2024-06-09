@@ -14,13 +14,13 @@ let msg = generateWAMessageFromContent(m.chat, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: randomImage
+            text: `*${randomImage}*`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
           }),
           header: proto.Message.InteractiveMessage.Header.create({
-            title: "سؤال",
+            title: "*⊱─═⪨༻𓆩〘 حـــكـمــــة الــــــيـــوم 〙𓆪༺⪩═─⊰*",
             subtitle: "",
             hasMediaAttachment: false
           }),
