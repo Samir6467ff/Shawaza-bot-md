@@ -30,7 +30,7 @@ let msg = generateWAMessageFromContent(m.chat, {
             text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
           }),
           header: proto.Message.InteractiveMessage.Header.create({
-            title: "*⊱⪨༻𓆩〘حـــكـمــــة الــــــيـــوم〙𓆪༺⪩⊰*",
+            title: "*⊱⪨༻𓆩〘 حـــكـــمـ 💗〙𓆪༺⪩⊰*",
             subtitle: "",
             hasMediaAttachment: true, 
             imageMessage: messa.imageMessage, 
