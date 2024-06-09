@@ -32,7 +32,7 @@ let msg = generateWAMessageFromContent(m.chat, {
           header: proto.Message.InteractiveMessage.Header.create({
             title: "*⊱─═⪨༻𓆩〘حـــكـمــــة الــــــيـــوم〙𓆪༺⪩═─⊰*",
             subtitle: "",
-            hasMediaAttachment: true, 
+            hasMediaAttachment: false, 
             imageMessage: messa.imageMessage, 
           }),
           nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
