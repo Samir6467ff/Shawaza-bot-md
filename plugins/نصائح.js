@@ -39,8 +39,8 @@ const url = ['https://telegra.ph/file/a69f4e9cf361408214a3b.jpg',
              'https://telegra.ph/file/95b96de8542d96ac3523b.jpg', 
              'https://telegra.ph/file/46f96abe2d0486290a40f.jpg', 
              'https://telegra.ph/file/636f8e455d8d8263ec80b.jpg'
-             ]; 
-  const random = url[Math.floor(Math.random() * url.length)];*/
+             ];*/
+  const randomImage = tips[Math.floor(Math.random() * tips.length)];
    var messa = await prepareWAMessageMedia({ image: { url:'https://telegra.ph/file/d8fd7845649fdcab77f5b.png' } }, { upload: conn.waUploadToServer });
 let msg = generateWAMessageFromContent(m.chat, {
   viewOnceMessage: {
