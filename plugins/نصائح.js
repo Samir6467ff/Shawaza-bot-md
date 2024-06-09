@@ -64,11 +64,12 @@ let msg = generateWAMessageFromContent(m.chat, {
           }),
           nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
             buttons: [
-               {
-          buttonId: '.نصائح',
-          buttonText: { displayText: 'التالي' },
-          type: 1,
-        },
+              {
+               name: "quick_reply",
+               buttonParamsJson:JSON.stringify({
+                 "display_text":"التالي","id":".نصيحه" 
+                })
+               }, 
               {
                 "name": "quick_reply",
                 "buttonParamsJson": "{\"display_text\":\"الدعم\",\"id\":\".الدعم\"}"
