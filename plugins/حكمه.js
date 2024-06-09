@@ -24,7 +24,7 @@ let msg = generateWAMessageFromContent(m.chat, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `*${randomImage}*\n*⊱─═⪨༻𓆩⚡𓆪༺⪩═─⊰*`
+            text: `*${randomImage}*`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
@@ -32,7 +32,7 @@ let msg = generateWAMessageFromContent(m.chat, {
           header: proto.Message.InteractiveMessage.Header.create({
             title: "*⊱─═⪨༻𓆩〘حـــكـمــــة الــــــيـــوم〙𓆪༺⪩═─⊰*",
             subtitle: "",
-            hasMediaAttachment: false, 
+            hasMediaAttachment: true, 
             imageMessage: messa.imageMessage, 
           }),
           nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
