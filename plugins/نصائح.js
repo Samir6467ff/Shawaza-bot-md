@@ -67,7 +67,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               {
                name: "quick_reply",
                buttonParamsJson:JSON.stringify({
-                 "display_text":"التالي","id":".نصيحه" 
+                 "display_text":"التالي","id":"نصيحه" 
                 })
                }, 
               {
