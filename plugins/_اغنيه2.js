@@ -5,8 +5,7 @@ let handler = async (m, { conn, text, args, isPrems, isOwner, usedPrefix, comman
   if (!args[0].match(/youtu/gi)) throw `❎ تحقق من أنه رابط يوتيوب.`;
 
   await conn.sendMessage(m.chat, { react: { text:'🎶', key: m.key } })
-
-
+  await m.reply (wait) 
   try {
     let q = '128kbps'; 
     let v = args[0]; 
