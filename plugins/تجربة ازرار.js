@@ -23,13 +23,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     // إعداد رسالة الوسائط
     var messa = await prepareWAMessageMedia({ image: { url: randomImage } }, { upload: conn.waUploadToServer });
 
-    const lol = {
+    const lol = generateWAMessageFromContent(m.chat, {
         viewOnceMessage: {
             message: {
                 interactiveMessage: {
                     body: {
                         text: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
-*🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName}  @${mentionId.split('@')[0]}⌉*
+*🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
 ── • ◈ • ──
 
 ┏━━🤖 *『』ī معلومات البوت ī《* 🤖━━┓
