@@ -146,7 +146,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             }
         }
     }, {});
-conn.relayMessage(m.chat, lol.message, { messageId: msg.key.id});
+conn.relayMessage(m.chat, lol.message, { messageId: lol.key.id});
 
 }
 
