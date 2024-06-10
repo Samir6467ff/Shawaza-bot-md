@@ -5,6 +5,7 @@ let handler = async (m, { conn }) => {
     const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
     const wib = moment.tz('Africa/Cairo').format('HH:mm:ss');
     const date = new Date().toLocaleDateString('en-EG', { day: 'numeric', month: 'long', year: 'numeric' });
+    const mentionId = m.key.participant || m.key.remoteJid;
 
     await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } });
 
@@ -24,7 +25,7 @@ let handler = async (m, { conn }) => {
     const content = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
         extendedTextMessage: {
             text: `┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢
-*🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} ⌉*
+*🐉✬⃝╿↵ مرحــبـا ⌊ ${m.pushName} @${mentionId.split('@')[0]} ⌉*
 ── • ◈ • ──
 
 ┏━━🤖 *『』ī معلومات البوت ī《* 🤖━━┓
