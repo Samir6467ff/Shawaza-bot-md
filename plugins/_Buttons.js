@@ -2,7 +2,7 @@
 // By : team GataBot 
 
 
-const canal2 = 'https://telegra.ph/file/078014e17aedf4f7a6cd9.jpg'; 
+const canal2 = 'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg'; 
 // COMBINACIÓN DE MENSAJES
 // Adaptar el simple.js
 let handler = async (m, { conn, usedPrefix, command, text }) => {
@@ -10,30 +10,29 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 // MENSAJE CARUSEL CON TODOS LOS BOTONES DISPONIBLES
 // Si las ids no te funciona con usedPrefix, tendrás que definirlas, ejemplo /menu
 const sections = [{
-title: `Título de la sección`,
+title: `تست`,
 rows: [
-{ header: 'Encabezado1', title: "Título1", description: 'Descripción1', id: usedPrefix + "menu" }, 
-{ header: 'Encabezado2', title: "Título2", description: 'Descripción2', id: "Id2" }, 
-{ header: 'Encabezado3', title: "Título3", description: 'Descripción3', id: "Id3" }, 
-{ header: 'Encabezado4', title: "Título4", description: 'Descripción4', id: "Id4" }, 
+{ header: 'قائمة الاوامر', title: "تست", description: '', id: usedPrefix + "menu" }, 
+{ header: 'المطور', title: "المطور", description: '', id: ".المطور" }, 
+{ header: 'الدعم', title: "الدعم", description: '', id:".الدعم" }, 
+{ header: 'شروط', title: "شروط", description: '', id: ".شروط" }, 
 ]},]  
 const messages = [[ // CARRUSEL 1
-'Descripción de Carrusel 1', 
-'Footer de Carrusel 1',
-'https://telegra.ph/file/24b24c495b5384b218b2f.jpg',
-[['Botón1', usedPrefix + 'menu'], ['Botón2', 'Id2'] /* etc... */],
-[['Texto para copiar 1'], ['Texto para copiar 2'] /* etc... */],
-[['Enlace1', canal2], ['Enlace2', 'https://example.com/link2'] /* etc... */],
-[['Botón Lista 1', sections], ['Botón Lista 2', sections] /* etc... */]
+'تست تست', 
+'𝒁𝒆𝒛𝒐 𝑩𝒐𝒕',
+'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg',
+[['القائمه', usedPrefix + 'menu'], ['المطور','.المطور'] /* etc... */],
+[['صوره', canal2], ['القناه', 'https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a'] /* etc... */],
+[['click here', sections]/* etc... */]
 ], [ // CARRUSEL 2
-'Descripción de Carrusel 2',
-'Footer de Carrusel 2',
-'https://telegra.ph/file/e9239fa926d3a2ef48df2.jpg',
-[['Botón1', 'Id1'], ['Botón2', 'Id2']],
-[['Texto para copiar 1'], ['Texto para copiar 2']],
-[['Enlace1', 'https://example.com/link1'], ['Enlace2', 'https://example.com/link2']],
-[['Botón Lista 1', sections], ['Botón Lista 2', sections]]
-], [ // CARRUSEL 3
+'تست',
+'𝒁𝒆𝒛𝒐 𝑩𝒐𝒕',
+'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg',
+[['المطور', '.المطور'], ['القائمه', '.menu']],
+[['𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'], ['زيزو عمك']],
+[['قناتي', 'https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a'],
+[['الاوامر', sections]
+]]/*[ // CARRUSEL 3
 'Descripción de Carrusel 3',
 'Footer de Carrusel 3',
 'https://telegra.ph/file/ec725de5925f6fb4d5647.jpg',
@@ -41,7 +40,7 @@ const messages = [[ // CARRUSEL 1
 [['Texto para copiar 1'], ['Texto para copiar 2']],
 [['Enlace1', 'https://example.com/link1'], ['Enlace2', 'https://example.com/link2']],
 [['Botón Lista 1', sections], ['Botón Lista 2', sections]]
-], [ // CARRUSEL 4
+],[ // CARRUSEL 4
 'Descripción de Carrusel 4',
 'Footer de Carrusel 4',
 'https://telegra.ph/file/7acad0975febb71446da5.jpg',
@@ -49,8 +48,8 @@ const messages = [[ // CARRUSEL 1
 [['Texto para copiar 1'], ['Texto para copiar 2']],
 [['Enlace1', 'https://example.com/link1'], ['Enlace2', 'https://example.com/link2']],
 [['Botón Lista 1', sections], ['Botón Lista 2', sections]]
-]] /* etc... */
-await conn.sendCarousel(m.chat, 'Texto', 'Footer', 'Titulo de Carrusel', messages, m)            
+]]*/ /* etc... */
+await conn.sendCarousel(m.chat, 'Titulo de Carrusel', messages, m)            
 
 }
 handler.command = /^(ترو)$/i
