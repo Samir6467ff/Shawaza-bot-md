@@ -23,7 +23,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     // إعداد رسالة الوسائط
     var messa = await prepareWAMessageMedia({ image: { url: randomImage } }, { upload: conn.waUploadToServer });
 
-    conn.relayMessage(m.chat, {
+    const lol = {
         viewOnceMessage: {
             message: {
                 interactiveMessage: {
@@ -146,6 +146,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             }
         }
     }, {});
+conn.relayMessage(m.chat, lol.message, { messageId: msg.key.id});
+
 }
 
 handler.help = ['info'];
