@@ -24,7 +24,7 @@ let handler = async function (m, { conn }) {
             this.reply(m.chat, `لـقـد انـتـهـت الـمـسـابـقـه\nالـيـك لـوحـه الـصـاداره:\n\n${playersList}`, m, { mentions: conn.parseMention(playersList) });
             delete this.itachixvi[id];
         } else {
-            let itachixvi = await (await fetch(`https://raw.githubusercontent.com/mohamedkun15/TheMystic-Bot-MD/master/src/JSON/Manga.json`)).json();
+            let itachixvi = await (await fetch(`https://raw.githubusercontent.com/DK3MK/worker-bot/main/eye.json`)).json();
             json = itachixvi[Math.floor(Math.random() * itachixvi.length)];
             this.itachixvi[id][1] = json;
             this.itachixvi[id][3] = questionCount;
