@@ -24,14 +24,14 @@ const messages = [[ // CARRUSEL 1
 [['القائمه', usedPrefix + 'menu'], ['المطور','.المطور'] /* etc... */],
 [['صوره', canal2], ['القناه', 'https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a'] /* etc... */],
 [['click here', sections]]
-]], [ // CARRUSEL 2
+], [ // CARRUSEL 2
 'تست',
 '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕',
 'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg',
 [['المطور', '.المطور'], ['القائمه', '.menu']],
 [['𝒁𝒆𝒛𝒐 𝑩𝒐𝒕'], ['زيزو عمك']],
 [['قناتي', 'https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a'],
-[['الاوامر', sections]
+[['الاوامر', sections]] 
 ]]/*[ // CARRUSEL 3
 'Descripción de Carrusel 3',
 'Footer de Carrusel 3',
