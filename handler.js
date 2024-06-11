@@ -1421,10 +1421,6 @@ export async function participantsUpdate({id, participants, action}) {
   let text = '';
   switch (action) {
     case 'add':
-    case 'remove': 
-      if (chat.welcome && !chat?.isBanned) {
-        const groupMetadata = await m.conn.groupMetadata(id) || (conn.chats[id] || {}).metadata;
-        for //كود الترحيب مقدم من قناه Zoro Codes
 if (chat.welcome) {
               let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata;
               for (let user of participants) {
@@ -1612,8 +1608,8 @@ const aa = {
             'contextInfo': {
                 'externalAdReply': {
                     'title': '*[ ⚠ ] معلومه مهمه*',
-                    'body': '𝑧ₑ𝑧ₒ_𝑏ₒ𝑡 ❦︎',
-                    'thumbnail': imagen1,
+                    'body': '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕',
+                    'thumbnail':'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg',
                     'sourceUrl': 'https://www.atom.bio/zyad_yasser/#'
                 }
             }
