@@ -2,9 +2,9 @@ import fetch from 'node-fetch';
 
 const handler = async (m, {conn, text}) => {
     const datas = global
-    const idioma = datas.db.data.users[m.sender].language
-    const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
-    const tradutor = _translate.BK9.BK9
+    //const idioma = datas.db.data.users[m.sender].language
+    //const _translate = JSON.parse(fs.readFileSync(`./language/ar.json`))
+    //const tradutor = _translate.BK9.BK9
 
     if (!text) throw "يـرجـى إدخـال نـص، مـثـال\n.تخيل بيت ازرق في طبيعة خلابة";
 
