@@ -10,11 +10,11 @@ handler.before = async function (m) {
         let json = JSON.parse(JSON.stringify(this.tekateki[id][1]))
         if (m.text.toLowerCase() == json.response.toLowerCase().trim()) {
             global.db.data.users[m.sender].exp += this.tekateki[id][2]
-            m.reply(`❆━━━═⏣⊰𝒁𝒆𝒛𝒐 𝑩𝒐𝒕⊱⏣═━━━❆\n\n*اجـابـة صـحـيـحـة*\n\n*الـجـائـزة💰↞ ${this.tekateki[id][2]} نقطة*\n\n❆━━━═⏣⊰𝒁𝒆𝒛𝒐 𝑩𝒐𝒕⊱⏣═━━━❆`)
+            m.reply(`*⊱─═⪨༻𓆩〘⚡〙𓆪༺⪩═─⊰*\n\n*⌬ ❛╏ اجـــابــه صـحـيـحــه شـطــور يـلا جــرب تــــانــي*\n\n*الـــجــائــزة💰↞ ${this.tekateki[id][2]} نــقـطـه*\n\n*⊱─═⪨༻𓆩〘⚡〙𓆪༺⪩═─⊰*`)
             clearTimeout(this.tekateki[id][3])
             delete this.tekateki[id]
-        } else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) m.reply(`اقتربت من الاجابة!`)
-        else m.reply('❆━━━═⏣⊰𝒁𝒆𝒛𝒐 𝑩𝒐𝒕⊱⏣═━━━❆\n\n*اجابة خاطئة*\n\n❆━━━═⏣⊰𝒁𝒆𝒛𝒐 𝑩𝒐𝒕⊱⏣═━━━❆')
+        } else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) m.reply(`*⌬ ❛╏ قـــربـت مـن الاجــابــة جــرب تــــانــي*`)
+        else m.reply('*⊱─═⪨༻𓆩〘⚡〙𓆪༺⪩═─⊰*\n\n*⌬ ❛╏ اجـــابــه خــاطــئـــه يــا فــاشــل*\n\n*⊱─═⪨༻𓆩〘⚡〙𓆪༺⪩═─⊰*')
     }
     return !0
 }
