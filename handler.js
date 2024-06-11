@@ -1421,6 +1421,7 @@ export async function participantsUpdate({id, participants, action}) {
   let text = '';
   switch (action) {
     case 'add':
+    case 'remove': 
       if (chat.welcome && !chat?.isBanned) {
         const groupMetadata = await m.conn.groupMetadata(id) || (conn.chats[id] || {}).metadata;
         for //كود الترحيب مقدم من قناه Zoro Codes
