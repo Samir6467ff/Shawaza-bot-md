@@ -4,8 +4,8 @@ import Presence from '@whiskeysockets/baileys';
 const handler = async (m, {conn, args, text}) => {
   const datas = global
   const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
-  const tradutor = _translate.plugins.gc_setname
+  const tradutor = JSON.parse(fs.readFileSync(`./language/ar.json`))
+// const tradutor = _translate.plugins.gc_setname
 
   if (!text) throw tradutor.texto1;
   try {
