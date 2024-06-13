@@ -3,7 +3,7 @@ import { prepareWAMessageMedia} from '@whiskeysockets/baileys';
 const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
 //if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `*[❗] Los comandos +18 están desactivados en este grupo, si es admin y desea activarlos use ${usedPrefix}enable modohorny*`; 
   try {
-    const pp = var messa = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg'}}, { upload: conn.waUploadToServer })
+    const pp = await prepareWAMessageMedia({ image: {url:'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg'}}, { upload: conn.waUploadToServer })
     const vn = './media/La biblia.mp3';
     const d = new Date(new Date + 3600000);
     const locale = 'es';
