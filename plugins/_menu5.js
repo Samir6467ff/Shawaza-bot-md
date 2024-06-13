@@ -20,28 +20,45 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const doc = ['pdf', 'zip', 'vnd.openxmlformats-officedocument.presentationml.presentation', 'vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'vnd.openxmlformats-officedocument.wordprocessingml.document'];
     const document = doc[Math.floor(Math.random() * doc.length)];
     const str = `
-*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
-*⩥🎙️│${taguser}│📽️⩤*
-*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
-          *⩥🎙️│الـتـنزيـلات│📽️⩤*
-*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
-*│✮ ⃟📻❯ .اغنيه*
-*│✮ ⃟📽️❯ .فيديو*
-*│✮ ⃟🎥❯ .يوتيوب*
-*│✮ ⃟🧸❯ .انستجرام*
-*│✮ ⃟📱❯ .مود*
-*│✮ ⃟📱❯ .تطبيق*
-*│✮ ⃟📷❯ .صوره*
-*│✮ ⃟🌅❯ .خلفيات*
-*│✮ ⃟🎵❯ .تيك*
-*⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢*
+*⟣𓆩༺ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ❄ ༻𓆪⟢* 
+⟣┈┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
+*༺ مـنـــور يــاقــلـبـي 〘 ${m.pushName} 〙༻*
+⟣┈┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
+
+*⌬ ❛╏دي اوامر البوت متنساش ال ( . ) قبل اي امر*
+
+*⌬ ❛╏استمتع بالبوت بدون التسبب بازعاج للاعضاء*
+
+*⌬ ❛╏ممنوع طلب اشياء تخالف الشرع*
+
+*⌬ ❛╏ممنوع سب البوت اطلاقا باي الفاظ*
+
+*〘 مخالفة الشروط = حرمانك من البوت 〙*
+
+*⌬ ❛╏اذا كان هناك شئ لا يعجبك اكتب 〘 .ابلاغ  + مشكلتك〙*
+
+⟣┈┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
+*༺ قـسـم الـتـنزيـلات ༻*
+⟣┈┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
+│✯ ❯ .اغنيه
+│✯ ❯ .فيديو
+│✯ ❯ .يوتيوب
+│✯ ❯ .انستا
+│✯ ❯ .فيس
+│✯ ❯ .مود
+│✯ ❯ .تطبيق
+│✯ ❯ .صوره
+│✯ ❯ .خلفيات
+│✯ ❯ .تيك
+│✯ ❯ .شغل
+⟣┈┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
 `.trim();
     if (m.isGroup) {
       await conn.sendMessage(m.chat, {image: pp, caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: m});
     //  await conn.sendFile(m.chat, vn, 'La biblia.mp3', null, m, true, {type: 'audioMessage', ptt: true});
     } else {
       const fkontak2 = {'key': {'participants': '0@s.whatsapp.net', 'remoteJid': 'status@broadcast', 'fromMe': false, 'id': 'Halo'}, 'message': {'contactMessage': {'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}, 'participant': '0@s.whatsapp.net'};
-      await conn.sendMessage(m.chat, {image: pp, caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
+      await conn.sendMessage(m.chat, {image:{url:'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg'}, caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
       //await conn.sendFile(m.chat, vn, 'La biblia.mp3', null, m, true, {type: 'audioMessage', ptt: true});
       await conn.sendMessage(m.chat, { react: { text: '📜', key: m.key } })
 
