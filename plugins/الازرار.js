@@ -13,7 +13,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     const images = [
         'https://telegra.ph/file/a79388f9fa9385f59d6a3.png',
         'https://telegra.ph/file/9c5f3db7081f5fc0f8ad2.jpg',
-        'https://telegra.ph/file/187d2833c018e15d866c4.jpg'  // أضف عنوان URL ثالث هنا
+        'https://telegra.ph/file/187d2833c018e15d866c4.jpg',
+        'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg'// أضف عنوان URL ثالث هنا
     ];
 
     // اختيار عشوائي لعنوان URL من القائمة
@@ -45,7 +46,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 ⟣┈┈┈┈┈┈⟢┈┈┈⟣┈┈┈┈┈┈┈⟢`
                     },
                     footer: {
-                        text: '➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄'
+                        text: 'ᴹᴿ᭄𝒁𝒆𝒛𝒐ᴹᴿ᭄'
                     },
                     header: {
                         title: '',
@@ -101,6 +102,19 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                                 },
                                                 {
                                                     header: '『』MENU《',
+                                                    title: '⌬ ❛╏الــادوات',
+                                                    description: '',
+                                                    id: '.7',
+                                                },
+{
+                                                    header: '『』MENU《',
+                                                    title: '⌬ ❛╏شـرح الـالـقـاب',
+                                                    description: '',
+                                                    id: '.3',
+                                                },
+
+                                                {
+                                                    header: '『』MENU《',
                                                     title: '⌬ ❛╏شروط',
                                                     description: '',
                                                     id: '.20',
@@ -126,6 +140,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                             {
                                 name: "quick_reply",
                                 buttonParamsJson: "{\"display_text\":\"『』OWNER《\",\"id\":\".المطور\"}"
+                            },
+                            {
+                                name: "cta_url",
+                                buttonParamsJson: "{\"display_text\":\"『』GROUP《\",\"url\":\"https://chat.whatsapp.com/Gvj15Uocf6KDc2OUzgx06g\",\"merchant_url\":\"https://chat.whatsapp.com/Gvj15Uocf6KDc2OUzgx06g\"}"
                             },
                             {
                                 name: "cta_url",
