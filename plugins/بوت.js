@@ -19,10 +19,11 @@ async function getOpenAIChatCompletion(text) {
   return result.choices[0].message.content;
 }
 
-async function getAlternativeResponse(url) {
-  const response = await fetch(url, { timeout: 5000 });  // Setting a timeout of 5 seconds
+async function getAlternativeResponse(query) {
+  const apiUrl = `https://api.example.com/path2/path3/path4/path5/ef66b9/apikey/googlegenai?query=${encodeURIComponent(query)}`;
+  const response = await fetch(apiUrl, { timeout: 5000 });
   const result = await response.json();
-  return result.data || result.result || result.respon;
+  return result.result;
 }
 
 async function translateToArabic(text) {
@@ -40,35 +41,21 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     m.reply(respuesta.trim());
   } catch (error) {
     console.error('Error with OpenAI API:', error.message);
-    const alternativeAPIs = [
-      `https://api.openai.com/v1/completions`,
-      `https://api-fgmods.ddns.net/api/info/openai?text=${text}&symsg=⍣⃝𝑁𝐴𝑇𝑆𝑈&apikey=XlwAnX8d`,
-      `https://vihangayt.me/tools/chatgpt?q=${text}`,
-      `https://vihangayt.me/tools/chatgpt2?q=${text}`,
-      `https://vihangayt.me/tools/chatgpt3?q=${text}`,
-      `https://api.lolhuman.xyz/api/openai?apikey=${lolkeysapi}&text=${text}&user=${m.sender}`,
-      `https://api.ibeng.tech/api/others/chatgpt?q=Hola&apikey=eMlBNRzUXv`,
-      `https://api.akuari.my.id/ai/gpt?chat=${text}`,
-      `https://api.akuari.my.id/ai/gbard?chat=${text}`
-    ];
-
-    for (let api of alternativeAPIs) {
-      try {
-        conn.sendPresenceUpdate('composing', m.chat);
-        let response = await getAlternativeResponse(api);
-        if (response && response !== 'error') {
-          response = await translateToArabic(response);
-          m.reply(response.trim());
-          return;
-        }
-      } catch (err) {
-        console.error(`Error with API ${api}:`, err.message);
+    try {
+      conn.sendPresenceUpdate('composing', m.chat);
+      let alternativeResponse = await getAlternativeResponse(text);
+      if (alternativeResponse && alternativeResponse !== 'error') {
+        alternativeResponse = await translateToArabic(alternativeResponse);
+        m.reply(alternativeResponse.trim());
+      } else {
+        throw new Error('Alternative API returned an error');
       }
+    } catch (err) {
+      console.error('Error with alternative API:', err.message);
+      m.reply(`*[❗] خطأ غير مفهوم 🙂*`);
     }
-
-    m.reply(`*[❗] خطأ غير مفهوم 🙂*`);
   }
 };
 
-handler.command = /^(gpt|ia|بوت)$/i;
+handler.command = /^(gpt|ia|بوت|دحيح)$/i;
 export default handler;
