@@ -3,7 +3,7 @@ import { toAudio } from '../lib/converter.js'
 let handler = async (m, { conn, usedPrefix, command }) => {
     let q = m.quoted ? m.quoted : m
     let mime = (m.quoted ? m.quoted : m.msg).mimetype || ''
-    if (!/video|audio/.test(mime)) throw `*✳️ قم بالرد علي فبديو لتحوليه لصوت*`
+    if (!/video|audio/.test(mime)) throw `*✳️ قم بالرد علي فيديو لتحويله لصوت*`
     let media = await q.download?.()
     if (!media) throw '❎ فشل تحميل الوسائط'
     let audio = await toAudio(media, 'mp4')
