@@ -41,7 +41,7 @@ let handler = async (m, { conn, command }) => {
         conn.reply(m.chat, `تـم الـتـسـجـيـل بـنـجـاح\nتـبـقـي للـانـضـمـام: ${maxPlayers - conn.itachixvi[id][2].length}`, m);
 
         if (conn.itachixvi[id][2].length >= 2) {
-            let itachixvi = await (await fetch(`https://raw.githubusercontent.com/mohamedkun15/TheMystic-Bot-MD/master/src/JSON/Manga.json`)).json();
+            let itachixvi = await (await fetch(`https://raw.githubusercontent.com/DK3MK/worker-bot/main/eye.json`)).json();
             let json = itachixvi[Math.floor(Math.random() * itachixvi.length)];
             conn.itachixvi[id][1] = json;
             let playersList = conn.itachixvi[id][2].map((player, i) => `${i + 1} - @${player.id.split('@')[0]} [${player.points} نقطة]`).join('\n');
