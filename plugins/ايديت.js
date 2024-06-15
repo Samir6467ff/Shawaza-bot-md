@@ -3,6 +3,9 @@ import ytdl from 'ytdl-core';
 import fs from 'fs';
 import path from 'path';
 
+// تحديد المسار الصحيح للدليل الحالي
+const __dirname = path.resolve();
+
 const apiKey = 'AIzaSyAj0oG342v6Js1FzpK7HCqe6iMFeHM28Pw'; // تم تضمين مفتاح API الخاص بك
 
 async function searchYouTube(query) {
