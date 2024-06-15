@@ -7,6 +7,12 @@ const apiKey = 'AIzaSyAj0oG342v6Js1FzpK7HCqe6iMFeHM28Pw'; // تم تضمين م�
 
 async function searchYouTube(query) {
   const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${apiKey}`);
+  
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Failed to fetch videos: ${errorText}`);
+  }
+  
   const data = await response.json();
   return data.items;
 }
@@ -46,7 +52,7 @@ let handler = async (m, { conn, text }) => {
     }
   } catch (error) {
     console.error(error);
-    await conn.sendMessage(m.chat, { text: 'حدث خطأ أثناء البحث عن الفيديوهات.' }, { quoted: m });
+    await conn.sendMessage(m.chat, { text: `حدث خطأ أثناء البحث عن الفيديوهات: ${error.message}` }, { quoted: m });
   }
 };
 
