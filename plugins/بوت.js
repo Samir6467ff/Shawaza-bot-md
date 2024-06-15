@@ -10,7 +10,7 @@ async function getOpenAIChatCompletion(text) {
   const openaiAPIKey = global.openai_key;
   const sistema1 = `『❄️  ⍣⃝𝑁𝐴𝑇𝑆𝑈.`;
   let chgptdb = global.chatgpt.data.users[m.sender];
-  chgptdb.push({ role: 'user', content: texto });
+  chgptdb.push({ role: 'user', content: text });
   const url = "https://api.openai.com/v1/chat/completions";
   const headers = { "Content-Type": "application/json", "Authorization": `Bearer ${openaiAPIKey}` };
   const data = { "model": "gpt-3.5-turbo", "messages": [{ "role": "system", "content": sistema1 }, ...chgptdb] };
@@ -20,7 +20,7 @@ async function getOpenAIChatCompletion(text) {
 }
 
 async function getAlternativeResponse(url) {
-  const response = await fetch(url);
+  const response = await fetch(url, { timeout: 5000 });  // Setting a timeout of 5 seconds
   const result = await response.json();
   return result.data || result.result || result.respon;
 }
@@ -38,7 +38,8 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     conn.sendPresenceUpdate('composing', m.chat);
     let respuesta = await getOpenAIChatCompletion(text);
     m.reply(respuesta.trim());
-  } catch {
+  } catch (error) {
+    console.error('Error with OpenAI API:', error.message);
     const alternativeAPIs = [
       `https://api.openai.com/v1/completions`,
       `https://api-fgmods.ddns.net/api/info/openai?text=${text}&symsg=⍣⃝𝑁𝐴𝑇𝑆𝑈&apikey=XlwAnX8d`,
