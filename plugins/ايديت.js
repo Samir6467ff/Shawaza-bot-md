@@ -1,32 +1,49 @@
 import fetch from 'node-fetch';
-import ytdl from 'ytdl-core';
+import cheerio from 'cheerio';
 import fs from 'fs';
 import path from 'path';
 
-// تحديد المسار الصحيح للدليل الحالي
 const __dirname = path.resolve();
 
-const apiKey = 'AIzaSyAj0oG342v6Js1FzpK7HCqe6iMFeHM28Pw'; // تم تضمين مفتاح API الخاص بك
+async function searchTikTok(query) {
+  try {
+    const response = await fetch(`https://www.tiktok.com/tag/${encodeURIComponent(query)}`);
 
-async function searchYouTube(query) {
-  const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${apiKey}`);
-  
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`Failed to fetch videos: ${errorText}`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch TikTok videos: ${response.status} ${response.statusText}`);
+    }
+
+    const html = await response.text();
+    const $ = cheerio.load(html);
+
+    const videos = [];
+    $('a[data-video-id]').each((index, element) => {
+      const videoId = $(element).attr('data-video-id');
+      if (videoId) {
+        const videoUrl = `https://www.tiktok.com/@username/v/${videoId}`;
+        videos.push({ videoUrl });
+      }
+    });
+
+    return videos;
+  } catch (error) {
+    throw new Error(`Error fetching TikTok videos: ${error.message}`);
   }
-  
-  const data = await response.json();
-  return data.items;
 }
 
 async function downloadVideo(videoUrl, filePath) {
-  return new Promise((resolve, reject) => {
-    ytdl(videoUrl, { quality: 'highest' })
-      .pipe(fs.createWriteStream(filePath))
-      .on('finish', resolve)
-      .on('error', reject);
-  });
+  try {
+    const response = await fetch(videoUrl);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch video: ${response.status} ${response.statusText}`);
+    }
+
+    const videoBuffer = await response.buffer();
+    fs.writeFileSync(filePath, videoBuffer);
+    console.log(`Video downloaded to ${filePath}`);
+  } catch (error) {
+    throw new Error(`Error downloading video: ${error.message}`);
+  }
 }
 
 let handler = async (m, { conn, text }) => {
@@ -36,12 +53,12 @@ let handler = async (m, { conn, text }) => {
       return;
     }
 
-    const searchQuery = text; // استخدم النص المدخل كمصطلح بحث
-    const videos = await searchYouTube(searchQuery);
+    const searchQuery = text;
+    const videos = await searchTikTok(searchQuery);
 
     if (videos.length > 0) {
       const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-      const videoUrl = `https://www.youtube.com/watch?v=${randomVideo.id.videoId}`;
+      const videoUrl = randomVideo.videoUrl;
       const filePath = path.join(__dirname, 'video.mp4');
 
       await downloadVideo(videoUrl, filePath);
@@ -49,7 +66,7 @@ let handler = async (m, { conn, text }) => {
       await conn.sendFile(m.chat, filePath, 'video.mp4', '', m);
       await conn.sendMessage(m.chat, { react: { text: '🎞', key: m.key } });
 
-      fs.unlinkSync(filePath); // احذف الملف بعد الإرسال
+      fs.unlinkSync(filePath); // Delete the file after sending
     } else {
       await conn.sendMessage(m.chat, { text: 'لم يتم العثور على فيديوهات.' }, { quoted: m });
     }
@@ -59,8 +76,8 @@ let handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ['dado']
-handler.tags = ['game']
-handler.command = ['ايديت', 'اديت']
+handler.help = ['تيك توك'];
+handler.tags = ['ترفيه', 'فيديو'];
+handler.command = ['ايدت','ايديت'];
 
 export default handler;
