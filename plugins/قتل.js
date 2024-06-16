@@ -22,7 +22,7 @@ async function handler(m, { groupMetadata }) {
 > الأمر للمزاح فقط`
     };
 
-await conn.sendMessage(m.chat, {image:{url:buffer}, caption: message, mentions: [...message.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')});
+await conn.sendMessage(m.chat, {image:{url:buffer}, caption: message.trim(), mentions: [...message.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')});
 
 }
 
