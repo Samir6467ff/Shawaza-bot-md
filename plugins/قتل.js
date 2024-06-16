@@ -1,35 +1,34 @@
-const { Client, MessageMedia } = require('whatsapp-web.js');
-const fetch = require('node-fetch');
-
-const client = new Client();
+import fetch from 'node-fetch';
 
 let toM = a => '@' + a.split('@')[0];
 
-client.on('message', async message => {
-    if (message.body.startsWith('!جريمة')) {
-        let chat = await message.getChat();
-        if (!chat.isGroup) {
-            return;
-        }
-        
-        let ps = chat.participants.map(v => v.id._serialized);
-        let a = ps[Math.floor(Math.random() * ps.length)];
-        let b;
-        do {
-            b = ps[Math.floor(Math.random() * ps.length)];
-        } while (b === a);
+async function handler(m, { groupMetadata }) {
+    let ps = groupMetadata.participants.map(v => v.id);
+    let a = ps[Math.floor(Math.random() * ps.length)];
+    let b;
+    do {
+        b = ps[Math.floor(Math.random() * ps.length)];
+    } while (b === a);
 
-        const imageUrl = 'https://telegra.ph/file/729ba9f78fe02e609bc70.jpg';
-        const media = await MessageMedia.fromUrl(imageUrl);
+    const imageUrl = 'https://telegra.ph/file/729ba9f78fe02e609bc70.jpg';
+    const response = await fetch(imageUrl);
+    const buffer = await response.buffer();
 
-        const replyText = `*🧬 تـم الـإعـلان عـن جـريـمـة 🧬*
+    const message = {
+        text: `*🧬 تـم الـإعـلان عـن جـريـمـة 🧬*
 *⧉🔪 ╎الـقـاتـل : ${toM(a)}*
 *⧉⚰️ ╎الـمـقـتـول : ${toM(b)}*
 *تـم الـقـبـض عـلـى الـمُـجـرم ⛓️*
-> الأمر للمزاح فقط`;
+> الأمر للمزاح فقط`,
+        image: buffer
+    };
 
-        chat.sendMessage(replyText, { media });
-    }
-});
+    m.reply(message);
+}
 
-client.initialize();
+handler.help = ['formarpareja'];
+handler.tags = ['main', 'fun'];
+handler.command = ['جريمة', 'قتل'];
+handler.group = true;
+
+export default handler;
