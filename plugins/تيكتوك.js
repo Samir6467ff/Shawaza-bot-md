@@ -22,12 +22,16 @@ let handler = async (m, { conn, usedPrefix, args, command, text }) => {
 };
 
 async function zoro(text) {
-  let res = await fetch(`https://api-me-4ef1b6491458.herokuapp.com/api/tiktok?url=${encodeURIComponent(text)}`);
+  let res = await fetch(`https://api.tiktokdownloader.com/?url=${encodeURIComponent(text)}`);
   if (!res.ok) return false;
 
+  let jsonResponse = await res.json();
+  let mediaURL = jsonResponse.data.video_url;  // تأكد من استخدام المفتاح الصحيح من الاستجابة JSON
+
   const fileName = 'Zoro_tiktok_video.mp4';
+  const response = await fetch(mediaURL);
   const fileStream = fs.createWriteStream(fileName);
-  res.body.pipe(fileStream);
+  response.body.pipe(fileStream);
 
   await new Promise((resolve, reject) => {
     fileStream.on('finish', resolve);
