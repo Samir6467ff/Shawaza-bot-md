@@ -19,11 +19,11 @@ async function handler(m, { groupMetadata }) {
 *⧉🔪 ╎الـقـاتـل : ${toM(a)}*
 *⧉⚰️ ╎الـمـقـتـول : ${toM(b)}*
 *تـم الـقـبـض عـلـى الـمُـجـرم ⛓️*
-> الأمر للمزاح فقط`,
-        image: buffer
+> الأمر للمزاح فقط`
     };
 
-    m.reply(message);
+await conn.sendMessage(m.chat, {image:{url:buffer}, caption: message.trim(), mentions: [...message.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')});
+
 }
 
 handler.help = ['formarpareja'];
