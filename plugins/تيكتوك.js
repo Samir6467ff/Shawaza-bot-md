@@ -22,20 +22,27 @@ let handler = async (m, { conn, usedPrefix, args, command, text }) => {
 };
 
 async function zoro(text) {
-  let res = await fetch(`https://api.tiktokdownloader.com/?url=${encodeURIComponent(text)}`);
+  const API_KEY = 'apify_api_eUmBmvx581iQls9Ibea1I1z1pFHVnR2b1aoO'; // Replace with your API key
+  let res = await fetch(`https://api.apify.com/v2/acts/mscraper~tiktok-video-downloader/run-sync-get-dataset-items?token=${API_KEY}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ url: text })
+  });
+
   if (!res.ok) return false;
 
-  let jsonResponse = await res.json();
-  let mediaURL = jsonResponse.data.video_url;  // تأكد من استخدام المفتاح الصحيح من الاستجابة JSON
-
+  const data = await res.json();
+  const videoURL = data.url; // Adjust based on the API response structure
   const fileName = 'Zoro_tiktok_video.mp4';
-  const response = await fetch(mediaURL);
   const fileStream = fs.createWriteStream(fileName);
-  response.body.pipe(fileStream);
 
   await new Promise((resolve, reject) => {
-    fileStream.on('finish', resolve);
-    fileStream.on('error', reject);
+    fetch(videoURL)
+      .then(videoRes => videoRes.body.pipe(fileStream))
+      .then(() => fileStream.on('finish', resolve))
+      .catch(reject);
   });
 
   return fileName;
