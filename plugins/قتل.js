@@ -1,13 +1,8 @@
-// مقدمة من قناة 𝓧 𝓐𝓷𝓰𝓮𝓵 𝓧  | ℬ𝒪𝒯 ' https://whatsapp.com/channel/0029Vadaqas6WaKiKeJEvz2w '
-
 import fetch from 'node-fetch';
 
 let toM = a => '@' + a.split('@')[0];
 
 async function handler(m, { groupMetadata }) {
-    // لن يتم التحقق من الجواهر ولن يتم خصم أي شيء
-
-    // قم بإرسال رسالة تأكيد الجريمة
     let ps = groupMetadata.participants.map(v => v.id);
     let a = ps[Math.floor(Math.random() * ps.length)];
     let b;
@@ -15,17 +10,13 @@ async function handler(m, { groupMetadata }) {
         b = ps[Math.floor(Math.random() * ps.length)];
     } while (b === a);
 
-    // رابط الصورة الذي تريده
-    const fgytSrdf = 'https://telegra.ph/file/38bc981d35dabf1d82df7.png';
+    const imageUrl = 'https://telegra.ph/file/729ba9f78fe02e609bc70.jpg';
 
     m.reply(`*🧬 تـم الـإعـلان عـن جـريـمـة 🧬*
 *⧉🔪 ╎الـقـاتـل : ${toM(a)}*
 *⧉⚰️ ╎الـمـقـتـول : ${toM(b)}*
 *تـم الـقـبـض عـلـى الـمُـجـرم ⛓️*
-> الأمر للمزاح فقط`, null, {
-        mentions: [a, b],
-        url: fgytSrdf // تغيير imageUrl إلى fgytSrdf
-    });
+> الأمر للمزاح فقط`, { imageUrl });
 }
 
 handler.help = ['formarpareja'];
