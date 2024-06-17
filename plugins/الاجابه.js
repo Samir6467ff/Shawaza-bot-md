@@ -3,19 +3,18 @@ const threshold = 0.72
 let handler = m => m
 handler.before = async function (m) {
     let id = m.chat
-    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/^ⷮ/i.test(m.quoted.text)) return !0
+    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/^/i.test(m.quoted.text)) return !0
     this.tekateki = this.tekateki ? this.tekateki : {}
-    if (!(id in this.tekateki)) return m.reply('Ese acertijo ya ha terminado!')
+    if (!(id in this.tekateki)) return 
     if (m.quoted.id == this.tekateki[id][0].id) {
         let json = JSON.parse(JSON.stringify(this.tekateki[id][1]))
-        // m.reply(JSON.stringify(json, null, '\t'))
         if (m.text.toLowerCase() == json.response.toLowerCase().trim()) {
             global.db.data.users[m.sender].exp += this.tekateki[id][2]
-            m.reply(`*اجـابـة صـحـيـحـة✅ ❯*\n\n*الـجـائـزة💰↞ ${this.tekateki[id][2]} نقطة*`)
+            m.reply(`*⊱─═⪨༻𓆩〘⚡〙𓆪༺⪩═─⊰*\n\n*⌬ ❛╏ اجـــابــه صـحـيـحــه شـطــور يـلا جــرب تــــانــي*\n\n*الـــجــائــزة💰↞ ${this.tekateki[id][2]} نــقـطـه*\n\n*⊱─═⪨༻𓆩〘⚡〙𓆪༺⪩═─⊰*`)
             clearTimeout(this.tekateki[id][3])
             delete this.tekateki[id]
-        } else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) m.reply(`اقتربت من الاجابه!`)
-        else m.reply('اجـابـة خـاطـئـة❌ ❯')
+        } else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) m.reply(`*⌬ ❛╏ قـــربـت مـن الاجــابــة جــرب تــــانــي*`)
+        else m.reply('*⊱─═⪨༻𓆩〘⚡〙𓆪༺⪩═─⊰*\n\n*⌬ ❛╏ اجـــابــه خــاطــئـــه يــا فــاشــل*\n\n*⊱─═⪨༻𓆩〘⚡〙𓆪༺⪩═─⊰*')
     }
     return !0
 }
