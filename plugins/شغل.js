@@ -79,14 +79,14 @@ const handler = async (m, { command, usedPrefix, conn, text }) => {
                                   name: 'quick_reply',
                                   buttonParamsJson: JSON.stringify({
                                       display_text: 'الصوت🎧',
-                                      id: `.شغل2 ${data.resultado.url} SN@`
+                                      id: `.صوتي ${data.resultado.url} SN@`
                                   })
                               },
                               {
                                   name: 'quick_reply',
                                   buttonParamsJson: JSON.stringify({
                                       display_text: 'الفيديو📽️',
-                                      id: `.شغل1 ${data.resultado.url} SN@`
+                                      id: `.فيديو ${data.resultado.url} SN@`
                                   })
                               },   
                           ],
