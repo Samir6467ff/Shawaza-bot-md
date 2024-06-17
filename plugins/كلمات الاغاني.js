@@ -10,7 +10,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`));
     const tradutor = _translate.plugins.buscador_lyrics;
     const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : '';
-    if (!teks) throw `*أدخل اسم الأغنية التي تريد البحث عنها ${usedPrefix + command} beret ojala*`;
+    if (!teks) throw `*${tradutor.texto1} ${usedPrefix + command} beret ojala*`;
     try {
         const result = await getTracks(teks);
         let lyrics;
@@ -39,26 +39,26 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
                 }
             }
         }
-        const textoLetra = `*العنوان:* *${tituloL || ''}*\n*الفنان:*  *${artistaL || ''}*\n\n*كلمات الأغنية:* \n${lyrics.lyrics || 'لم يتم العثور على كلمات.'}`;
+        const textoLetra = `${tradutor.texto2[0]} *${tituloL || ''}*\n${tradutor.texto2[1]}  *${artistaL || ''}*\n\n${tradutor.texto2[2]} \n${lyrics.lyrics || 'Lyrics not found.'}`;
         await conn.sendMessage(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });
         await conn.sendMessage(m.chat, { audio: { url: result[0]?.preview }, fileName: `${artistaL || '-'} - ${tituloL || '-'}.mp3`, mimetype: 'audio/mp4' }, { quoted: m });
     } catch (e) {
         console.log(`Error: ${e.message}`)
-        throw `*حدث خطأ، حاول مرة أخرى*`;
+        throw `*${tradutor.texto2[3]}*`;
     }
 };
 handler.help = ['lirik', 'letra'].map((v) => v + ' <Apa>');
 handler.tags = ['internet'];
-handler.command = /^(lirik|كلمات|التراك)$/i;
+handler.command = /^(lirik|lyrics|lyric|letra|كلمات)$/i;
 export default handler;
 
 /* Creditos: https://github.com/darlyn1234 */
 async function searchLyrics(term) {
   try {
-    if (!term) return "🟥 أدخل اسم الأغنية للبحث عن كلماتها";
+    if (!term) return "🟥 Provide the name of the song to search the lyrics";
     const geniusResponse = await axios.get(`https://letra-lime.vercel.app/genius?query=${term}`);
     const geniusData = geniusResponse.data;
-    if (!geniusData.length) return `🟨 لم يتم العثور على كلمات لـ"${term}"`;
+    if (!geniusData.length) return `🟨 Couldn't find any lyrics for "${term}"`;
     const lyricsUrl = geniusData[0].url;
     const lyricsResponse = await axios.get(`https://letra-lime.vercel.app/lyrics?url=${lyricsUrl}`);
     const result = {
@@ -71,4 +71,17 @@ async function searchLyrics(term) {
       id: geniusData[0].id || "",
       enpoint: geniusData[0].endpoint || "",
       instrumental: geniusData[0].instrumental,
-      image: geniusData
+      image: geniusData[0].image || "",
+      url: geniusData[0].url || "",
+      lyrics: lyricsResponse.data.lyrics || "",
+    };
+    return result;
+  } catch (error) {
+    console.error(error.message);
+    return {
+      creador: "Sareth",
+      status: "error",
+      message: new Error(error).message,
+    };
+  }
+}
