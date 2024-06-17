@@ -21,7 +21,7 @@ let handler = async (m, {
             })
 
     } catch (e) {
-        throw eror
+        throw "*خطأ!*" 
     }
 }
 handler.help = ["crayon"]
