@@ -1601,7 +1601,6 @@ global.dfail = (type, m, conn) => {
 const aa = { quoted: m, userJid: conn.user.jid };
   const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title:'زيزو', body:'𝒁𝒆𝒛𝒐 𝑩𝒐𝒕', thumbnail:'https://telegra.ph/file/f4f9d2420ac2b1072eb2e.jpg', sourceUrl:'https://www.atom.bio/zyad_yasser/#' } } } }, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id });
-};
   };
 const file = global.__filename(import.meta.url, true);
 watchFile(file, async () => {
