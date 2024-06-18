@@ -1769,7 +1769,7 @@ global.dfail = (type, m, conn) => {
     restrict: tradutor.texto10,
   }[type];
   const aa = { quoted: m, userJid: conn.user.jid };
-  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: tradutor.texto11[0], body: tradutor.texto11[1], thumbnail: imagen1, sourceUrl: tradutor.texto11[2] } } } }, aa);
+  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: tradutor.texto11[0], body: tradutor.texto11[1], thumbnail: imagen1, sourceUrl:'https://www.atom.bio/zyad_yasser/#' } } } }, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id });
 };
 
