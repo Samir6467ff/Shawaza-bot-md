@@ -1650,7 +1650,7 @@ export async function participantsUpdate({ id, participants, action }) {
                     'https://telegra.ph/file/919c9aa59b8dc5cae41a8.png'
                   )}&text1=${encodeURIComponent(
                     await this.getName(user)
-                  )}&text2=منور+الجروب+يحب&text3=عدد+الاعضاء:${encodeURIComponent(
+                  )}&text2=Welcome+To+Group&text3=Number+Member:${encodeURIComponent(
                     nthMember.toString()
                   )}&avatar=${encodeURIComponent(pp)}`;
           
