@@ -1,10 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
+// دالة لإنشاء الملف
 let createFile = async (filename, data) => {
     let filePath = path.join('plugins', filename);
 
     try {
+        // كتابة البيانات إلى الملف
         await fs.promises.writeFile(filePath, data, 'utf8');
         console.log(`تم إنشاء الملف ${filename} بنجاح.`);
     } catch (err) {
@@ -13,9 +15,10 @@ let createFile = async (filename, data) => {
     }
 };
 
+// المعالج للأمر
 let handler = async (m, { isROwner, usedPrefix, command, text }) => {
-    await m.reply(global.wait);
-    if (!isROwner) return;
+    await m.reply(global.wait);  // يرسل رسالة انتظار
+    if (!isROwner) return;  // يتحقق مما إذا كان المستخدم مالكًا
 
     // التحقق من وجود اسم الملف والبيانات لإنشاء الملف
     if (!text) {
@@ -27,8 +30,11 @@ let handler = async (m, { isROwner, usedPrefix, command, text }) => {
     if (parts.length < 2) {
         throw `يرجى تحديد اسم الملف والبيانات، مثال:\n${usedPrefix + command} example.js <البيانات>`;
     }
-    
-    let filename = parts[0] + '.js';
+
+    let filename = parts[0];
+    if (!filename.endsWith('.js')) {
+        filename += '.js';
+    }
     let data = parts.slice(1).join(' ');
 
     try {
@@ -40,6 +46,7 @@ let handler = async (m, { isROwner, usedPrefix, command, text }) => {
     }
 };
 
+// إعدادات المساعدة والتصنيف والأمر
 handler.help = ['createplugin'];
 handler.tags = ['owner'];
 handler.command = /^(createplugin|cp|باتش-اضافه)$/i;
