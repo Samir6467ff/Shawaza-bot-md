@@ -1,6 +1,6 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
 
-    await conn.sendMessage(m.chat, { video: { url: dir[Math.floor(Math.random() * dir.length)] }, caption: `instagram.com/noureddine_ouafy` }, { quoted: m })
+    await conn.sendMessage(m.chat, { video: { url: dir[Math.floor(Math.random() * dir.length)] }, caption: `*تفضل استوري انمي*\n *قناة المطور لتعرف كل جديد عن البوت*\nhttps://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a` }, { quoted: m })
 }
 
 handler.help = ['animestory']
