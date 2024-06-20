@@ -28,7 +28,7 @@ let handler = async (m, { args , text, conn}) => {
           } 
       } 
     },{}) 
-if (!args[0]) await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id })
+await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id })
 
 try {
 const response = axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${args}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273`)
