@@ -1,6 +1,35 @@
+import pkg from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto } = pkg
 import axios from "axios"
-let handler = async (m, { args , text}) => {
-if (!args[0]) throw "*اكتب اسم المدينة او البلد الذي تريد ان تعرف مناخه*"
+let handler = async (m, { args , text, conn}) => {
+  let msg = generateWAMessageFromContent(m.chat, {
+  viewOnceMessage: {
+    message: {
+        interactiveMessage: {
+          body: {
+            text: "اختر دوله من قائمة الدول"
+          },
+          footer: {
+            text: "𝒁𝒆𝒛𝒐 𝑩𝒐𝒕"
+          },
+          header: {
+            title: "الـطـقـس",
+            hasMediaAttachment: false
+          },
+          nativeFlowMessage: {
+            buttons: [
+              {
+                "name": "single_select",
+                "buttonParamsJson": "{\"title\":\"اختر دوله من هنا\",\"sections\":[{\"title\":\"الطقس\",\"highlight_label\":\"label\",\"rows\":[{\"header\":\"دولة مصر\",\"title\":\"االقاهره",\"description\":\"\",\"id\":\".الطقس مصر\"},{\"header\":\"دولة السعوديه\",\"title\":\"جده\",\"description\":\"\",\"id\":\".الطقس السعوديه\"}]}]}"
+              }
+              ] 
+              } 
+            } 
+          } 
+      } 
+    },{}) 
+if (!args[0]) await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id })
+
 try {
 const response = axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${args}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273`)
 const res = await response
