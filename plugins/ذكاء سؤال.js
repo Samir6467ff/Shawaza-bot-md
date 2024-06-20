@@ -23,9 +23,9 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 ⟣┈┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
 
-*الـسـؤال:* ${json.questions}
+*الـسـؤال:* ${json.question}
 
-*الـجـأزه: ${poin} 
+*الـجـأزه: ${poin}* 
 
 *الـمـدة${(timeout / 1000).toFixed(2)} ثانيه*
 
