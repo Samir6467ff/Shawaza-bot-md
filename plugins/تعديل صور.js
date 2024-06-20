@@ -26,7 +26,7 @@ let handler = async (m, { conn, usedPrefix, command, args }) => {
 
 handler.help = ["اديت"];
 handler.tags = ["أدوات"];
-handler.command = ["تعديل", "إزالة_الضباب", "إعادة_تلوين", "تحسين", "تمويه", "توضيح"];
+handler.command = ["ايدت", "إزالة_الضباب", "إعادة_تلوين", "تحسين", "تمويه", "توضيح"];
 export default handler;
 
 async function processImage(m, conn, method, caption) {
