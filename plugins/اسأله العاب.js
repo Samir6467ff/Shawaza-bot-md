@@ -4,9 +4,10 @@ let timeout = 80000
 let poin = 1000
 let tiketcoin = 1
 let handler = async (m, { conn, usedPrefix }) => {
-  let id = m.chconn.tebakbendera = conn.tebakbendera ? conn.tebakbenderaat
-  if (id in conn.tebakbendera) {
-    conn.reply(m.chat, '❐┃لم يتم الاجابة علي السؤال بعد┃❌ ❯', conn.tebakbendera[id][0])
+  conn.tebakgame = conn.tebakgame ? conn.tebakgame : {}
+  let id = m.chat
+  if (id in conn.tebakgame) {
+    conn.reply(m.chat, '❐┃لم يتم الاجابة علي السؤال بعد┃❌ ❯', conn.tebakgame[id][0])
     throw false
   }
   let src = await (await fetch('https://raw.githubusercontent.com/qisyana/scrape/main/tebakgame.json')).json()
@@ -14,24 +15,24 @@ let handler = async (m, { conn, usedPrefix }) => {
   // if (!json.status) throw json
   let caption = `
 ⟣┈┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
-*❐↞┇الـوقـت⏳↞ *${(timeout / 1000).toFixed(2)} ثانية*
+❐↞┇الـوقـت⏳↞ *${(timeout / 1000).toFixed(2)} ثانية┇*
 
-*❐↞┇الـجـائـزة💰↞ ${poin} نقاط*
+❐↞┇الـجـائـزة💰↞ ${poin} نقاط┇
 
 『𝒁𝒆𝒛𝒐 𝑩𝒐𝒕』
 ⟣┈┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
-> اكتب تلميح للحصول علي تلميح للاجابه
+> اكتب تلميح للاجابه 
     `.trim()
-  conn.tebakbendera[id] = [
-    await conn.sendFile(m.chat, json.img, '', caption, m),
+  conn.tebakgame[id] = [
+    await conn.sendFile(m.chat, json.img, 'tebakgame.jpg', caption, m, false, { thumbnail: Buffer.alloc(0) }),
     json, poin,
     setTimeout(() => {
-      if (conn.tebakbendera[id]) conn.reply(m.chat, `❮ ⌛┇انتهي الوقت┇⌛❯\n❐↞┇الاجـابـة✅↞ *${json.jawaban}*`, conn.tebakbendera[id][0])
-      delete conn.tebakbendera[id]
+      if (conn.tebakgame[id]) conn.reply(m.chat, `❮ ⌛┇انتهي الوقت┇⌛❯\n❐↞┇الاجـابـة✅↞ *${json.jawaban}*`, conn.tebakgame[id][0])
+      delete conn.tebakgame[id]
     }, timeout)
   ]
 }
-handler.help = ['tebakbendera']
+handler.help = ['tebakgame']
 handler.tags = ['game']
 handler.command = /^العاب/i
 handler.limit = true
