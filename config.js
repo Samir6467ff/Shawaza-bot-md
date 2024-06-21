@@ -10,7 +10,7 @@ import moment from 'moment-timezone';
 global.botnumber = "*『🔥┇zezo-bot』*"
 global.confirmCode = ""
 
-global.owner = [['201508628077', '➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄', true],['201228996990','شيدو', true], 
+global.owner = [['201508628077', '➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄', true], 
 ];
 
 global.suittag = ['201508628077'];
