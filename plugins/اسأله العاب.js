@@ -15,6 +15,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   // if (!json.status) throw json
   let caption = `
 ⟣┈┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
+
 ❐↞┇الـوقـت⏳↞ *${(timeout / 1000).toFixed(2)} ثانية┇*
 
 ❐↞┇الـجـائـزة💰↞ ${poin} نقاط┇
