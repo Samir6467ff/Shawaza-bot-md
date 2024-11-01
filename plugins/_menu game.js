@@ -21,7 +21,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const doc = ['pdf', 'zip', 'vnd.openxmlformats-officedocument.presentationml.presentation', 'vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'vnd.openxmlformats-officedocument.wordprocessingml.document'];
     const document = doc[Math.floor(Math.random() * doc.length)];
     const str = `
-*⟣𓆩༺ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ❄ ༻𓆪⟢* 
+*⟣𓆩༺ Spider 𝑩𝒐𝒕 ❄ ༻𓆪⟢* 
 ⟣┈┈┈┈⟢〘❄〙⟣┈┈┈⟢
 *༺ مـنـــور يــاقــلـبـي 〘 ${m.pushName} 〙༻*
 ⟣┈┈┈┈⟢〘❄〙⟣┈┈┈⟢
@@ -58,7 +58,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 │✯ ❯ .دين. 
 │✯ ❯ .لغز. 
 │✯ ❯ .لعبه. 
-        *⟣𓆩༺ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ༻𓆪⟢*
+        *⟣𓆩༺ Spider 𝑩𝒐𝒕 ༻𓆪⟢*
 
 ⟣┈┈┈⟢〘❄〙⟣┈┈┈┈⟢
 `.trim();
