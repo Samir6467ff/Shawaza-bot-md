@@ -7,23 +7,23 @@ import fetch from 'node-fetch';
 import axios from 'axios';
 import moment from 'moment-timezone';
 
-global.botnumber = "*『🔥┇zezo-bot』*"
+global.botnumber = "*『🔥┇spider-bot』*"
 global.confirmCode = ""
 
-global.owner = [['201508628077', '➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄', true], 
+global.owner = [['201030543290', '➳ᴹᴿ᭄spider➳ᴹᴿ᭄', true], 
 ];
 
-global.suittag = ['201508628077'];
-global.prems = ['201508628077','201228996990'];
+global.suittag = ['201011547182'];
+global.prems = ['201064542738','201030543290'];
 
-global.packname = '☾︎ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ☽︎';
-global.author = '✩𝒁𝒆𝒛𝒐 𝑩𝒐𝒕☆';
+global.packname = '☾︎ سبايدر بوت ☽︎';
+global.author = '✩سبايدر☆';
 global.vs = 'V2 • 1.0.5'; 
-global.wm = '➳ᴹᴿ᭄𝒁𝒆𝒛𝒐➳ᴹᴿ᭄';
-global.titulowm = '☾︎ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ☽︎';
-global.titulowm2 = `☾︎ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ☽︎`
-global.igfg = '☾︎ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ☽︎';
-global.wait = '*انتظر جاري التحميل....*\n*قـنـاة الـمـطـور لـمـعـرفـة كـل جـديـد*\n༺ https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a ༻';
+global.wm = '➳ᴹᴿ᭄spider➳ᴹᴿ᭄';
+global.titulowm = '☾︎ spider 𝑩𝒐𝒕 ☽︎';
+global.titulowm2 = `☾︎ spider 𝑩𝒐𝒕 ☽︎`
+global.igfg = '☾︎ spider 𝑩𝒐𝒕 ☽︎';
+global.wait = '*انتظر جاري التحميل....*\n*قـنـاة الـمـطـور لـمـعـرفـة كـل جـديـد*\n༺ https://chat.whatsapp.com/IOpmTF3woFb7015KsX1INw ༻';
 
 global.imagen1 = fs.readFileSync('./Menu2.jpg');
 global.imagen2 = fs.readFileSync('./src/nuevobot.jpg');
@@ -44,14 +44,14 @@ global.año = d.toLocaleDateString('ar', {year: 'numeric'});
 global.tiempo = d.toLocaleString('ar-US', {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true});
 //* ****************************
 global.wm2 = `${dia} ${fecha}\n☾︎ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ☽︎`;
-global.gt = '☾︎ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ☽︎';
-global.mysticbot = '☾︎ 𝒁𝒆𝒛𝒐 𝑩𝒐𝒕 ☽︎';
+global.gt = '☾︎ spider 𝑩𝒐𝒕 ☽︎';
+global.mysticbot = '☾︎ spider 𝑩𝒐𝒕 ☽︎';
 global.md = '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕';
-global.mysticbot = '𝒁𝒆𝒛𝒐 𝑩𝒐𝒕';
+global.mysticbot = 'spider 𝑩𝒐𝒕';
 global.waitt = '*[ ⏳ ] انتظر جاري التحميل*';
 global.waittt = '*[ ⏳ ] انتظر جاري التحميل*';
 global.waitttt = '*[ ⏳ ] انتظر جاري التحميل *';
-global.nomorown = '201508628077';
+global.nomorown = '201064542738';
 global.pdoc = ['application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-excel', 'application/msword', 'application/pdf', 'text/rtf'];
 global.cmenut = '❖––––––『';
 global.cmenub = '┊✦ ';

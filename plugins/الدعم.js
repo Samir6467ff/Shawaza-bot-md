@@ -16,16 +16,16 @@ WELCOME ➳『 ${m.pushName} 』
 
 *『☯️』ī وتسابي ī《*
 
-*⊱≼ https://wa.me/+201508628077 ≽⊰⊹*
+*⊱≼ https://wa.me/+201064542738 ≽⊰⊹*
 
 *『🥱』معلوماتي《*
 
-*⊱≼ https://atom.bio/zyad_yasser ≽⊰⊹*
+*⊱≼ https://youtube.com/@-gokarmgale?si=hxP5nBtwauODpItM ≽⊰⊹*
 
 *『👀』ī جروب الوتساب ī《*
 
-*⊱≼ https://chat.whatsapp.com/JO7neq006uI3OgEtjNvtm0 ≽⊰⊹*
-*『』𝒁𝒆𝒛𝒐 𝑩𝒐𝒕《*
+*⊱≼ https://chat.whatsapp.com/IOpmTF3woFb7015KsX1INw ≽⊰⊹*
+*『』Spider 𝑩𝒐𝒕《*
 *◉═══ • ❁ BAY ❁ • ═══◉* 
 `);
 
